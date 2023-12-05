@@ -21,6 +21,12 @@ namespace RootMotion.Demos {
         private float jumpLeg;
         private bool lastJump;
 
+        public void SetAnimSpeed(float speed)
+        {
+	        if (speed > 0.1f && speed < 5)
+		        animSpeedMultiplier = speed;
+        }
+
         protected override void Start() {
 			base.Start();
 

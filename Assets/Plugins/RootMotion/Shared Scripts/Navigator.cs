@@ -62,6 +62,16 @@ namespace RootMotion.Demos
             lastTargetPosition = new Vector3(Mathf.Infinity, Mathf.Infinity, Mathf.Infinity);
         }
 
+        public void SetState(State state)
+        {
+            this.state = state;
+        }
+
+        public void StopMove()
+        {
+            this.Stop();
+        }
+
         public void Update(Vector3 targetPosition)
         {
             if (!initiated)

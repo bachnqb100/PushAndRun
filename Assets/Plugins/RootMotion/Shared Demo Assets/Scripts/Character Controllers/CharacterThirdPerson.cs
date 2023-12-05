@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace RootMotion.Demos {
 
@@ -258,6 +259,7 @@ namespace RootMotion.Demos {
                 }
 
                 r.velocity = horizontalVelocity + verticalVelocity;
+                
             } else
             {
                 r.velocity = velocity;
@@ -375,6 +377,7 @@ namespace RootMotion.Demos {
 			return Vector3.zero;
 		}
 
+		[Button]
 		protected virtual bool Jump() {
 			// check whether conditions are right to allow a jump:
 			if (!userControl.state.jump) return false;

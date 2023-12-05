@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using RootMotion.Dynamics;
+using Sirenix.OdinInspector;
 
 namespace RootMotion.Demos {
 
@@ -39,6 +40,7 @@ namespace RootMotion.Demos {
 			base.Rotate();
 		}
 
+		[Button]
 		protected override bool Jump() {
 			if (puppet.state != BehaviourPuppet.State.Puppet) return false;
 

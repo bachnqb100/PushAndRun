@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Sirenix.OdinInspector;
 
 namespace RootMotion.Demos {
 	
@@ -12,6 +13,8 @@ namespace RootMotion.Demos {
 		public float stoppingDistance = 0.5f;
 		public float stoppingThreshold = 1.5f;
         public Navigator navigator;
+        
+        private bool _jump;
 
         protected override void Start()
         {
@@ -20,7 +23,11 @@ namespace RootMotion.Demos {
             navigator.Initiate(transform);
         }
 
-        protected override void Update () {
+        protected override void Update ()
+        {
+
+	        state.jump = canJump && _jump;
+	        
 			float moveSpeed = walkByDefault? 0.5f: 1f;
 
             // If using Unity Navigation
@@ -49,6 +56,21 @@ namespace RootMotion.Demos {
         void OnDrawGizmos()
         {
             if (navigator.activeTargetSeeking) navigator.Visualize();
+        }
+        
+        
+        [Button]
+        void StartJump()
+        {
+	        StartCoroutine(SetJump());
+        }
+
+
+        IEnumerator SetJump()
+        {
+	        _jump = true;
+	        yield return null;
+	        _jump = false;
         }
 	}
 }
