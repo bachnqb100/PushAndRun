@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using FieldOfViewAsset;
 using RootMotion.Demos;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -24,9 +25,16 @@ namespace DefaultNamespace.Enemy
         [SerializeField] private float offsetPositionCheckJump = 2f;
         [SerializeField] private LayerMask groundLayerMask;
         [SerializeField] private float checkGroundDistance = 10f;
+
+        [Title("Field Of View")] [SerializeField]
+        private FieldOfView fov;
         
         private bool _jump;
         private bool _chase;
+        
+        
+        //fov
+        private GameObject _currentTarget;
         
 
         private Vector3 GetCheckJumpPos()
@@ -42,6 +50,13 @@ namespace DefaultNamespace.Enemy
 
             navigator.Initiate(transform);
             characterAnimation.SetAnimSpeed(moveSpeed);
+
+            _currentTarget = null;
+            
+            //FOV
+            fov.TargetSpotted += OnSpotedTarget;
+            fov.TargetDetected += OnDetectedTarget;
+            fov.TargetLost += OnLostTarget;
         }
 
         protected override void Update ()
@@ -55,6 +70,8 @@ namespace DefaultNamespace.Enemy
                 navigator.Update(moveTarget.position);
                 state.move = navigator.normalizedDeltaPosition * moveSpeed;
             }
+            
+            LookAtTarget();
 
             Jump();
             
@@ -112,5 +129,38 @@ namespace DefaultNamespace.Enemy
             yield return new WaitForEndOfFrame();
             _jump = false;
         }
+        
+        void LookAtTarget()
+        {
+            if (_currentTarget)
+            {
+                var dir = _currentTarget.transform.position - transform.position;
+                state.move = dir.normalized * 0.00001f;
+                state.lookPos = _currentTarget.transform.position;
+            }
+        }
+
+        void OnSpotedTarget(GameObject target)
+        {
+            Debug.Log("Spoted Target");
+            _currentTarget = target;
+            
+            characterAnimation.SetLookAt();
+        }
+
+        void OnDetectedTarget(GameObject target)
+        {
+            Debug.Log("Detected Target");
+            _currentTarget = target;
+        }
+
+        void OnLostTarget(GameObject target)
+        {
+            Debug.Log("Lost Target");
+            _currentTarget = null;
+            characterAnimation.SetLookAround();
+        }
+        
+        
     }
 }

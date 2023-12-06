@@ -509,7 +509,7 @@ namespace FieldOfViewAsset {
         }
         
         private void DisableLookAt() {
-            transform.localRotation = Quaternion.identity;
+            //transform.localRotation = Quaternion.identity;
         }
         
         private void DetectTargets(List<RayCastResult> fieldOfViewData) {
