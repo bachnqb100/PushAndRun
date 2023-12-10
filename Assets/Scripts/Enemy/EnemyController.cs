@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using FieldOfViewAsset;
 using RootMotion.Demos;
+using RootMotion.Dynamics;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,16 +28,23 @@ namespace DefaultNamespace.Enemy
         [SerializeField] private LayerMask groundLayerMask;
         [SerializeField] private float checkGroundDistance = 10f;
 
-        [Title("Field Of View")] [SerializeField]
-        private FieldOfView fov;
+        [Title("Field Of View")] 
+        [SerializeField] private FieldOfView fov;
+        [SerializeField] private float detectDuration = 5f;
+        [SerializeField] private float lostDuration = 5f;
+        
+        [Title("Behaviors")]
+        [SerializeField] private bool canChaseBehavior = true;
+        [SerializeField] private bool canJumpBehavior = true;
+        
+        [Title("Test")]
+        [SerializeField] private BehaviourPuppet behaviourPuppet;
         
         private bool _jump;
         private bool _chase;
         
-        
         //fov
         private GameObject _currentTarget;
-        
 
         private Vector3 GetCheckJumpPos()
         {
@@ -49,14 +58,13 @@ namespace DefaultNamespace.Enemy
             base.Start();
 
             navigator.Initiate(transform);
-            characterAnimation.SetAnimSpeed(moveSpeed);
+            SetSpeed(moveSpeed);
 
             _currentTarget = null;
             
             //FOV
-            fov.TargetSpotted += OnSpotedTarget;
-            fov.TargetDetected += OnDetectedTarget;
-            fov.TargetLost += OnLostTarget;
+            //InitFOV();
+            StopFOV();
         }
 
         protected override void Update ()
@@ -78,14 +86,34 @@ namespace DefaultNamespace.Enemy
             state.jump = canJump && _jump;
         }
 
-        [Button]
-        public void SetSpeed(float speed)
+        private void OnEnable()
+        {
+            InitFOV();
+            RegisterEvent();
+        }
+
+        private void OnDisable()
+        {
+            UnregisterEvent();
+        }
+
+        void InitFOV()
+        {
+            fov.TargetSpotted += OnSpotedTarget;
+            fov.TargetDetected += OnDetectedTarget;
+            fov.TargetLost += OnLostTarget;
+
+            fov.DetectionTime = detectDuration;
+            fov.CoolDownTime = lostDuration;
+        }
+        void SetSpeed(float speed)
         {
             characterAnimation.SetAnimSpeed(speed);
         }
 
         void Jump()
         {
+            if (!canJumpBehavior) return;
             if (!characterPuppet.onGround) return;
             if (!_chase) return;
             
@@ -95,6 +123,21 @@ namespace DefaultNamespace.Enemy
                     groundLayerMask) == 0)
             {
                 StartJump();
+            }
+            
+            void StartJump()
+            {
+                StartCoroutine(SetJump());
+            }
+
+            IEnumerator SetJump()
+            {
+                Debug.Log("Jump");
+                _jump = true;
+                //navigator.SetState(Navigator.State.Idle);
+                navigator.StopMove();
+                yield return new WaitForEndOfFrame();
+                _jump = false;
             }
         }
 
@@ -107,27 +150,10 @@ namespace DefaultNamespace.Enemy
             Gizmos.DrawLine(GetCheckJumpPos(), GetCheckJumpPos() + Vector3.down * checkGroundDistance);
         }
         
-
         [Button]
         void SetStatusChase(bool enable)
         {
-            _chase = enable;
-        }
-        
-        [Button]
-        void StartJump()
-        {
-            StartCoroutine(SetJump());
-        }
-
-        IEnumerator SetJump()
-        {
-            Debug.Log("Jump");
-            _jump = true;
-            //navigator.SetState(Navigator.State.Idle);
-            navigator.StopMove();
-            yield return new WaitForEndOfFrame();
-            _jump = false;
+            _chase = canChaseBehavior && enable;
         }
         
         void LookAtTarget()
@@ -140,6 +166,8 @@ namespace DefaultNamespace.Enemy
             }
         }
 
+        #region FOV Handler
+        
         void OnSpotedTarget(GameObject target)
         {
             Debug.Log("Spoted Target");
@@ -160,7 +188,40 @@ namespace DefaultNamespace.Enemy
             _currentTarget = null;
             characterAnimation.SetLookAround();
         }
+
+        #endregion
+
+        void RegisterEvent()
+        {
+            behaviourPuppet.onRegainBalance.unityEvent.AddListener(StartFOV);
+            behaviourPuppet.onLoseBalance.unityEvent.AddListener(StopFOV);
+        }
+
+        void UnregisterEvent()
+        {
+            behaviourPuppet.onRegainBalance.unityEvent.RemoveListener(StartFOV);
+            behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(StopFOV);
+        }
         
+        [Button]
+        void TestPuppet()
+        {
+            behaviourPuppet.SetState(BehaviourPuppet.State.Unpinned);
+            behaviourPuppet.KillStart();
+        }
+        
+        //Behavior
+        void StartFOV()
+        {
+            Debug.Log("StartFOV");
+            fov.enabled = true;
+        }
+
+        void StopFOV()
+        {
+            Debug.Log("StopFOV");
+            fov.enabled = false;
+        }
         
     }
 }
