@@ -11,7 +11,6 @@ namespace DefaultNamespace.Enemy
 {
     public class EnemyController : UserControlThirdPerson
     {
-        public Transform moveTarget;
         public Navigator navigator;
         
         [Space]
@@ -32,10 +31,11 @@ namespace DefaultNamespace.Enemy
         [SerializeField] private FieldOfView fov;
         [SerializeField] private float detectDuration = 5f;
         [SerializeField] private float lostDuration = 5f;
-        
-        [Title("Behaviors")]
-        [SerializeField] private bool canChaseBehavior = true;
+
+        [Title("Behaviors")] 
+        [SerializeField] private ChaseType chaseType;
         [SerializeField] private bool canJumpBehavior = true;
+        [SerializeField] private float distanceToChangeTarget = 1f;
         
         
         [Title("Test")]
@@ -46,6 +46,9 @@ namespace DefaultNamespace.Enemy
         
         //fov
         private GameObject _currentTarget;
+        
+        //chase
+        private Transform _currentTargetMovement;
 
         private Vector3 GetCheckJumpPos()
         {
@@ -70,15 +73,8 @@ namespace DefaultNamespace.Enemy
 
         protected override void Update ()
         {
-	        
-            float moveSpeed = walkByDefault? 0.5f: 1f;
 
-            // If using Unity Navigation
-            if (navigator.activeTargetSeeking && _chase && characterPuppet.onGround)
-            {
-                navigator.Update(moveTarget.position);
-                state.move = navigator.normalizedDeltaPosition * moveSpeed;
-            }
+            Move();
             
             LookAtTarget();
 
@@ -110,6 +106,47 @@ namespace DefaultNamespace.Enemy
         void SetSpeed(float speed)
         {
             characterAnimation.SetAnimSpeed(speed);
+        }
+
+        void Move()
+        {
+            float moveSpeed = walkByDefault ? 0.5f : 1f;
+            
+            if (navigator.activeTargetSeeking && _chase && characterPuppet.onGround)
+            {
+                if (chaseType == ChaseType.Hunt)
+                {
+                    navigator.Update(_currentTargetMovement.position);
+                    state.move = navigator.normalizedDeltaPosition * moveSpeed;
+                }
+                else
+                {
+                    ChangeTargetPosition(_currentTargetMovement);
+                    navigator.Update(_currentTargetMovement.position);
+                    state.move = navigator.normalizedDeltaPosition * moveSpeed;
+                    Debug.Log("Chase Patrol");
+                }
+                
+            }
+
+            bool NearTarget(Transform target)
+            {
+                var currentPos2D = new Vector2(transform.position.x, transform.position.z);
+                var targetPos2D = new Vector2(target.position.x, target.position.z);
+                return Vector2.Distance(currentPos2D, targetPos2D) <= distanceToChangeTarget;
+            }
+
+            void ChangeTargetPosition(Transform target)
+            {
+                if (!target)
+                {
+                    _currentTargetMovement = GameController.Instance.CurrentMap.GetRandomPatrolTransform;
+                }
+                else if (NearTarget(_currentTargetMovement))
+                {
+                    _currentTargetMovement = GameController.Instance.CurrentMap.GetRandomPatrolTransform;
+                }
+            }
         }
 
         void Jump()
@@ -154,7 +191,7 @@ namespace DefaultNamespace.Enemy
         [Button]
         void SetStatusChase(bool enable)
         {
-            _chase = canChaseBehavior && enable;
+            _chase = chaseType != ChaseType.None && enable;
         }
         
         void LookAtTarget()
@@ -173,14 +210,24 @@ namespace DefaultNamespace.Enemy
         {
             Debug.Log("Spoted Target");
             _currentTarget = target;
-            
             characterAnimation.SetLookAt();
+            
+            //TODO: logic warning to player in FOV
+            
+            //patrol chase
+            if (chaseType == ChaseType.Patrol && _chase)
+            {
+                _chase = false;
+            }
         }
 
         void OnDetectedTarget(GameObject target)
         {
             Debug.Log("Detected Target");
             _currentTarget = target;
+            
+            //TODO: Logic game over
+            Debug.LogError("GAME OVER!!!!!!!!");
         }
 
         void OnLostTarget(GameObject target)
@@ -188,6 +235,14 @@ namespace DefaultNamespace.Enemy
             Debug.Log("Lost Target");
             _currentTarget = null;
             characterAnimation.SetLookAround();
+            
+            //TODO: logic disable warning
+            
+            //patrol chase
+            if (chaseType == ChaseType.Patrol && !_chase)
+            {
+                _chase = true;
+            }
         }
 
         #endregion
@@ -231,6 +286,14 @@ namespace DefaultNamespace.Enemy
         void StartBehaviour()
         {
             SetStatusChase(true);
+        }
+        
+        
+        public enum ChaseType
+        {
+            None,
+            Patrol,
+            Hunt,
         }
         
     }
