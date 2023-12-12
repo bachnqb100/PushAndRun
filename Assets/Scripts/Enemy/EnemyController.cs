@@ -37,6 +37,7 @@ namespace DefaultNamespace.Enemy
         [SerializeField] private bool canChaseBehavior = true;
         [SerializeField] private bool canJumpBehavior = true;
         
+        
         [Title("Test")]
         [SerializeField] private BehaviourPuppet behaviourPuppet;
         
@@ -194,12 +195,16 @@ namespace DefaultNamespace.Enemy
         void RegisterEvent()
         {
             behaviourPuppet.onRegainBalance.unityEvent.AddListener(StartFOV);
+            behaviourPuppet.onRegainBalance.unityEvent.AddListener(StartBehaviour);
+            
             behaviourPuppet.onLoseBalance.unityEvent.AddListener(StopFOV);
         }
 
         void UnregisterEvent()
         {
             behaviourPuppet.onRegainBalance.unityEvent.RemoveListener(StartFOV);
+            behaviourPuppet.onRegainBalance.unityEvent.RemoveListener(StartBehaviour);
+            
             behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(StopFOV);
         }
         
@@ -221,6 +226,11 @@ namespace DefaultNamespace.Enemy
         {
             Debug.Log("StopFOV");
             fov.enabled = false;
+        }
+
+        void StartBehaviour()
+        {
+            SetStatusChase(true);
         }
         
     }
