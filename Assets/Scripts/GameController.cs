@@ -53,7 +53,7 @@ namespace DefaultNamespace
             
             SpawnEnemy();
             
-             SpawnPlayerPos();
+            SpawnPlayerPos();
         }
 
         void SpawnPlayerPos()
@@ -71,16 +71,12 @@ namespace DefaultNamespace
                 _enemyControllers.Add(eCtrl);
             }
         }
-        
-        
-        
-        
-        
-        [Button]
-        public void SetCurrentMap(MapData mapData)
+
+
+        public void StartGame()
         {
-            Debug.Log("SetCurrentMap");
-            _currentMap = mapData;
+            //TODO: logic choose map game
+            SpawnMap(0);
         }
     }
 }

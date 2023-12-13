@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.UI;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -24,6 +25,11 @@ namespace DefaultNamespace
         private GameData _gameData;
         
         public GameData GameData => _gameData;
+
+        private void Start()
+        {
+            GUIManager.Instance.ShowPanel(PanelType.MainScreen);
+        }
 
 
         void InitGame()
