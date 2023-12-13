@@ -1100,7 +1100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &73634455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2271,7 +2271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &130618363
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6355,7 +6355,7 @@ PrefabInstance:
     - target: {fileID: 8273512227304546234, guid: f1f4576f89ae99b4daa044011611400d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3cf42a20ca24b724c9deb609d5a544a8, type: 2}
+      objectReference: {fileID: 2100000, guid: fc42be5372ea77b43a9caa112dbc9c87, type: 2}
     - target: {fileID: 8465861661581423876, guid: f1f4576f89ae99b4daa044011611400d, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.09757861
@@ -23847,7 +23847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1711777101
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -26928,7 +26928,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047161139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36583757, y: 3e-45, z: -1e-45, w: 0.9306787}
+  m_LocalRotation: {x: 0.36583757, y: -1e-45, z: 1e-45, w: 0.9306787}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30254,7 +30254,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 710771794393880505, guid: b777781458c66cd45b1f93674baace8e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6243540307786217665, guid: b777781458c66cd45b1f93674baace8e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30427,6 +30427,18 @@ MonoBehaviour:
   controller: {fileID: 625854152264164454}
   layerPlayer: 6
   layerCharacterController: 8
+  changeAlphaDuration: 1
+  bodyMaterial: {fileID: 2100000, guid: fc42be5372ea77b43a9caa112dbc9c87, type: 2}
+  invisibleColorBody: {r: 0.5, g: 0.5, b: 0.5, a: 0.47058824}
+  clothesMaterial:
+  - {fileID: 2100000, guid: c4cf05b58f951f2438cc8840bd2d49e2, type: 2}
+  - {fileID: 2100000, guid: 13564c642784fb54ea2dfb8e4b2a0d90, type: 2}
+  - {fileID: 2100000, guid: fba97eedd542ae749a2e6d948604d1d4, type: 2}
+  - {fileID: 2100000, guid: f9a64194379ec3747a93cc99b86f2652, type: 2}
+  - {fileID: 2100000, guid: 72c94e7932f83c644896026e9355dcc7, type: 2}
+  - {fileID: 2100000, guid: 59581292dae5bc24d9b7adca13515363, type: 2}
+  - {fileID: 2100000, guid: 45993bc7abe238040a29b40292c6afd4, type: 2}
+  alphaValue: 0.4
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
