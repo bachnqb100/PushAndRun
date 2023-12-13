@@ -139,7 +139,7 @@ Material:
     - _ReceiveShadowsOff: 1
     - _ReflectionMapType: 0
     - _ReflectionSmoothness: 0.5
-    - _RenderingMode: 2
+    - _RenderingMode: 0
     - _RimMax: 1
     - _RimMin: 0.5
     - _ShadowColorLightAtten: 1
@@ -169,7 +169,7 @@ Material:
     - _UseSpecular: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.016251087, g: 0, b: 1, a: 0.39999998}
+    - _BaseColor: {r: 0.016251087, g: 0, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HColor: {r: 1, g: 1, b: 1, a: 1}

@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using RootMotion.Demos;
 using Sirenix.OdinInspector;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -8,9 +9,13 @@ namespace Player
 {
     public class PlayerController : MonoBehaviour
     {
+        [Title("Player")]
         [SerializeField] private GameObject controller;
         [SerializeField] private int layerPlayer;
         [SerializeField] private int layerCharacterController;
+        [SerializeField] private UserControlThirdPerson userControlThirdPerson;
+        [SerializeField] private CharacterPuppet character;
+        [SerializeField] private float delaySpawnPlayerDuration = 0.5f;
 
         [Title("Invisible")] 
         [Space]
@@ -26,6 +31,20 @@ namespace Player
         
         
         private bool _isInvisible;
+
+        public void InitPlayer(Transform transform)
+        {
+            userControlThirdPerson.enabled = false;
+            character.enabled = false;
+
+            DOVirtual.DelayedCall(delaySpawnPlayerDuration, () =>
+            {
+                this.transform.parent.position = transform.position;
+                this.transform.localPosition = Vector3.zero;
+                userControlThirdPerson.enabled = true;
+                character.enabled = true;
+            });
+        } 
 
         [Button]
         void ChangeLayer()
