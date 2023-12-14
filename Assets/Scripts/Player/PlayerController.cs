@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace;
 using DG.Tweening;
 using RootMotion.Demos;
 using Sirenix.OdinInspector;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IFallable
     {
         [Title("Player")]
         [SerializeField] private GameObject controller;
@@ -136,6 +137,12 @@ namespace Player
             }
             
             
+        }
+
+        public void Fall()
+        {
+            //TODO: Logic player fall
+            Debug.Log("Player falling");
         }
 
         enum RenderingMode

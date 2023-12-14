@@ -9,7 +9,7 @@ using UnityEngine.AI;
 
 namespace DefaultNamespace.Enemy
 {
-    public class EnemyController : UserControlThirdPerson
+    public class EnemyController : UserControlThirdPerson, IFallable
     {
         public Navigator navigator;
         
@@ -286,6 +286,12 @@ namespace DefaultNamespace.Enemy
         void StartBehaviour()
         {
             SetStatusChase(true);
+        }
+
+        public void Fall()
+        {
+            //TODO: logic enemy fall
+            Debug.Log("Enemy Fall");
         }
         
         

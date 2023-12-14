@@ -25,6 +25,7 @@ namespace DefaultNamespace
         #endregion
 
         [Title("Enemy Pattern")] 
+        [SerializeField] private Transform enemyRoot;
         [SerializeField] private SerializedDictionary<EnemyType, GameObject> enemyPatternMap;
 
         [Title("Map")] 
@@ -42,8 +43,7 @@ namespace DefaultNamespace
         [Button]
         public void SpawnMap(int index)
         {
-            _enemyControllers = new List<EnemyController>();
-            _enemyControllers.Clear();
+            ClearCurrentMap();
             
             var mapCount = mapDataMap.Count;
             
@@ -54,6 +54,27 @@ namespace DefaultNamespace
             SpawnEnemy();
             
             SpawnPlayerPos();
+
+            void ClearCurrentMap()
+            {
+                //enemy
+                _enemyControllers ??= new List<EnemyController>();
+
+                if (_enemyControllers.Count > 0)
+                {
+                    var n = _enemyControllers.Count;
+
+                    for (int i = 0; i < n; i++)
+                    {
+                        Destroy(_enemyControllers[i].transform.parent.gameObject);
+                    }
+                }
+                
+                _enemyControllers.Clear();
+                
+                //map
+                if (_currentMap) Destroy(_currentMap.gameObject);
+            }
         }
 
         void SpawnPlayerPos()
@@ -65,7 +86,7 @@ namespace DefaultNamespace
         {
             foreach (var item in _currentMap.SpawnEnemyTransformMap)
             {
-                var e = Instantiate(enemyPatternMap[item.Key], item.Value.position, item.Value.rotation);
+                var e = Instantiate(enemyPatternMap[item.Key], item.Value.position, item.Value.rotation, enemyRoot);
                 
                 var eCtrl = e.GetComponentInChildren<EnemyController>(); 
                 _enemyControllers.Add(eCtrl);
