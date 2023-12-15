@@ -9,10 +9,11 @@ namespace DefaultNamespace.UI
         public PanelAnim panelAnim;
 
         private bool _init;
+
         public void OnEnable()
         {
-            RegisterEvent();
             Init();
+            RegisterEvent();
         }
 
         public void OnDisable()

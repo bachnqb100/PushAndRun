@@ -37,6 +37,7 @@ namespace DefaultNamespace.UI
         public void HidePanel(PanelType panelType, Action action = null)
         {
             panelMap[panelType].Hide(action);
+            Debug.Log("Hide panel " + panelType);
         }
         
         

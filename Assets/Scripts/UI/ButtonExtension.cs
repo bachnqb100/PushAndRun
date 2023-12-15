@@ -8,6 +8,14 @@ namespace DefaultNamespace.UI
     {
         public ButtonAnim buttonAnim;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            if (buttonAnim == null)
+                Setup();
+        }
+
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -30,6 +38,7 @@ namespace DefaultNamespace.UI
                 buttonAnim.HideAnim(() => gameObject.SetActive(false));
         }
         
+
         void Setup()
         {
             buttonAnim = GetComponent<ButtonAnim>();

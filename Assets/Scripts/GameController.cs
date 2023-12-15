@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CameraManager;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.Map;
+using DefaultNamespace.UI;
 using DG.Tweening;
 using Player;
 using Sirenix.OdinInspector;
@@ -37,6 +38,8 @@ namespace DefaultNamespace
 
         private MapData _currentMap;
         private List<EnemyController> _enemyControllers = new List<EnemyController>();
+
+        private bool _isPlaying;
 
 
         public MapData CurrentMap => _currentMap;
@@ -100,6 +103,19 @@ namespace DefaultNamespace
             //TODO: logic choose map game
             SpawnMap(0);
             CameraController.Instance.DisableFallCamera();
+            
+            _isPlaying = true;
+        }
+
+        public void DefeatByPlayerFall()
+        {
+            if (!_isPlaying) return;
+            _isPlaying = false;
+                
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                GUIManager.Instance.ShowPanel(PanelType.DefeatScreen);
+            });
         }
     }
 }

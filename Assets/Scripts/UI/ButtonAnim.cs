@@ -220,26 +220,21 @@ namespace DefaultNamespace.UI
 
     #endregion
     
-    private ButtonExtension _btn;
-    private CanvasGroup _canvasGroup;
+    [SerializeField] private ButtonExtension btn;
+    [SerializeField] private CanvasGroup canvasGroup;
     
     private void Reset()
     {
-        _btn = GetComponent<ButtonExtension>();
-        _btn.transition = Selectable.Transition.None;
-        _btn.buttonAnim = this;
-    }
-
-    private void Awake()
-    {
-        _btn = GetComponent<ButtonExtension>();
-        _canvasGroup = GetComponent<CanvasGroup>();
+        btn = GetComponent<ButtonExtension>();
+        canvasGroup = GetComponent<CanvasGroup>();
+        btn.transition = Selectable.Transition.None;
+        btn.buttonAnim = this;
     }
 
     public void ShowAnim(Action onComplete = null)
     {
-        _canvasGroup.DOKill();
-        _canvasGroup.alpha = 1;
+        canvasGroup.DOKill();
+        canvasGroup.alpha = 1f;
         transform.DOKill();
         transform.localScale = Vector3.one;
         
@@ -254,11 +249,11 @@ namespace DefaultNamespace.UI
         switch (showAnimType)
         {
             case ShowAnimType.FadeIn:
-                if (_canvasGroup)
+                if (canvasGroup)
                 {
-                    _canvasGroup.alpha = 0;
+                    canvasGroup.alpha = 0;
 
-                    var tween = _canvasGroup.DOFade(1, showAnimTime)
+                    var tween = canvasGroup.DOFade(1, showAnimTime)
                         .SetUpdate(unscaleTime)
                         .OnComplete(() => onComplete?.Invoke());
                     
@@ -270,10 +265,10 @@ namespace DefaultNamespace.UI
                 
                 break;
             case ShowAnimType.FromScale:
-                if (_canvasGroup)
+                if (canvasGroup)
                 {
-                    _canvasGroup.alpha = 0;
-                    _canvasGroup.DOFade(1, showAnimTime * .75f).SetUpdate(unscaleTime);
+                    canvasGroup.alpha = 0;
+                    canvasGroup.DOFade(1, showAnimTime * .75f).SetUpdate(unscaleTime);
                 }
                 
                 transform.localScale = Vector3.one * initScale;
@@ -318,7 +313,7 @@ namespace DefaultNamespace.UI
     
     public void HideAnim(Action onComplete = null)
     {
-        _canvasGroup.DOKill();
+        canvasGroup.DOKill();
         transform.DOKill();
         
         if (hideAnimType == HideAnimType.None)
@@ -331,11 +326,11 @@ namespace DefaultNamespace.UI
         switch (hideAnimType)
         {
             case HideAnimType.FadeOut:
-                if (_canvasGroup)
+                if (canvasGroup)
                 {
-                    _canvasGroup.alpha = 1;
+                    canvasGroup.alpha = 1;
 
-                    var tween = _canvasGroup.DOFade(0, hideAnimTime)
+                    var tween = canvasGroup.DOFade(0, hideAnimTime)
                         .SetUpdate(unscaleTime)
                         .OnComplete(() => onComplete?.Invoke());
                     
@@ -347,10 +342,10 @@ namespace DefaultNamespace.UI
                 
                 break;
             case HideAnimType.ToScale:
-                if (_canvasGroup)
+                if (canvasGroup)
                 {
-                    _canvasGroup.alpha = 1;
-                    _canvasGroup.DOFade(0, hideAnimTime * .75f).SetUpdate(unscaleTime);
+                    canvasGroup.alpha = 1;
+                    canvasGroup.DOFade(0, hideAnimTime * .75f).SetUpdate(unscaleTime);
                 }
 
                 if (separateAxisHideAnim)
@@ -441,7 +436,7 @@ namespace DefaultNamespace.UI
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!_btn.interactable) 
+        if (!btn.interactable) 
             return;
         
         PointerDownAnim();
@@ -449,7 +444,7 @@ namespace DefaultNamespace.UI
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (!_btn.interactable) 
+        if (!btn.interactable) 
             return;
         
         PointerUpAnim();

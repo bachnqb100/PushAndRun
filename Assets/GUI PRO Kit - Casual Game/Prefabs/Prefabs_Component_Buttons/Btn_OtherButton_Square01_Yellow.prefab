@@ -219,10 +219,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1081606537913650178}
   - component: {fileID: 1081606537913650191}
+  - component: {fileID: 8078768697950953601}
   - component: {fileID: 1081606537913650176}
   - component: {fileID: 2002709340432949497}
   - component: {fileID: 7825534251460817385}
-  - component: {fileID: 8078768697950953601}
   m_Layer: 5
   m_Name: Btn_OtherButton_Square01_Yellow
   m_TagString: Untagged
@@ -259,6 +259,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081606537913650179}
   m_CullTransparentMesh: 0
+--- !u!225 &8078768697950953601
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081606537913650179}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &1081606537913650176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,6 +526,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  btn: {fileID: 7825534251460817385}
+  canvasGroup: {fileID: 8078768697950953601}
 --- !u!114 &7825534251460817385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,16 +572,4 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  buttonAnim: {fileID: 0}
---- !u!225 &8078768697950953601
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081606537913650179}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  buttonAnim: {fileID: 2002709340432949497}

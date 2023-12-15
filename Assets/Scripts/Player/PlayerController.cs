@@ -146,6 +146,7 @@ namespace Player
             
             CameraManager.CameraController.Instance.EnableFallCamera();
                 
+            GameController.Instance.DefeatByPlayerFall();
         }
 
         enum RenderingMode

@@ -8,16 +8,6 @@ namespace DefaultNamespace.UI
         [Header("Start Game")] 
         [SerializeField] private ButtonExtension startGameButton;
         
-        protected override void Init()
-        {
-            base.Init();
-        }
-
-        protected override void Disable()
-        {
-            base.Disable();
-        }
-
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
