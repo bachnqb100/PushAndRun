@@ -6,7 +6,7 @@ namespace DefaultNamespace.UI
     public class MainScreen : UIPanel
     {
         [Header("Start Game")] 
-        [SerializeField] private Button startGameButton;
+        [SerializeField] private ButtonExtension startGameButton;
         
         protected override void Init()
         {

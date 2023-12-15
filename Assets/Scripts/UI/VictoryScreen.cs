@@ -5,8 +5,8 @@ namespace DefaultNamespace.UI
 {
     public class VictoryScreen : UIPanel
     {
-        [SerializeField] private Button nextLevelButton;
-        [SerializeField] private Button menuButton;
+        [SerializeField] private ButtonExtension nextLevelButton;
+        [SerializeField] private ButtonExtension menuButton;
 
         protected override void RegisterEvent()
         {

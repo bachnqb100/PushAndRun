@@ -2378,17 +2378,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1404550295839673997, guid: bdb8da037ac62489d9b2f6b1250107a3, type: 3}
   m_PrefabInstance: {fileID: 278039427}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &278039429 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1404550295839673996, guid: bdb8da037ac62489d9b2f6b1250107a3, type: 3}
-  m_PrefabInstance: {fileID: 278039427}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &288387804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,7 +2420,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2115101555}
+    m_TransformParent: {fileID: 1134385404}
     m_Modifications:
     - target: {fileID: 1081606536570537443, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_Sprite
@@ -2458,6 +2447,10 @@ PrefabInstance:
     - target: {fileID: 1081606537584097107, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081606537913650177, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: m_Transition
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_Pivot.x
@@ -2492,6 +2485,18 @@ PrefabInstance:
       value: 244
       objectReference: {fileID: 0}
     - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2521,11 +2526,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000030517578
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 175
+      value: 122
       objectReference: {fileID: 0}
     - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2539,11 +2544,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1081606537913650179, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
       propertyPath: m_Name
       value: Btn Start Game
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1081606537913650179, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002709340432949497, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: hideAnimType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002709340432949497, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: showAnimTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002709340432949497, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: showAnimType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2002709340432949497, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+      propertyPath: pressAnimType
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1081606537913650177, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2553,17 +2583,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1081606537913650178, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
   m_PrefabInstance: {fileID: 291962068}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &291962070 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1081606537913650177, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
-  m_PrefabInstance: {fileID: 291962068}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &295054311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -6796133134189294026, guid: f1f4576f89ae99b4daa044011611400d, type: 3}
@@ -3779,7 +3798,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442016217}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3826835, y: 0.00000003179325, z: -0.000000013169196, w: 0.92387956}
+  m_LocalRotation: {x: 0.3826835, y: -0.00000003179325, z: 0.000000013169196, w: 0.92387956}
   m_LocalPosition: {x: -0.031, y: 8.094, z: -8.097}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3833,6 +3852,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freeLookCamera: {fileID: 0}
+--- !u!114 &444821132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6026772722126294128, guid: bdb8da037ac62489d9b2f6b1250107a3, type: 3}
+  m_PrefabInstance: {fileID: 278039427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d52c53ec4c04a469572d15601717bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &456290699
 GameObject:
   m_ObjectHideFlags: 0
@@ -4067,6 +4097,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472958570}
   - component: {fileID: 472958571}
+  - component: {fileID: 472958572}
   m_Layer: 5
   m_Name: VictoryScreen
   m_TagString: Untagged
@@ -4107,8 +4138,190 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3367f83b7d854de6887e6d9e5c418750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelButton: {fileID: 1957971794}
-  menuButton: {fileID: 626125069}
+  root: {fileID: 142225137}
+  panelAnim: {fileID: 472958572}
+  nextLevelButton: {fileID: 1957971797}
+  menuButton: {fileID: 1592631825}
+--- !u!114 &472958572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472958569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12f3c3f7a534ffdbc13c3982e324426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animIn: 0
+  animInCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animInTime: 0.35
+  delayAnimIn: 0
+  initScale: 0
+  separateAxisAnimIn: 0
+  animInEasingType: 6
+  animInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInXAxisEasingType: 6
+  animInXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInYAxisEasingType: 6
+  animInYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOut: 0
+  animOutCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animOutTime: 0.35
+  targetScale: 0
+  separateAxisAnimOut: 0
+  animOutEasingType: 6
+  animOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutXAxisEasingType: 6
+  animOutXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutYAxisEasingType: 6
+  animOutYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  unscaleTime: 0
+  popup: {fileID: 0}
+  rootGraphic: {fileID: 0}
 --- !u!1 &486505198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4955,17 +5168,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1404550295839673997, guid: bdb8da037ac62489d9b2f6b1250107a3, type: 3}
   m_PrefabInstance: {fileID: 626125067}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &626125069 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1404550295839673996, guid: bdb8da037ac62489d9b2f6b1250107a3, type: 3}
-  m_PrefabInstance: {fileID: 626125067}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &634322732
 GameObject:
   m_ObjectHideFlags: 3
@@ -5037,7 +5239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634322732}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268346, y: 0.000000015896623, z: -0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17923,6 +18125,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1134385403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134385404}
+  - component: {fileID: 1134385406}
+  - component: {fileID: 1134385405}
+  m_Layer: 5
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1134385404
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134385403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 291962069}
+  m_Father: {fileID: 2115101555}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1134385405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134385403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 140056dae9246407594757b8ec82f946, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1134385406
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134385403}
+  m_CullTransparentMesh: 1
 --- !u!4 &1205279691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4627620930776378244, guid: f1f4576f89ae99b4daa044011611400d, type: 3}
@@ -18626,15 +18904,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1266896852483600848, guid: 8ab284b5214534699984acce51873626, type: 3}
   m_PrefabInstance: {fileID: 1300805138}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1300805140 stripped
+--- !u!114 &1300805143 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1266896852483600863, guid: 8ab284b5214534699984acce51873626, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7976250617345949775, guid: 8ab284b5214534699984acce51873626, type: 3}
   m_PrefabInstance: {fileID: 1300805138}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d52c53ec4c04a469572d15601717bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1300853231
@@ -18686,6 +18964,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001ed4c4d2484be1b4e1f0c22bd0667c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 0}
+  panelAnim: {fileID: 0}
   slider: {fileID: 1048778580}
   textSlider: {fileID: 1048778579}
   loadingDuration: 3
@@ -18704,6 +18984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1359442901}
   - component: {fileID: 1359442902}
+  - component: {fileID: 1359442903}
   m_Layer: 5
   m_Name: DefeatScreen
   m_TagString: Untagged
@@ -18744,8 +19025,190 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0a3a68bbfa54745a71c29fddab7a54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuButton: {fileID: 278039429}
-  retryButton: {fileID: 1300805140}
+  root: {fileID: 142225137}
+  panelAnim: {fileID: 1359442903}
+  menuButton: {fileID: 444821132}
+  retryButton: {fileID: 1300805143}
+--- !u!114 &1359442903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359442900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12f3c3f7a534ffdbc13c3982e324426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animIn: 0
+  animInCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animInTime: 0.35
+  delayAnimIn: 0
+  initScale: 0
+  separateAxisAnimIn: 0
+  animInEasingType: 6
+  animInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInXAxisEasingType: 6
+  animInXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInYAxisEasingType: 6
+  animInYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOut: 0
+  animOutCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animOutTime: 0.35
+  targetScale: 0
+  separateAxisAnimOut: 0
+  animOutEasingType: 6
+  animOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutXAxisEasingType: 6
+  animOutXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutYAxisEasingType: 6
+  animOutYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  unscaleTime: 0
+  popup: {fileID: 0}
+  rootGraphic: {fileID: 0}
 --- !u!43 &1362627297
 Mesh:
   m_ObjectHideFlags: 0
@@ -19145,6 +19608,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1651523201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1405663222 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7825534251460817385, guid: f090e23226d0445e3942f04bf4616c03, type: 3}
+  m_PrefabInstance: {fileID: 291962068}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d52c53ec4c04a469572d15601717bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1409036038
 GameObject:
   m_ObjectHideFlags: 0
@@ -19333,6 +19807,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400076, guid: b7e10e6faa72e074888c402c5a76cf81, type: 3}
   m_PrefabInstance: {fileID: 310184612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1592631825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6026772722126294128, guid: bdb8da037ac62489d9b2f6b1250107a3, type: 3}
+  m_PrefabInstance: {fileID: 626125067}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d52c53ec4c04a469572d15601717bae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1610946986
 Mesh:
   m_ObjectHideFlags: 0
@@ -21471,6 +21956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1806677207}
   - component: {fileID: 1806677208}
+  - component: {fileID: 1806677209}
   m_Layer: 5
   m_Name: PlayScreen
   m_TagString: Untagged
@@ -21510,6 +21996,188 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9967b6eb462450fb848515b30f19329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  root: {fileID: 142225137}
+  panelAnim: {fileID: 1806677209}
+--- !u!114 &1806677209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806677206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12f3c3f7a534ffdbc13c3982e324426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animIn: 0
+  animInCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animInTime: 0.35
+  delayAnimIn: 0
+  initScale: 0
+  separateAxisAnimIn: 0
+  animInEasingType: 6
+  animInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInXAxisEasingType: 6
+  animInXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInYAxisEasingType: 6
+  animInYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOut: 0
+  animOutCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animOutTime: 0.35
+  targetScale: 0
+  separateAxisAnimOut: 0
+  animOutEasingType: 6
+  animOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutXAxisEasingType: 6
+  animOutXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutYAxisEasingType: 6
+  animOutYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  unscaleTime: 0
+  popup: {fileID: 0}
+  rootGraphic: {fileID: 0}
 --- !u!1 &1900580946
 GameObject:
   m_ObjectHideFlags: 0
@@ -21828,15 +22496,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1266896852483600848, guid: 8ab284b5214534699984acce51873626, type: 3}
   m_PrefabInstance: {fileID: 1957971792}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1957971794 stripped
+--- !u!114 &1957971797 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1266896852483600863, guid: 8ab284b5214534699984acce51873626, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7976250617345949775, guid: 8ab284b5214534699984acce51873626, type: 3}
   m_PrefabInstance: {fileID: 1957971792}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d52c53ec4c04a469572d15601717bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1959891112
@@ -22242,7 +22910,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1997501413}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.34891564, y: 3e-45, z: -1e-45, w: 0.9371542}
+  m_LocalRotation: {x: 0.34891564, y: -1e-45, z: -0, w: 0.9371542}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22508,7 +23176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047161139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.36583757, y: 1e-45, z: -0, w: 0.9306787}
+  m_LocalRotation: {x: 0.36583757, y: -3e-45, z: 1e-45, w: 0.9306787}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23475,13 +24143,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2115101555}
   - component: {fileID: 2115101556}
+  - component: {fileID: 2115101557}
   m_Layer: 5
   m_Name: MainScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2115101555
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23494,7 +24163,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 291962069}
+  - {fileID: 1134385404}
   m_Father: {fileID: 142225138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -23514,7 +24183,189 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6737b4609342d194de25712e508bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGameButton: {fileID: 291962070}
+  root: {fileID: 142225137}
+  panelAnim: {fileID: 2115101557}
+  startGameButton: {fileID: 1405663222}
+--- !u!114 &2115101557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115101554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12f3c3f7a534ffdbc13c3982e324426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animIn: 0
+  animInCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animInTime: 0.35
+  delayAnimIn: 0
+  initScale: 0
+  separateAxisAnimIn: 0
+  animInEasingType: 6
+  animInCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInXAxisEasingType: 6
+  animInXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animInYAxisEasingType: 6
+  animInYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOut: 4
+  animOutCompletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  animOutTime: 3
+  targetScale: 0
+  separateAxisAnimOut: 0
+  animOutEasingType: 6
+  animOutCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutXAxisEasingType: 6
+  animOutXAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  animOutYAxisEasingType: 6
+  animOutYAxisCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  unscaleTime: 0
+  popup: {fileID: 2115101555}
+  rootGraphic: {fileID: 0}
 --- !u!1 &2120142484
 GameObject:
   m_ObjectHideFlags: 0

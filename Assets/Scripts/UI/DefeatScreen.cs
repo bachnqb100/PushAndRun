@@ -5,8 +5,8 @@ namespace DefaultNamespace.UI
 {
     public class DefeatScreen : UIPanel
     {
-        [SerializeField] private Button menuButton;
-        [SerializeField] private Button retryButton;
+        [SerializeField] private ButtonExtension menuButton;
+        [SerializeField] private ButtonExtension retryButton;
 
 
         protected override void RegisterEvent()
