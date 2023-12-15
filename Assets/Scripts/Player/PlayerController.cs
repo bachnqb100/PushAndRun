@@ -143,6 +143,9 @@ namespace Player
         {
             //TODO: Logic player fall
             Debug.Log("Player falling");
+            
+            CameraManager.CameraController.Instance.EnableFallCamera();
+                
         }
 
         enum RenderingMode

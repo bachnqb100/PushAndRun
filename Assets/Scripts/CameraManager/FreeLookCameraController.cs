@@ -3,7 +3,7 @@ using Cinemachine;
 using CnControls;
 using UnityEngine;
 
-namespace CameraController
+namespace CameraManager
 {
     public class FreeLookCameraController : MonoBehaviour
     {

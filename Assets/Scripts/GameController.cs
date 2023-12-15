@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CameraManager;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.Map;
 using DG.Tweening;
@@ -98,6 +99,7 @@ namespace DefaultNamespace
         {
             //TODO: logic choose map game
             SpawnMap(0);
+            CameraController.Instance.DisableFallCamera();
         }
     }
 }
