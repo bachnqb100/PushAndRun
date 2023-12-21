@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using FieldOfViewAsset;
+using Player;
 using RootMotion.Demos;
 using RootMotion.Dynamics;
 using Sirenix.OdinInspector;
@@ -17,7 +18,7 @@ namespace DefaultNamespace.Enemy
         [Title("Puppet")]
         [SerializeField] private CharacterPuppet characterPuppet;
 
-        [SerializeField] private CharacterAnimationThirdPerson characterAnimation;
+        [SerializeField] private AnimController characterAnimation;
         
         [Title("Move")]
         [SerializeField, Range(0.1f, 3f)] private float moveSpeed = 1f;
@@ -226,8 +227,10 @@ namespace DefaultNamespace.Enemy
             Debug.Log("Detected Target");
             _currentTarget = target;
             
-            //TODO: Logic game over
+            // Logic game over
             Debug.LogError("GAME OVER!!!!!!!!");
+            
+            GameController.Instance.EnemyDetectedPlayer();
         }
 
         void OnLostTarget(GameObject target)

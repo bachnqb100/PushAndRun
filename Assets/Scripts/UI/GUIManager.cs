@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace DefaultNamespace.UI
@@ -26,6 +27,21 @@ namespace DefaultNamespace.UI
         private PanelType _currentPanelType;
 
 
+        private void Start()
+        {
+            DOVirtual.DelayedCall(0.01f, () =>
+            {
+                _currentPanelType = PanelType.MainScreen;
+                foreach (var item in panelMap)
+                {
+                    item.Value.Close();
+
+                    panelMap[PanelType.MainScreen].Show();
+                }
+            });
+        }
+
+
         public void ShowPanel(PanelType panelType, Action action = null)
         {
             HidePanel(_currentPanelType);
@@ -39,6 +55,7 @@ namespace DefaultNamespace.UI
             panelMap[panelType].Hide(action);
             Debug.Log("Hide panel " + panelType);
         }
+        
         
         
     }

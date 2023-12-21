@@ -40,9 +40,23 @@ namespace DefaultNamespace
         private List<EnemyController> _enemyControllers = new List<EnemyController>();
 
         private bool _isPlaying;
+        
+        private float _timeLeft;
 
 
+
+
+        public bool IsPlaying
+        {
+            get => _isPlaying;
+            set => _isPlaying = value;
+        }
+        public float TimeLeft => _timeLeft;
+        public PlayerController Player => player;
         public MapData CurrentMap => _currentMap;
+        public DefeatReason DefeatReason { get; private set; }
+        
+        public GameStatus GameStatus { get; private set; }
 
         [Button]
         public void SpawnMap(int index)
@@ -54,6 +68,8 @@ namespace DefaultNamespace
             var idx = index % mapCount;
 
             _currentMap = Instantiate(mapDataMap[idx], mapRoot);
+
+            _timeLeft = _currentMap.TimePlay;
             
             SpawnEnemy();
             
@@ -84,6 +100,7 @@ namespace DefaultNamespace
         void SpawnPlayerPos()
         {
             player.InitPlayer(_currentMap.SpawnPlayerTransform);
+            Debug.Log("Spawning player");
         }
 
         void SpawnEnemy()
@@ -101,21 +118,73 @@ namespace DefaultNamespace
         public void StartGame()
         {
             //TODO: logic choose map game
-            SpawnMap(0);
+
+            GameStatus = GameStatus.Playing;
             CameraController.Instance.DisableFallCamera();
             
-            _isPlaying = true;
+            SpawnMap(0);
         }
+
+        private void Update()
+        {
+            if (_isPlaying)
+            {
+                _timeLeft -= Time.deltaTime;
+
+                if (_timeLeft <= 0)
+                {
+                    DefeatByTimeUp();
+                }
+            }
+        }
+
+        #region Defeat
 
         public void DefeatByPlayerFall()
         {
             if (!_isPlaying) return;
             _isPlaying = false;
-                
+
+            GameStatus = GameStatus.Defeat;
+            DefeatReason = DefeatReason.Fall;
             DOVirtual.DelayedCall(2f, () =>
             {
                 GUIManager.Instance.ShowPanel(PanelType.DefeatScreen);
             });
         }
+
+
+        public void EnemyDetectedPlayer()
+        {
+            if (!_isPlaying) return;
+            _isPlaying = false;
+
+            GameStatus = GameStatus.Defeat;
+            DefeatReason = DefeatReason.Detect;
+            player.Detected();
+            
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                GUIManager.Instance.ShowPanel(PanelType.DefeatScreen);
+            });
+        }
+        
+        public void DefeatByTimeUp()
+        {
+            if (!_isPlaying) return;
+            _isPlaying = false;
+
+            GameStatus = GameStatus.Defeat;
+            DefeatReason = DefeatReason.Timeout;
+            player.TimeOut();
+            
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                GUIManager.Instance.ShowPanel(PanelType.DefeatScreen);
+            });
+        }
+        
+        #endregion
+
     }
 }

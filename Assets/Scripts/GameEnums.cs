@@ -1,9 +1,8 @@
-﻿namespace DefaultNamespace
+﻿public enum DefeatReason
 {
-    public class GameEnums
-    {
-        
-    }
+    Fall,
+    Timeout,
+    Detect,
 }
 
 public enum EnemyType
@@ -54,4 +53,18 @@ public enum EasingType
     OutFlash,
     InOutFlash,
     Custom
+}
+
+public enum GameStatus
+{
+    Playing,
+    Defeat,
+    Victory,
+    
+}
+
+public enum VictoryAnimType
+{
+    Victory1,
+    Victory2,
 }

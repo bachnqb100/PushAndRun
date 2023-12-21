@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 namespace RootMotion.Demos {
 	
@@ -14,8 +15,6 @@ namespace RootMotion.Demos {
 		[SerializeField]  float turnSpeed = 5f; // Animator turning interpolation speed
 		[SerializeField]  float runCycleLegOffset = 0.2f; // The offset of leg positions in the running cycle
 		[Range(0.1f,3f)] [SerializeField] float animSpeedMultiplier = 1; // How much the animation of the character will be multiplied by
-
-		[SerializeField] private float changeAnimLookDuration = 0.5f;
 		
 		protected Animator animator;
 		private Vector3 lastForward;
@@ -114,15 +113,6 @@ namespace RootMotion.Demos {
                 characterController.Move(animator.deltaPosition, animator.deltaRotation);
             }
 		}
-
-		public void SetLookAt()
-		{
-			DOVirtual.Float(0f, 1f, changeAnimLookDuration, x => animator.SetFloat("Detect", x));
-		}
-
-		public void SetLookAround()
-		{
-			DOVirtual.Float(1f, 0f, changeAnimLookDuration, x => animator.SetFloat("Detect", x));
-		}
 	}
 }
+

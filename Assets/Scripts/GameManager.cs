@@ -26,12 +26,6 @@ namespace DefaultNamespace
         
         public GameData GameData => _gameData;
 
-        private void Start()
-        {
-            GUIManager.Instance.ShowPanel(PanelType.MainScreen);
-        }
-
-
         void InitGame()
         {
             LoadGameDataFromLocalDatabase();

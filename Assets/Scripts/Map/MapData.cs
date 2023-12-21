@@ -15,8 +15,13 @@ namespace DefaultNamespace.Map
         [SerializeField] private List<Transform> patrolTransforms;
         [SerializeField] private SerializedDictionary<EnemyType, Transform> spawnEnemyTransformMap;
 
+        [Header("Time")] 
+        [SerializeField] private float timePlay = 30f;
+
         public Transform SpawnPlayerTransform => spawnPlayerTransform;
         public SerializedDictionary<EnemyType, Transform> SpawnEnemyTransformMap => spawnEnemyTransformMap;
+
+        public float TimePlay => timePlay;
 
         private void Awake()
         {

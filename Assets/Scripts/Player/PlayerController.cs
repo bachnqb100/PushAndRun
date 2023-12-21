@@ -2,6 +2,7 @@
 using DefaultNamespace;
 using DG.Tweening;
 using RootMotion.Demos;
+using RootMotion.Dynamics;
 using Sirenix.OdinInspector;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -17,6 +18,9 @@ namespace Player
         [SerializeField] private UserControlThirdPerson userControlThirdPerson;
         [SerializeField] private CharacterPuppet character;
         [SerializeField] private float delaySpawnPlayerDuration = 0.5f;
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private PuppetMaster puppetMaster;
+        [SerializeField] private AnimController animController;
 
         [Title("Invisible")] 
         [Space]
@@ -35,13 +39,13 @@ namespace Player
 
         public void InitPlayer(Transform transform)
         {
+            animController.UpdateAnim();
             userControlThirdPerson.enabled = false;
             character.enabled = false;
 
             DOVirtual.DelayedCall(delaySpawnPlayerDuration, () =>
             {
-                this.transform.parent.position = transform.position;
-                this.transform.localPosition = Vector3.zero;
+                this.transform.localPosition = transform.position + Vector3.up * 10;
                 userControlThirdPerson.enabled = true;
                 character.enabled = true;
             });
@@ -147,6 +151,34 @@ namespace Player
             CameraManager.CameraController.Instance.EnableFallCamera();
                 
             GameController.Instance.DefeatByPlayerFall();
+
+            puppetMaster.state = PuppetMaster.State.Dead;
+            
+            animController.UpdateAnim();
+        }
+
+        [Button]
+        public void TimeOut()
+        {
+            //TODO: Logic timeout
+            Debug.Log("Time out");
+            
+            animController.UpdateAnim();
+        }
+        
+        [Button]
+        public void Detected()
+        {
+            //TODO: Logic timeout
+            Debug.Log("Time out");
+            
+            animController.UpdateAnim();
+        }
+
+
+        public void ResetPlayer()
+        {
+            puppetMaster.state = PuppetMaster.State.Alive;
         }
 
         enum RenderingMode

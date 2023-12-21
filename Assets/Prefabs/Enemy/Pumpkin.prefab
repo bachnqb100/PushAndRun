@@ -2015,7 +2015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7539933157003463412}
   - component: {fileID: 698232101980414958}
-  - component: {fileID: 5208822742379295096}
+  - component: {fileID: 2679953698477813719}
   m_Layer: 8
   m_Name: Animation Controller
   m_TagString: Player
@@ -2060,7 +2060,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5208822742379295096
+--- !u!114 &2679953698477813719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2069,7 +2069,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3537199815580417472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44963f0d149a94b76a8afd23095c42df, type: 3}
+  m_Script: {fileID: 11500000, guid: 9be5e5b7d3a944e9a769a4fe772785c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   smoothFollow: 1
@@ -2080,6 +2080,8 @@ MonoBehaviour:
   runCycleLegOffset: 0.2
   animSpeedMultiplier: 1
   changeAnimLookDuration: 0.5
+  changeAnimPlayDuration: 1
+  changeAnimDefeatDuration: 1
 --- !u!1 &3977393148428989343
 GameObject:
   m_ObjectHideFlags: 0
@@ -15153,7 +15155,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 24
-  characterAnimation: {fileID: 5208822742379295096}
+  characterAnimation: {fileID: 2679953698477813719}
   userControl: {fileID: 8785215034850197947}
   cam: {fileID: 0}
   moveMode: 0
@@ -15250,7 +15252,6 @@ MonoBehaviour:
   walkByDefault: 0
   canCrouch: 1
   canJump: 1
-  moveTarget: {fileID: 0}
   navigator:
     activeTargetSeeking: 1
     cornerRadius: 0.5
@@ -15258,7 +15259,7 @@ MonoBehaviour:
     maxSampleDistance: 5
     nextPathInterval: 0.05
   characterPuppet: {fileID: 5910384955551319820}
-  characterAnimation: {fileID: 5208822742379295096}
+  characterAnimation: {fileID: 2679953698477813719}
   moveSpeed: 1
   offsetPositionCheckJump: 1
   groundLayerMask:
@@ -15268,8 +15269,9 @@ MonoBehaviour:
   fov: {fileID: 4854837344268658713}
   detectDuration: 5
   lostDuration: 5
-  canChaseBehavior: 1
+  chaseType: 0
   canJumpBehavior: 1
+  distanceToChangeTarget: 1
   behaviourPuppet: {fileID: 2132923690807615904}
 --- !u!1 &8293020414609253409
 GameObject:
