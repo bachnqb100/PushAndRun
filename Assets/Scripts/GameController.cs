@@ -43,9 +43,6 @@ namespace DefaultNamespace
         
         private float _timeLeft;
 
-
-
-
         public bool IsPlaying
         {
             get => _isPlaying;
@@ -57,6 +54,13 @@ namespace DefaultNamespace
         public DefeatReason DefeatReason { get; private set; }
         
         public GameStatus GameStatus { get; private set; }
+        
+        public int ImpactCount { get; set; }
+
+        public float TimeCompleted => _currentMap.TimePlay - _timeLeft;
+
+
+        #region Map
 
         [Button]
         public void SpawnMap(int index)
@@ -68,6 +72,8 @@ namespace DefaultNamespace
             var idx = index % mapCount;
 
             _currentMap = Instantiate(mapDataMap[idx], mapRoot);
+
+            _currentMap.PlayerVictory.AddListener(Victory);
 
             _timeLeft = _currentMap.TimePlay;
             
@@ -93,7 +99,12 @@ namespace DefaultNamespace
                 _enemyControllers.Clear();
                 
                 //map
-                if (_currentMap) Destroy(_currentMap.gameObject);
+
+                if (_currentMap)
+                {
+                    _currentMap.PlayerVictory.RemoveListener(Victory);
+                    Destroy(_currentMap.gameObject);
+                }
             }
         }
 
@@ -113,6 +124,8 @@ namespace DefaultNamespace
                 _enemyControllers.Add(eCtrl);
             }
         }
+        
+        #endregion
 
 
         public void StartGame()
@@ -121,6 +134,7 @@ namespace DefaultNamespace
 
             GameStatus = GameStatus.Playing;
             CameraController.Instance.DisableFallCamera();
+            CameraController.Instance.DisableVictoryCamera();
             
             SpawnMap(0);
         }
@@ -184,6 +198,52 @@ namespace DefaultNamespace
             });
         }
         
+        #endregion
+
+
+        #region Victory
+
+        public void UpdateEnemyFallStatus()
+        {
+            var check = true;
+            foreach (var enemy in _enemyControllers)
+            {
+                if (!enemy.IsFell)
+                {
+                    check = false;
+                    break;
+                }
+            }
+            
+            if (!check) return;
+
+            ShowDestination();
+        }
+
+        void ShowDestination()
+        {
+            _currentMap.ShowDestination();
+        }
+
+        void Victory()
+        {
+            Debug.Log("Victory");
+            
+            if (!_isPlaying) return;
+            _isPlaying = false;
+
+            GameStatus = GameStatus.Victory;
+            player.Victory();
+            
+            CameraController.Instance.EnableVictoryCamera();
+            
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                GUIManager.Instance.ShowPanel(PanelType.VictoryScreen);
+            });
+            
+        }
+
         #endregion
 
     }

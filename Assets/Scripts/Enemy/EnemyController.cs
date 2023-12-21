@@ -50,6 +50,11 @@ namespace DefaultNamespace.Enemy
         
         //chase
         private Transform _currentTargetMovement;
+        
+        //gameplay
+        private bool _isFell;
+        
+        public bool IsFell => _isFell;
 
         private Vector3 GetCheckJumpPos()
         {
@@ -66,7 +71,7 @@ namespace DefaultNamespace.Enemy
             SetSpeed(moveSpeed);
 
             _currentTarget = null;
-            
+            _isFell = false;
             //FOV
             //InitFOV();
             StopFOV();
@@ -256,6 +261,7 @@ namespace DefaultNamespace.Enemy
             behaviourPuppet.onRegainBalance.unityEvent.AddListener(StartBehaviour);
             
             behaviourPuppet.onLoseBalance.unityEvent.AddListener(StopFOV);
+            behaviourPuppet.onLoseBalance.unityEvent.AddListener(SetFell);
         }
 
         void UnregisterEvent()
@@ -264,6 +270,17 @@ namespace DefaultNamespace.Enemy
             behaviourPuppet.onRegainBalance.unityEvent.RemoveListener(StartBehaviour);
             
             behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(StopFOV);
+            behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(SetFell);
+        }
+
+        void SetFell()
+        {
+            GameController.Instance.ImpactCount += 1;
+            
+            if (_isFell) return;
+            _isFell = true;
+
+            GameController.Instance.UpdateEnemyFallStatus();
         }
         
         [Button]

@@ -26,6 +26,9 @@ namespace CameraManager
         [Title("Fall Camera")]
         [SerializeField] private CinemachineVirtualCamera fallCamera;
         [SerializeField] private Transform fallCameraFollow;
+        
+        [Title("Victory Camera")]
+        [SerializeField] private CinemachineVirtualCamera victoryCamera;
 
         [Button]
         public void EnableFallCamera()
@@ -39,6 +42,16 @@ namespace CameraManager
         {
             fallCamera.Follow = fallCameraFollow;
             fallCamera.enabled = false;
+        }
+
+        public void EnableVictoryCamera()
+        {
+            victoryCamera.enabled = true;
+        }
+
+        public void DisableVictoryCamera()
+        {
+            victoryCamera.enabled = false;
         }
     }
 }

@@ -13,6 +13,8 @@ namespace DefaultNamespace.UI
 
         [SerializeField] private TMP_Text countDownText;
 
+        [SerializeField] private CanvasGroup canvasGroup;
+
         public Relay OnCompleteCountDown = new Relay(); 
 
         private void Awake()
@@ -28,14 +30,21 @@ namespace DefaultNamespace.UI
         void StartCountDown()
         {
             this.DOKill();
-            
-            DOVirtual.Float(countDownValue, 0f, countDownValue, x =>
+            canvasGroup.alpha = 1f;
+            DOVirtual.Float(countDownValue, 1f, countDownValue - 1f, x =>
             {
                 countDownText.text = ((int)x).ToString();
             }).OnComplete(() =>
             {
-                gameObject.SetActive(false);
-                OnCompleteCountDown.Dispatch();
+                countDownText.text = "Start";
+                DOVirtual.Float(1f, 0f, 1f, x =>
+                {
+                    canvasGroup.alpha = x;
+                }).OnComplete(() =>
+                {
+                    gameObject.SetActive(false);
+                    OnCompleteCountDown.Dispatch();
+                }).SetTarget(this);
             }).SetTarget(this);
         }
     }

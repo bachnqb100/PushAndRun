@@ -143,6 +143,9 @@ namespace Player
             
         }
 
+
+        #region Defeat
+
         public void Fall()
         {
             //TODO: Logic player fall
@@ -174,6 +177,20 @@ namespace Player
             
             animController.UpdateAnim();
         }
+        
+        #endregion
+
+        #region Victory
+
+        public void Victory()
+        {
+            Debug.Log("Player victory");
+            
+            animController.UpdateAnim();
+        }
+
+        #endregion
+
 
 
         public void ResetPlayer()
