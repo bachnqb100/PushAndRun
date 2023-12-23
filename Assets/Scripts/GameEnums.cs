@@ -1,4 +1,4 @@
-﻿public enum DefeatReason
+public enum DefeatReason
 {
     Fall,
     Timeout,
@@ -60,11 +60,31 @@ public enum GameStatus
     Playing,
     Defeat,
     Victory,
+    MainScreen,
+    Shop,
     
+}
+
+public enum TypeSound
+{
+    None,
+    Button,
+	OpenPanel,
+	ClosePanel,
 }
 
 public enum VictoryAnimType
 {
-    Victory1,
-    Victory2,
+    BellyDance,
+    ChickenDance,
+    HiphopDance,
+    MacarenaDance,
+    RobotDance,
+    SlideDance,
+    SnakeDance,
+    TutHiphopDance,
+    TwistDance,
+    WaveHiphopDance,
+    YmcaDance,
+    
 }

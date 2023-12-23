@@ -30,33 +30,7 @@ namespace Player
         {
             DOVirtual.Float(1f, 0f, changeAnimLookDuration, x => animator.SetFloat("Detect", x));
         }
-
-        /*[Button]
-        public void SetStatusPlay(bool isPlaying)
-        {
-            if (isPlaying)
-            {
-                DOVirtual.Float(1f, 0f, changeAnimPlayDuration, x => animator.SetFloat("Play", x));
-            }
-            else
-            {
-                DOVirtual.Float(0f, 1f, changeAnimPlayDuration, x => animator.SetFloat("Play", x));
-            }
-        }
         
-        public void UpdateAnimDefeat(DefeatReason reason)
-        {
-            switch (reason)
-            {
-                case DefeatReason.Timeout:
-                    DOVirtual.Float(1f, 0f, changeAnimDefeatDuration, x => animator.SetFloat("Defeat", x));
-                    break;
-                case DefeatReason.Detect:
-                    DOVirtual.Float(0f, 1f, changeAnimDefeatDuration, x => animator.SetFloat("Defeat", x));
-                    break;
-            }
-        }*/
-
         public void UpdateAnim()
         {
             DOVirtual.Float(animator.GetFloat("Play"), blendAnimByGameStatusMap[GameController.Instance.GameStatus],

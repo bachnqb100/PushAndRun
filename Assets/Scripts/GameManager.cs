@@ -10,12 +10,10 @@ namespace DefaultNamespace
 
         private static GameManager _instance;
 
-        private void Awake()
+        void InitSingleton()
         {
             if (_instance == null)
                 _instance = this;
-
-            InitGame();
         }
         
         public static GameManager Instance => _instance;
@@ -25,6 +23,14 @@ namespace DefaultNamespace
         private GameData _gameData;
         
         public GameData GameData => _gameData;
+        
+        
+        private void Awake()
+        {
+            InitSingleton();
+
+            InitGame();
+        }
 
         void InitGame()
         {

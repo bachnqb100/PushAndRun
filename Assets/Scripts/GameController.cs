@@ -152,6 +152,23 @@ namespace DefaultNamespace
             }
         }
 
+        public void SetGameStatus(GameStatus status)
+        {
+            this.GameStatus = status;
+            
+            player.PlayerUpdateAnim();
+
+            switch (status)
+            {
+                case GameStatus.MainScreen:
+                    player.PlayerOnlyUseAnimation();
+                    break;
+                case GameStatus.Shop:
+                    player.PlayerOnlyUseAnimation();
+                    break;
+            }
+        }
+
         #region Defeat
 
         public void DefeatByPlayerFall()
@@ -245,6 +262,8 @@ namespace DefaultNamespace
         }
 
         #endregion
+
+
 
     }
 }

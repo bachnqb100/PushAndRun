@@ -2,6 +2,7 @@
 using System.Collections;
 using RootMotion.Dynamics;
 using Sirenix.OdinInspector;
+using UnityEngine.Events;
 
 namespace RootMotion.Demos {
 
@@ -12,6 +13,7 @@ namespace RootMotion.Demos {
 		public PropMuscle propMuscle;
 
 		public BehaviourPuppet puppet { get; private set; }
+
 
 		protected override void Start() {
 			base.Start();
@@ -43,9 +45,8 @@ namespace RootMotion.Demos {
 		[Button]
 		protected override bool Jump() {
 			if (puppet.state != BehaviourPuppet.State.Puppet) return false;
-
+			
             return base.Jump();
         }
-
     }
 }

@@ -34,11 +34,32 @@ namespace Player
         [SerializeField] private Material[] clothesMaterial;
         [SerializeField, Range(0f, 1f)] private float alphaValue = 0.6f;
         
+        [Title("Effects")]
+        [SerializeField] private PlayerEffectController effectController;
+        
         
         private bool _isInvisible;
 
+        private void Start()
+        {
+            effectController.DisableRunTrail();
+        }
+
+        private void OnEnable()
+        {
+            character.OnStartJump.AddListener(effectController.DisableRunTrail);
+            character.OnCheckOnGround.AddListener(effectController.EnableRunTrail);
+        }
+
+        private void OnDisable()
+        {
+            character.OnStartJump.RemoveListener(effectController.DisableRunTrail);
+            character.OnCheckOnGround.RemoveListener(effectController.EnableRunTrail);
+        }
+
         public void InitPlayer(Transform transform)
         {
+            puppetMaster.SwitchToActiveMode();
             animController.UpdateAnim();
             userControlThirdPerson.enabled = false;
             character.enabled = false;
@@ -48,6 +69,8 @@ namespace Player
                 this.transform.localPosition = transform.position + Vector3.up * 10;
                 userControlThirdPerson.enabled = true;
                 character.enabled = true;
+                
+                effectController.EnableRunTrail();
             });
         } 
 
@@ -158,6 +181,8 @@ namespace Player
             puppetMaster.state = PuppetMaster.State.Dead;
             
             animController.UpdateAnim();
+            
+            effectController.DisableRunTrail();
         }
 
         [Button]
@@ -167,6 +192,9 @@ namespace Player
             Debug.Log("Time out");
             
             animController.UpdateAnim();
+            puppetMaster.SwitchToKinematicMode();
+            
+            effectController.DisableRunTrail();
         }
         
         [Button]
@@ -176,6 +204,9 @@ namespace Player
             Debug.Log("Time out");
             
             animController.UpdateAnim();
+            puppetMaster.SwitchToKinematicMode();
+            
+            effectController.DisableRunTrail();
         }
         
         #endregion
@@ -187,12 +218,25 @@ namespace Player
             Debug.Log("Player victory");
             
             animController.UpdateAnim();
+            
+            puppetMaster.SwitchToKinematicMode();
+            
+            effectController.DisableRunTrail();
         }
 
         #endregion
 
 
+        public void PlayerUpdateAnim()
+        {
+            animController.UpdateAnim();
+        }
 
+        public void PlayerOnlyUseAnimation()
+        {
+            puppetMaster.SwitchToKinematicMode();
+        }
+        
         public void ResetPlayer()
         {
             puppetMaster.state = PuppetMaster.State.Alive;

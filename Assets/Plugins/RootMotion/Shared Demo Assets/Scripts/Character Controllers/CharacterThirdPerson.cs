@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Sirenix.OdinInspector;
+using UnityEngine.Events;
 
 namespace RootMotion.Demos {
 
@@ -68,6 +69,15 @@ namespace RootMotion.Demos {
 
 		[Header("Crouching")]
 		public float crouchCapsuleScaleMlp = 0.6f;			// the capsule collider scale multiplier while crouching
+		
+		
+		//event handlers
+		public UnityEvent OnStartJump = new UnityEvent();
+		public UnityEvent OnCheckOnGround = new UnityEvent();
+		
+		
+		
+		
 
         /// <summary>
         /// Enable this while playing an animation that should be driven 100% by root motion, such as climbing walls
@@ -401,6 +411,7 @@ namespace RootMotion.Demos {
                 r.velocity = jumpVelocity;
             }
 
+            OnStartJump?.Invoke();
             return true;
 		}
 
@@ -458,6 +469,8 @@ namespace RootMotion.Demos {
 
 					// Flag the character grounded
 					onGround = true;
+					
+					OnCheckOnGround?.Invoke();
 				}
 			}
 

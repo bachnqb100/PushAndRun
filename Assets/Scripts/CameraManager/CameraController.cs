@@ -29,6 +29,12 @@ namespace CameraManager
         
         [Title("Victory Camera")]
         [SerializeField] private CinemachineVirtualCamera victoryCamera;
+        
+        [Title("MainScreen Camera")]
+        [SerializeField] private CinemachineVirtualCamera mainScreenCamera;
+
+        [Header("Shop Camera")] 
+        [SerializeField] private CinemachineVirtualCamera shopCamera;
 
         [Button]
         public void EnableFallCamera()
@@ -52,6 +58,16 @@ namespace CameraManager
         public void DisableVictoryCamera()
         {
             victoryCamera.enabled = false;
+        }
+
+        public void SetStatusCameraMain(bool enable)
+        {
+            mainScreenCamera.enabled = enable;
+        }
+
+        public void SetStatusCameraShop(bool enable)
+        {
+            shopCamera.enabled = enable;
         }
     }
 }

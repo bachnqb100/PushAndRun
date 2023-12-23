@@ -17,10 +17,8 @@ namespace DefaultNamespace
             public bool haptic = true;
 
             public float bgMusicVolume = 1f;
-            public bool hasBgMusic = true;
 
             public float sfxVolume = 1f;
-            public bool hasSfxMusic = true;
         }
 
         [Serializable]

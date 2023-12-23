@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using CameraManager;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace DefaultNamespace.UI
@@ -7,7 +9,23 @@ namespace DefaultNamespace.UI
     {
         [Header("Start Game")] 
         [SerializeField] private ButtonExtension startGameButton;
-        
+
+        public override void Show(Action action = null)
+        {
+            base.Show(action);
+            
+            GameController.Instance.SetGameStatus(GameStatus.MainScreen);
+            
+            CameraController.Instance.SetStatusCameraMain(true);
+        }
+
+        protected override void Disable()
+        {
+            base.Disable();
+            
+            CameraController.Instance.SetStatusCameraMain(false);
+        }
+
         protected override void RegisterEvent()
         {
             base.RegisterEvent();
