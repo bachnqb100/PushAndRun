@@ -31,6 +31,9 @@ namespace DefaultNamespace
             public DateTime lastTimeLogOut = DateTime.Now;
             
             public float currentSpeed = 1f;
+            public float fitness = 5f;
+            public float fitnessDecreaseRate = 1f;
+            public float fitnessIncreaseRate = 1f;
         }
     }
 

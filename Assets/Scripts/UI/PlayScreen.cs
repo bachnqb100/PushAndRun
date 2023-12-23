@@ -4,12 +4,14 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace DefaultNamespace.UI
 {
     public class PlayScreen : UIPanel
     {
+        [Title("No Interactive Objects")]
         [Header("Timer")] 
         [SerializeField] private TMP_Text timer;
 
@@ -19,11 +21,17 @@ namespace DefaultNamespace.UI
         [SerializeField] private Vector3 warningTimeUpShake = new Vector3(0f, 0f, 10f);
         [SerializeField] private float warningTimeUpShakeDuration = 1f;
 
+        [Header("Fitness")] 
+        [SerializeField] private Slider sliderFitness;
 
-        [Header("Control")] 
+
+        [Title("Control")]
+        [Header("CountDown")]
         [SerializeField] private CountDown countDown;
+        [SerializeField] private GameObject control;
 
-        [SerializeField] private List<GameObject> controls;
+        [Header("Button")] 
+        [SerializeField] private ButtonExtension sprintButton;
 
 
         private bool _isWarningTimeUp;
@@ -45,6 +53,11 @@ namespace DefaultNamespace.UI
 
             countDown.OnCompleteCountDown.AddListener(ShowControl);
             countDown.OnCompleteCountDown.AddListener(StartGame);
+            
+            sprintButton.OnPointerDownEvent.AddListener(EventGlobalManager.Instance.OnPlayerStartSprint.Dispatch);
+            sprintButton.OnPointerUpEvent.AddListener(EventGlobalManager.Instance.OnPlayerEndSprint.Dispatch);
+
+            EventGlobalManager.Instance.OnUpdateFitness.AddListener(UpdateFitness);
         }
 
         protected override void UnregisterEvent()
@@ -53,6 +66,11 @@ namespace DefaultNamespace.UI
 
             countDown.OnCompleteCountDown.RemoveListener(ShowControl);
             countDown.OnCompleteCountDown.RemoveListener(StartGame);
+            
+            sprintButton.OnPointerDownEvent.RemoveListener(EventGlobalManager.Instance.OnPlayerStartSprint.Dispatch);
+            sprintButton.OnPointerUpEvent.RemoveListener(EventGlobalManager.Instance.OnPlayerEndSprint.Dispatch);
+
+            EventGlobalManager.Instance.OnUpdateFitness.RemoveListener(UpdateFitness);
         }
 
         private void Update()
@@ -62,18 +80,12 @@ namespace DefaultNamespace.UI
 
         void HideControl()
         {
-            foreach (var controlItem in controls)
-            {
-                controlItem.SetActive(false);
-            }
+            control.SetActive(false);
         }
 
         void ShowControl()
         {
-            foreach (var controlItem in controls)
-            {
-                controlItem.SetActive(true);
-            }
+            control.SetActive(true);
         }
 
         void StartGame()
@@ -87,6 +99,7 @@ namespace DefaultNamespace.UI
 
             timer.text = timeLeft.ToTimeFormatCompact();
             
+            if (!GameController.Instance.IsPlaying) return;
             // time left warning
             if (timeLeft <= 5)
             {
@@ -103,6 +116,11 @@ namespace DefaultNamespace.UI
                 .SetTarget(this);
             timer.transform.DOShakeRotation(warningTimeUpShakeDuration, warningTimeUpShake).SetLoops(-1, LoopType.Yoyo)
                 .SetTarget(this);
-        } 
+        }
+
+        void UpdateFitness(float value)
+        {
+            sliderFitness.value = value;
+        }
     }
 }

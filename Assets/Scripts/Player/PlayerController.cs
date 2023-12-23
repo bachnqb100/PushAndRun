@@ -38,27 +38,56 @@ namespace Player
         [SerializeField] private PlayerEffectController effectController;
 
         [Title("Gameplay")] 
-        [SerializeField] private float sprintRate = 0.2f;
+        [SerializeField, Range(0f, 1f)] private float sprintRate = 0.2f;
+        [SerializeField, Range(0f, 1f)] private float jogRate = 0.2f;
+        [SerializeField] private float changeSpeedSprintDuration = 0.5f;
+        
+        [Space]
+        [SerializeField] private float fitness = 5f;
+        [SerializeField] private float fitnessDecreaseRate = 1f;
+        
         
         
         private bool _isInvisible;
+        private float _initSpeed;
         private float _currentSpeed;
+        private CharacterRunStatus _currentCharacterRunStatus;
 
+        private float _maxFitness;
+        private float _currentFitness;
+        private float _currentFitnessDecrease;
+        private float _currentFitnessIncrease;
+        private bool _isSprint;
+        private bool _isJog;
+        
         private void Start()
         {
             effectController.DisableRunTrail();
+            effectController.SetStatusEffectSprint(false);
+            effectController.SetStatusEffectJog(false);
         }
 
         private void OnEnable()
         {
             character.OnStartJump.AddListener(effectController.DisableRunTrail);
             character.OnCheckOnGround.AddListener(effectController.EnableRunTrail);
+
+            EventGlobalManager.Instance.OnPlayerStartSprint.AddListener(StartSprint);
+            EventGlobalManager.Instance.OnPlayerEndSprint.AddListener(EndSprint);
         }
 
         private void OnDisable()
         {
             character.OnStartJump.RemoveListener(effectController.DisableRunTrail);
             character.OnCheckOnGround.RemoveListener(effectController.EnableRunTrail);
+            
+            EventGlobalManager.Instance.OnPlayerStartSprint.RemoveListener(StartSprint);
+            EventGlobalManager.Instance.OnPlayerEndSprint.RemoveListener(EndSprint);
+        }
+
+        private void Update()
+        {
+            Sprint();
         }
 
         public void InitPlayer(Transform transform)
@@ -76,8 +105,18 @@ namespace Player
                 
                 effectController.EnableRunTrail();
             });
+
+            _initSpeed = GameManager.Instance.GameData.userData.currentSpeed;
+            SetSpeed(_initSpeed);
+            SetCharacterStatus(CharacterRunStatus.Normal);
             
-            SetSpeed(GameManager.Instance.GameData.userData.currentSpeed);
+            effectController.SetStatusEffectSprint(false);
+            effectController.SetStatusEffectJog(false);
+            _maxFitness = GameManager.Instance.GameData.userData.fitness;
+            _currentFitness = _maxFitness;
+            EventGlobalManager.Instance.OnUpdateFitness.Dispatch(1f);
+            _currentFitnessDecrease = GameManager.Instance.GameData.userData.fitnessDecreaseRate;
+            _currentFitnessIncrease = GameManager.Instance.GameData.userData.fitnessIncreaseRate;
         } 
 
         [Button]
@@ -251,13 +290,86 @@ namespace Player
         public void SetSpeed(float speed)
         {
             animController.AnimSpeedMultiplier = speed;
+            _currentSpeed = speed;
         }
 
         #region Gameplay
 
-        public void Sprint()
+        public void SetCharacterStatus(CharacterRunStatus runStatus) => _currentCharacterRunStatus = runStatus;
+        
+        [Button]
+        public void StartSprint()
         {
+            if (_currentCharacterRunStatus == CharacterRunStatus.Sprint) return;
+            _currentCharacterRunStatus = CharacterRunStatus.Sprint;
+            var targetSpeed = _initSpeed * (1f + sprintRate);
+            DOVirtual.Float(_currentSpeed, targetSpeed, changeSpeedSprintDuration, x =>
+            {
+                SetSpeed(x);
+            });
             
+            effectController.SetStatusEffectSprint(true);
+            effectController.SetStatusEffectJog(false);
+
+            _isSprint = true;
+        }
+
+        void Sprint()
+        {
+            if (_isSprint)
+            {
+                _currentFitness -= _currentFitnessDecrease * Time.deltaTime;
+                EventGlobalManager.Instance.OnUpdateFitness.Dispatch(_currentFitness/_maxFitness);
+                
+                if (_currentFitness <= 0f)
+                {
+                    EndSprint();
+                }
+            }
+            else
+            {
+                if (_currentFitness <= _maxFitness)
+                {
+                    _currentFitness += _currentFitnessIncrease * Time.deltaTime;
+                    EventGlobalManager.Instance.OnUpdateFitness.Dispatch(_currentFitness/_maxFitness);
+                }
+            }
+        }
+
+        void EndSprint()
+        {
+            ResetSpeed();
+            _isSprint = false;
+        }
+
+        [Button]
+        public void StartJog()
+        {
+            if (_currentCharacterRunStatus == CharacterRunStatus.Jog) return;
+            _currentCharacterRunStatus = CharacterRunStatus.Jog;
+            var targetSpeed = _initSpeed * (1f - sprintRate);
+            DOVirtual.Float(_currentSpeed, targetSpeed, changeSpeedSprintDuration, x =>
+            {
+                SetSpeed(x);
+            });
+            
+            effectController.SetStatusEffectSprint(false);
+            effectController.SetStatusEffectJog(true);
+        }
+
+        [Button]
+        public void ResetSpeed()
+        {
+            if (_currentCharacterRunStatus == CharacterRunStatus.Normal) return;
+            _currentCharacterRunStatus = CharacterRunStatus.Normal;
+            var targetSpeed = _initSpeed;
+            DOVirtual.Float(_currentSpeed, targetSpeed, changeSpeedSprintDuration, x =>
+            {
+                SetSpeed(x);
+            });
+            
+            effectController.SetStatusEffectSprint(false);
+            effectController.SetStatusEffectJog(false);
         }
 
         #endregion

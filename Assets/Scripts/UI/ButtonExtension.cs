@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace DefaultNamespace.UI
@@ -7,6 +9,9 @@ namespace DefaultNamespace.UI
     public class ButtonExtension : Button
     {
         public ButtonAnim buttonAnim;
+
+        public UnityEvent OnPointerDownEvent = new UnityEvent();
+        public UnityEvent OnPointerUpEvent = new UnityEvent();
 
         protected override void Awake()
         {
@@ -48,6 +53,21 @@ namespace DefaultNamespace.UI
         {
             base.Reset();
             Setup();
+        }
+
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            base.OnPointerDown(eventData);
+            
+            OnPointerDownEvent?.Invoke();
+        }
+
+        public override void OnPointerUp(PointerEventData eventData)
+        {
+            base.OnPointerUp(eventData);
+            
+            OnPointerUpEvent?.Invoke();
         }
     }
 }

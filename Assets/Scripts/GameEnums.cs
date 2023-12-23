@@ -88,3 +88,11 @@ public enum VictoryAnimType
     YmcaDance,
     
 }
+
+
+public enum CharacterRunStatus
+{
+    Normal,
+    Sprint,
+    Jog,
+}

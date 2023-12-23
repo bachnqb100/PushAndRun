@@ -7,6 +7,9 @@ namespace Player
     public class PlayerEffectController : MonoBehaviour
     {
         [SerializeField] private List<ParticleSystem> runTrails;
+        [SerializeField] private GameObject effectSprint;
+        [SerializeField] private GameObject effectJog;
+        
 
         
         public void EnableRunTrail()
@@ -31,5 +34,19 @@ namespace Player
                     item.Stop();
             }
         }
+
+        public void SetStatusEffectSprint(bool enable)
+        {
+            if (effectSprint.activeSelf != enable)
+                effectSprint.SetActive(enable);
+        }
+        
+        public void SetStatusEffectJog(bool enable)
+        {
+            if (effectJog.activeSelf != enable)
+                effectJog.SetActive(enable);
+        }
+        
+        
     }
 }

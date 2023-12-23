@@ -27,5 +27,9 @@ namespace DefaultNamespace
 
         public Relay OnUpdateSetting = new Relay();
         public Relay<bool> OnMoneyChange = new Relay<bool>();
+        public Relay OnPlayerStartSprint = new Relay();
+        public Relay OnPlayerEndSprint = new Relay();
+        public Relay<bool> OnPlayerJog = new Relay<bool>();
+        public Relay<float> OnUpdateFitness = new Relay<float>();
     }
 }
