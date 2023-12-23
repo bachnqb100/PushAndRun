@@ -23,10 +23,14 @@ namespace RootMotion.Demos {
         private float jumpLeg;
         private bool lastJump;
 
-        public void SetAnimSpeed(float speed)
+        public float AnimSpeedMultiplier
         {
-	        if (speed > 0.1f && speed < 5)
-		        animSpeedMultiplier = speed;
+	        get => this.animSpeedMultiplier;
+	        set
+	        {
+		        if (value > 0.1f && value < 5)
+			        animSpeedMultiplier = value;
+	        }
         }
 
         protected override void Start() {

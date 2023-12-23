@@ -10,9 +10,9 @@ namespace DefaultNamespace
 
         private static EventGlobalManager _instance;
 
-        private void Awake()
+        void InitSingleton()
         {
-            if (_instance)
+            if (_instance == null)
                 _instance = this;
         }
 
@@ -20,6 +20,12 @@ namespace DefaultNamespace
 
         #endregion
 
+        private void Awake()
+        {
+            InitSingleton();
+        }
+
         public Relay OnUpdateSetting = new Relay();
+        public Relay<bool> OnMoneyChange = new Relay<bool>();
     }
 }

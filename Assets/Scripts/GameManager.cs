@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace.UI;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -47,6 +48,52 @@ namespace DefaultNamespace
                 
                 LocalDatabase.SaveData();
             }
+        }
+        
+        
+        
+        [Button]
+        public void AddMoney(int value)
+        {
+            _gameData.userData.money += value;
+            EventGlobalManager.Instance.OnMoneyChange.Dispatch(true);
+        }
+
+        [Button]
+        public bool SpendMoney(int value)
+        {
+            if (_gameData.userData.money >= value)
+            {
+                _gameData.userData.money -= value;
+                EventGlobalManager.Instance.OnMoneyChange.Dispatch(true);
+                return true;
+            }
+
+            EventGlobalManager.Instance.OnMoneyChange.Dispatch(false);
+            return false;
+        }
+        
+        public void OnApplicationQuit()
+        {
+            Logout();
+        }
+
+        public void OnApplicationFocus(bool hasFocus)
+        {
+            if (!hasFocus)
+                Logout();
+        }
+
+        public void OnApplicationPause(bool pauseStatus)
+        {
+            if (pauseStatus)
+                Logout();
+        }
+
+        private void Logout()
+        {
+            _gameData.userData.lastTimeLogOut = DateTime.Now;
+            LocalDatabase.SaveData();
         }
 
     }

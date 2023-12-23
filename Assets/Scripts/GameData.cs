@@ -26,8 +26,11 @@ namespace DefaultNamespace
         {
             public string username = "Player";
             public int money = 200;
+
             
+            public DateTime lastTimeLogOut = DateTime.Now;
             
+            public float currentSpeed = 1f;
         }
     }
 

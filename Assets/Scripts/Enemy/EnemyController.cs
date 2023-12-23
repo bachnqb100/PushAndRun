@@ -111,7 +111,7 @@ namespace DefaultNamespace.Enemy
         }
         void SetSpeed(float speed)
         {
-            characterAnimation.SetAnimSpeed(speed);
+            characterAnimation.AnimSpeedMultiplier = speed;
         }
 
         void Move()

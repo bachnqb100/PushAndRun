@@ -36,9 +36,13 @@ namespace Player
         
         [Title("Effects")]
         [SerializeField] private PlayerEffectController effectController;
+
+        [Title("Gameplay")] 
+        [SerializeField] private float sprintRate = 0.2f;
         
         
         private bool _isInvisible;
+        private float _currentSpeed;
 
         private void Start()
         {
@@ -72,6 +76,8 @@ namespace Player
                 
                 effectController.EnableRunTrail();
             });
+            
+            SetSpeed(GameManager.Instance.GameData.userData.currentSpeed);
         } 
 
         [Button]
@@ -241,6 +247,20 @@ namespace Player
         {
             puppetMaster.state = PuppetMaster.State.Alive;
         }
+
+        public void SetSpeed(float speed)
+        {
+            animController.AnimSpeedMultiplier = speed;
+        }
+
+        #region Gameplay
+
+        public void Sprint()
+        {
+            
+        }
+
+        #endregion
 
         enum RenderingMode
         {
