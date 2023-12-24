@@ -120,7 +120,7 @@ namespace DefaultNamespace.UI
 
         void UpdateFitness(float value)
         {
-            sliderFitness.value = value;
+            sliderFitness.value = Mathf.Clamp(value, 0f, 1f);
         }
     }
 }

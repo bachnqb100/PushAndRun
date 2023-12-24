@@ -316,6 +316,8 @@ namespace Player
 
         void Sprint()
         {
+            if (!GameController.Instance.IsPlaying) return;
+            
             if (_isSprint)
             {
                 _currentFitness -= _currentFitnessDecrease * Time.deltaTime;
