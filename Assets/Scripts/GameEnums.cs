@@ -96,3 +96,14 @@ public enum CharacterRunStatus
     Sprint,
     Jog,
 }
+
+public enum ItemType
+{
+    Invisible,
+    Shield,
+    Knockout,
+    Trap,
+    Recovery,
+    Consume,
+    
+}

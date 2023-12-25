@@ -10,7 +10,7 @@ using UnityEngine.AI;
 
 namespace DefaultNamespace.Enemy
 {
-    public class EnemyController : UserControlThirdPerson, IFallable
+    public class EnemyController : UserControlThirdPerson, IFallable, IKnockOut
     {
         public Navigator navigator;
         
@@ -262,6 +262,8 @@ namespace DefaultNamespace.Enemy
             
             behaviourPuppet.onLoseBalance.unityEvent.AddListener(StopFOV);
             behaviourPuppet.onLoseBalance.unityEvent.AddListener(SetFell);
+
+            EventGlobalManager.Instance.OnEnemyKnockout.AddListener(KnockOut);
         }
 
         void UnregisterEvent()
@@ -271,6 +273,9 @@ namespace DefaultNamespace.Enemy
             
             behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(StopFOV);
             behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(SetFell);
+            
+            EventGlobalManager.Instance.OnEnemyKnockout.RemoveListener(KnockOut);
+
         }
 
         void SetFell()
@@ -284,11 +289,11 @@ namespace DefaultNamespace.Enemy
         }
         
         [Button]
-        void TestPuppet()
+        public void KnockOut()
         {
-            behaviourPuppet.SetState(BehaviourPuppet.State.Unpinned);
-            behaviourPuppet.KillStart();
+            behaviourPuppet.Unpin();
         }
+        
         
         //Behavior
         void StartFOV()

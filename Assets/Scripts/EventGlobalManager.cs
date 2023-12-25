@@ -31,5 +31,12 @@ namespace DefaultNamespace
         public Relay OnPlayerEndSprint = new Relay();
         public Relay<bool> OnPlayerJog = new Relay<bool>();
         public Relay<float> OnUpdateFitness = new Relay<float>();
+
+        public Relay<float> OnPlayerCollectShield = new Relay<float>();
+        public Relay<float> OnPlayerCollectInvisible = new Relay<float>();
+        public Relay OnEnemyKnockout = new Relay();
+        public Relay<float> OnPlayerCollectRecoveryFitness = new Relay<float>();
+        public Relay<float> OnPlayerCollectConsumeFitness = new Relay<float>();
+        public Relay<float> OnPlayerExhausted = new Relay<float>();
     }
 }

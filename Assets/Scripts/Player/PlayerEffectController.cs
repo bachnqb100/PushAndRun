@@ -9,7 +9,8 @@ namespace Player
         [SerializeField] private List<ParticleSystem> runTrails;
         [SerializeField] private GameObject effectSprint;
         [SerializeField] private GameObject effectJog;
-        
+
+        [SerializeField] private GameObject shield;
 
         
         public void EnableRunTrail()
@@ -35,6 +36,12 @@ namespace Player
             }
         }
 
+        public void StopEffectSprintJog()
+        {
+            SetStatusEffectSprint(false);
+            SetStatusEffectJog(false);
+        }
+
         public void SetStatusEffectSprint(bool enable)
         {
             if (effectSprint.activeSelf != enable)
@@ -45,6 +52,15 @@ namespace Player
         {
             if (effectJog.activeSelf != enable)
                 effectJog.SetActive(enable);
+        }
+
+        public void EnableShield()
+        {
+            shield.SetActive(true);
+        }
+        public void DisableShield()
+        {
+            shield.SetActive(false);
         }
         
         

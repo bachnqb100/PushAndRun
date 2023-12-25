@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Item;
 using Sigtrap.Relays;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,6 +20,18 @@ namespace DefaultNamespace.Map
 
         [Header("Time")] 
         [SerializeField] private float timePlay = 30f;
+
+        [Header("Spawn Item Root")] 
+        [SerializeField] private Transform spawnItemRoot;
+
+        [Header("Spawn Item Transform")] 
+        [SerializeField] private float spawnItemInterval = 15f;
+        [SerializeField] private List<SpawnItemPos> spawnItemTransforms;
+
+        private float _cdSpawnItem;
+        private List<SpawnItemPos> _spawnItemMaps;
+
+        public Transform SpawnItemRoot => spawnItemRoot;
 
         public Relay PlayerVictory = new Relay();
 
@@ -39,8 +53,62 @@ namespace DefaultNamespace.Map
             destination.OnTriggerDestinationByPlayer.RemoveListener(PlayerVictory.Dispatch);
         }
 
+        private void Start()
+        {
+            _cdSpawnItem = spawnItemInterval;
+
+            _spawnItemMaps = new List<SpawnItemPos>();
+            foreach (var spawnItemTransform in spawnItemTransforms)
+            {
+                _spawnItemMaps.Add(spawnItemTransform);
+            }
+        }
+
+        private void Update()
+        {
+            if (!GameController.Instance.IsPlaying) return;
+
+            _cdSpawnItem -= Time.deltaTime;
+
+            if (_cdSpawnItem <= 0)
+            {
+                SpawnRandomItem();
+                _cdSpawnItem = spawnItemInterval;
+            }
+        }
+
         public void HideDestination() => destination.gameObject.SetActive(false);
         public void ShowDestination() => destination.gameObject.SetActive(true);
+
+        public void SpawnRandomItem()
+        {
+            var pos = GetRandomPosCanSpawnItem();
+
+            if (pos)
+            {
+               var item  = Instantiate(ItemManager.Instance.GetRandomItem(), pos.transform.position, pos.transform.rotation, spawnItemRoot);
+
+               pos.Item = item;
+            }
+
+
+            SpawnItemPos GetRandomPosCanSpawnItem()
+            {
+                var listCanSpawn = new List<SpawnItemPos>();
+                foreach (var spawnItemPos in _spawnItemMaps)
+                {
+                    if (!spawnItemPos.Item) listCanSpawn.Add(spawnItemPos);
+                }
+
+                if (listCanSpawn.Count > 0)
+                {
+                    return listCanSpawn[Random.Range(0, listCanSpawn.Count)];
+                }
+                
+                return null;
+            }
+        }
+        
 
     }
     
