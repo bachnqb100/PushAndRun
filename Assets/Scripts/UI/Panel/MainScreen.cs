@@ -12,6 +12,7 @@ namespace DefaultNamespace.UI
 
         [Header("Button Component")] 
         [SerializeField] private Button settingButton;
+        [SerializeField] private ButtonExtension clothesButton;
 
         public override void Show(Action action = null)
         {
@@ -26,7 +27,8 @@ namespace DefaultNamespace.UI
         {
             base.Disable();
             
-            CameraController.Instance.SetStatusCameraMain(false);
+            if (CameraController.Instance)
+                CameraController.Instance.SetStatusCameraMain(false);
         }
 
         protected override void RegisterEvent()
@@ -35,6 +37,7 @@ namespace DefaultNamespace.UI
             
             startGameButton.onClick.AddListener(StartGame);
             settingButton.onClick.AddListener(OpenSetting);
+            clothesButton.onClick.AddListener(OpenClothes);
         }
 
         protected override void UnregisterEvent()
@@ -43,6 +46,7 @@ namespace DefaultNamespace.UI
             
             startGameButton.onClick.RemoveListener(StartGame);
             settingButton.onClick.RemoveListener(OpenSetting);
+            clothesButton.onClick.RemoveListener(OpenClothes);
         }
 
         void StartGame()
@@ -55,6 +59,11 @@ namespace DefaultNamespace.UI
         void OpenSetting()
         {
             GUIManager.Instance.ShowPanel(PanelType.Setting);
+        }
+
+        void OpenClothes()
+        {
+            GUIManager.Instance.ShowPanel(PanelType.Clothes);
         }
     }
 }

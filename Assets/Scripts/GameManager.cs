@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Skin;
 using DefaultNamespace.UI;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -21,7 +22,7 @@ namespace DefaultNamespace
 
         #endregion
 
-        private GameData _gameData;
+        public GameData _gameData;
         
         public GameData GameData => _gameData;
         
@@ -33,10 +34,26 @@ namespace DefaultNamespace
             InitGame();
         }
 
+        private void Start()
+        {
+            _gameData.userData.ValidateData();
+            
+            if (_gameData.userData.inited)
+            {
+                SkinManager.Instance.SetColorPlayer();
+            }
+            else
+            {
+                _gameData.userData.inited = true;
+            }
+        }
+
         void InitGame()
         {
             LoadGameDataFromLocalDatabase();
+
         }
+        
 
         void LoadGameDataFromLocalDatabase()
         {

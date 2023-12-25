@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DefaultNamespace.Configs;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ namespace DefaultNamespace
         [Serializable]
         public class UserData
         {
+            public bool inited = false;
+            
             public string username = "Player";
             public int money = 200;
 
@@ -34,6 +37,28 @@ namespace DefaultNamespace
             public float fitness = 5f;
             public float fitnessDecreaseRate = 1f;
             public float fitnessIncreaseRate = 1f;
+            
+            
+            //skin
+            public SerializedDictionary<ClothesType, ClothesColorType> clothesColorMap =
+                new SerializedDictionary<ClothesType, ClothesColorType>();
+            
+            
+            public SerializedDictionary<ClothesType, int> test =
+                new SerializedDictionary<ClothesType, int>();
+
+
+            public void ValidateData()
+            {
+                for (int i = 0; i <= Enum.GetValues(typeof(ClothesType)).Length - 1; i++)
+                {
+                    var type = (ClothesType)i;
+                    ClothesColorType? value 
+                        = ConfigManager.Instance.skinConfig.GetClothesColorType(type);
+                    if (value != null)
+                        clothesColorMap.TryAdd(type, value.Value);
+                }
+            }
         }
     }
 

@@ -69,4 +69,6 @@ public enum PanelType
     VictoryScreen,
     DefeatScreen,
     Setting,
+    Clothes,
+    
 }

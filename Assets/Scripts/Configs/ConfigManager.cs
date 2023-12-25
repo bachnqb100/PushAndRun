@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Configs.Skin;
 using UnityEngine;
 
 namespace DefaultNamespace.Configs
@@ -20,6 +21,8 @@ namespace DefaultNamespace.Configs
         #endregion
         
         public SoundConfig soundConfig;
+
+        public SkinConfig skinConfig;
 
         private void Awake()
         {

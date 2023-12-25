@@ -35,6 +35,9 @@ namespace CameraManager
 
         [Header("Shop Camera")] 
         [SerializeField] private CinemachineVirtualCamera shopCamera;
+        
+        [Header("Clothes Camera")]
+        [SerializeField] private CinemachineVirtualCamera clothesCamera;
 
         [Button]
         public void EnableFallCamera()
@@ -68,6 +71,11 @@ namespace CameraManager
         public void SetStatusCameraShop(bool enable)
         {
             shopCamera.enabled = enable;
+        }
+
+        public void SetStatusCameraClothes(bool enable)
+        {
+            clothesCamera.enabled = enable;
         }
     }
 }

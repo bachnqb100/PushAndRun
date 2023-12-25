@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7295884e036d41e4b5dddc5bceae43f0, type: 3}
+  m_Name: Skin Color Config
+  m_EditorClassIdentifier: 
+  clothesData:
+  - clothesType: 0
+    clothesColorType: 5
+  - clothesType: 1
+    clothesColorType: 5
+  - clothesType: 2
+    clothesColorType: 3
+  - clothesType: 3
+    clothesColorType: 4
+  - clothesType: 4
+    clothesColorType: 1
+  - clothesType: 5
+    clothesColorType: 3
+  - clothesType: 6
+    clothesColorType: 6
+  - clothesType: 7
+    clothesColorType: 8
