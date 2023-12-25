@@ -14,11 +14,11 @@ namespace DefaultNamespace.UI
         private void OnEnable()
         {
             
-            EventGlobalManager.Instance.OnMoneyChange.AddListener(UpdateMoney);
         }
 
         private void Start()
         {
+            EventGlobalManager.Instance.OnMoneyChange.AddListener(UpdateMoney);
             _currentMoney = GameManager.Instance.GameData.userData.money;
             moneyText.text = _currentMoney.ToFormatString();
         }

@@ -10,6 +10,9 @@ namespace DefaultNamespace.UI
         [Header("Start Game")] 
         [SerializeField] private ButtonExtension startGameButton;
 
+        [Header("Button Component")] 
+        [SerializeField] private Button settingButton;
+
         public override void Show(Action action = null)
         {
             base.Show(action);
@@ -31,6 +34,7 @@ namespace DefaultNamespace.UI
             base.RegisterEvent();
             
             startGameButton.onClick.AddListener(StartGame);
+            settingButton.onClick.AddListener(OpenSetting);
         }
 
         protected override void UnregisterEvent()
@@ -38,6 +42,7 @@ namespace DefaultNamespace.UI
             base.UnregisterEvent();
             
             startGameButton.onClick.RemoveListener(StartGame);
+            settingButton.onClick.RemoveListener(OpenSetting);
         }
 
         void StartGame()
@@ -45,6 +50,11 @@ namespace DefaultNamespace.UI
             GameController.Instance.StartGame();
             
             GUIManager.Instance.ShowPanel(PanelType.Loading, () => GUIManager.Instance.ShowPanel(PanelType.PlayScreen));
+        }
+
+        void OpenSetting()
+        {
+            GUIManager.Instance.ShowPanel(PanelType.Setting);
         }
     }
 }

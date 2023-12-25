@@ -68,4 +68,5 @@ public enum PanelType
     Loading,
     VictoryScreen,
     DefeatScreen,
+    Setting,
 }
