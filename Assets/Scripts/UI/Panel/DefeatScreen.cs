@@ -83,6 +83,7 @@ namespace DefaultNamespace.UI
 
         void Menu()
         {
+            GameController.Instance.PlacePlayerMain();
             GUIManager.Instance.ShowPanel(PanelType.Loading, () => GUIManager.Instance.ShowPanel(PanelType.MainScreen));
         }
 

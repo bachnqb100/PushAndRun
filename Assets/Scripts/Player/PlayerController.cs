@@ -238,6 +238,24 @@ namespace Player
             puppetMaster.state = PuppetMaster.State.Alive;
         }
 
+        public void ResetPlayerMainScreen(Transform pos)
+        {
+            ResetPlayer();
+            
+            puppetMaster.SwitchToKinematicMode();
+            userControlThirdPerson.enabled = false;
+            character.enabled = false;
+            
+
+            DOVirtual.DelayedCall(delaySpawnPlayerDuration, () =>
+            {
+                transform.localPosition = pos.position;
+            });
+
+            _initSpeed = GameManager.Instance.GameData.userData.currentSpeed;
+            SetSpeed(_initSpeed);
+        }
+
         public void SetSpeed(float speed)
         {
             animController.AnimSpeedMultiplier = speed;

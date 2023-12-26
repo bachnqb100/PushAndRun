@@ -30,12 +30,14 @@ namespace DefaultNamespace
         [SerializeField] private Transform enemyRoot;
         [SerializeField] private SerializedDictionary<EnemyType, GameObject> enemyPatternMap;
 
-        [Title("Map")] 
+        [Title("Map")]
         [SerializeField] private Transform mapRoot;
         [SerializeField] private SerializedDictionary<int, MapData> mapDataMap;
+        
 
         [Title("Player")] [SerializeField] private PlayerController player;
 
+        [SerializeField] private Transform playerPosMain;
         private MapData _currentMap;
         private List<EnemyController> _enemyControllers = new List<EnemyController>();
 
@@ -80,31 +82,31 @@ namespace DefaultNamespace
             SpawnEnemy();
             
             SpawnPlayerPos();
+        }
+        
+        void ClearCurrentMap()
+        {
+            //enemy
+            _enemyControllers ??= new List<EnemyController>();
 
-            void ClearCurrentMap()
+            if (_enemyControllers.Count > 0)
             {
-                //enemy
-                _enemyControllers ??= new List<EnemyController>();
+                var n = _enemyControllers.Count;
 
-                if (_enemyControllers.Count > 0)
+                for (int i = 0; i < n; i++)
                 {
-                    var n = _enemyControllers.Count;
-
-                    for (int i = 0; i < n; i++)
-                    {
-                        Destroy(_enemyControllers[i].transform.parent.gameObject);
-                    }
+                    Destroy(_enemyControllers[i].transform.parent.gameObject);
                 }
+            }
                 
-                _enemyControllers.Clear();
+            _enemyControllers.Clear();
                 
-                //map
+            //map
 
-                if (_currentMap)
-                {
-                    _currentMap.PlayerVictory.RemoveListener(Victory);
-                    Destroy(_currentMap.gameObject);
-                }
+            if (_currentMap)
+            {
+                _currentMap.PlayerVictory.RemoveListener(Victory);
+                Destroy(_currentMap.gameObject);
             }
         }
 
@@ -150,6 +152,13 @@ namespace DefaultNamespace
                     DefeatByTimeUp();
                 }
             }
+        }
+
+        [Button]
+        public void PlacePlayerMain()
+        {
+            player.ResetPlayerMainScreen(playerPosMain);
+            ClearCurrentMap();
         }
 
         public void SetGameStatus(GameStatus status)
