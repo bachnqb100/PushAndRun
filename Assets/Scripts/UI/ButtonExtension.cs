@@ -48,12 +48,14 @@ namespace DefaultNamespace.UI
         {
             buttonAnim = GetComponent<ButtonAnim>();
         }
-
+#if UNITY_EDITOR
         protected override void Reset()
         {
             base.Reset();
             Setup();
-        }
+        }        
+#endif
+
 
 
         public override void OnPointerDown(PointerEventData eventData)
