@@ -37,6 +37,8 @@ namespace DefaultNamespace
             public float fitness = 5f;
             public float fitnessDecreaseRate = 1f;
             public float fitnessIncreaseRate = 1f;
+
+            public int moneyIncome = 5;
             
             
             //skin

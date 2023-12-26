@@ -105,5 +105,20 @@ public enum ItemType
     Trap,
     Recovery,
     Consume,
+}
+
+public enum UpgradeType
+{
+    Speed,
+    Fitness,
+    RecoveryFitness,
+    ConsumeFitness,
+    MoneyIncome,
+}
+
+public enum UpgradeValueType
+{
+    Int, 
+    Float,
     
 }

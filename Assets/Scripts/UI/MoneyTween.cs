@@ -13,7 +13,9 @@ namespace DefaultNamespace.UI
 
         private void OnEnable()
         {
-            
+            EventGlobalManager.Instance.OnMoneyChange.AddListener(UpdateMoney);
+            _currentMoney = GameManager.Instance.GameData.userData.money;
+            moneyText.text = _currentMoney.ToFormatString();
         }
 
         private void Start()

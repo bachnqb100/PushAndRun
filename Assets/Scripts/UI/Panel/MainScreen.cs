@@ -13,6 +13,7 @@ namespace DefaultNamespace.UI
         [Header("Button Component")] 
         [SerializeField] private Button settingButton;
         [SerializeField] private ButtonExtension clothesButton;
+        [SerializeField] private ButtonExtension upgradeButton;
 
         public override void Show(Action action = null)
         {
@@ -38,6 +39,7 @@ namespace DefaultNamespace.UI
             startGameButton.onClick.AddListener(StartGame);
             settingButton.onClick.AddListener(OpenSetting);
             clothesButton.onClick.AddListener(OpenClothes);
+            upgradeButton.onClick.AddListener(OpenUpgrade);
         }
 
         protected override void UnregisterEvent()
@@ -47,6 +49,8 @@ namespace DefaultNamespace.UI
             startGameButton.onClick.RemoveListener(StartGame);
             settingButton.onClick.RemoveListener(OpenSetting);
             clothesButton.onClick.RemoveListener(OpenClothes);
+            upgradeButton.onClick.RemoveListener(OpenUpgrade);
+
         }
 
         void StartGame()
@@ -64,6 +68,10 @@ namespace DefaultNamespace.UI
         void OpenClothes()
         {
             GUIManager.Instance.ShowPanel(PanelType.Clothes);
+        }
+        void OpenUpgrade()
+        {
+            GUIManager.Instance.ShowPanel(PanelType.Upgrade);
         }
     }
 }

@@ -31,12 +31,12 @@ namespace DefaultNamespace.UI
         {
             DOVirtual.DelayedCall(0.01f, () =>
             {
-                _currentPanelType = PanelType.MainScreen;
+                _currentPanelType = PanelType.Loading;
                 foreach (var item in panelMap)
                 {
                     item.Value.Close();
 
-                    panelMap[PanelType.MainScreen].Show();
+                    panelMap[PanelType.Loading].Show(() => ShowPanel(PanelType.MainScreen));
                 }
             });
         }
@@ -55,9 +55,10 @@ namespace DefaultNamespace.UI
             panelMap[panelType].Hide(action);
             Debug.Log("Hide panel " + panelType);
         }
-        
-        
-        
+
+        public UIPanel GetPanel(PanelType panelType) => panelMap[panelType];
+
+
     }
 }
 
@@ -70,5 +71,6 @@ public enum PanelType
     DefeatScreen,
     Setting,
     Clothes,
+    Upgrade,
     
 }
