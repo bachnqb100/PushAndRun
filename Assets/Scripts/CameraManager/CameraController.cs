@@ -1,5 +1,7 @@
 ﻿using System;
 using Cinemachine;
+using CnControls;
+using DefaultNamespace;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -20,7 +22,9 @@ namespace CameraManager
         public static CameraController Instance => _instance;
         #endregion
 
-        [SerializeField] private GameObject freeLookCamera;
+        [SerializeField] private CinemachineFreeLook freeLookCamera;
+        [SerializeField] private float speedX = 1f;
+        [SerializeField] private float speedY = 1f;
         
         
         [Title("Fall Camera")]
@@ -38,6 +42,29 @@ namespace CameraManager
         
         [Header("Clothes Camera")]
         [SerializeField] private CinemachineVirtualCamera clothesCamera;
+
+
+        private void Update()
+        {
+            if (!GameController.Instance.IsPlaying) return;
+            
+            float cameraX = CnInputManager.GetAxis("CameraX");
+            float cameraY = CnInputManager.GetAxis("CameraY");
+            
+            //Debug.Log("cameraX: " + cameraX + ", cameraY: " + cameraY);
+            
+
+            if (Mathf.Abs(cameraX) >= 1f || Mathf.Abs(cameraX) >= 1f)
+            {
+                freeLookCamera.m_XAxis.Value += cameraX * speedX;
+            }
+            
+            if (Mathf.Abs(cameraY) >= 1f || Mathf.Abs(cameraY) >= 1f)
+            {
+                freeLookCamera.m_YAxis.Value += cameraY * speedY;
+            }
+        }
+
 
         [Button]
         public void EnableFallCamera()

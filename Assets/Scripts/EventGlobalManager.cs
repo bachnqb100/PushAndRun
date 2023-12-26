@@ -25,6 +25,8 @@ namespace DefaultNamespace
             InitSingleton();
         }
 
+        public Relay<bool> OnPlayerJump = new Relay<bool>();
+
         public Relay OnUpdateSetting = new Relay();
         public Relay<bool> OnMoneyChange = new Relay<bool>();
         public Relay OnPlayerStartSprint = new Relay();

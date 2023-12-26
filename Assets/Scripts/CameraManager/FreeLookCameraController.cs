@@ -7,7 +7,7 @@ namespace CameraManager
 {
     public class FreeLookCameraController : MonoBehaviour
     {
-        [SerializeField] private CinemachineFreeLook freeLookCamera;
+        /*[SerializeField] private CinemachineFreeLook freeLookCamera;
         
 
         private void Update()
@@ -18,6 +18,6 @@ namespace CameraManager
             {
                 freeLookCamera.m_XAxis.Value += cameraX;
             }
-        }
+        }*/
     }
 }

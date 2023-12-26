@@ -32,6 +32,7 @@ namespace DefaultNamespace.UI
 
         [Header("Button")] 
         [SerializeField] private ButtonExtension sprintButton;
+        [SerializeField] private ButtonExtension jumpButton;
 
 
         private bool _isWarningTimeUp;
@@ -56,6 +57,9 @@ namespace DefaultNamespace.UI
             
             sprintButton.OnPointerDownEvent.AddListener(EventGlobalManager.Instance.OnPlayerStartSprint.Dispatch);
             sprintButton.OnPointerUpEvent.AddListener(EventGlobalManager.Instance.OnPlayerEndSprint.Dispatch);
+            
+            jumpButton.OnPointerDownEvent.AddListener(() => EventGlobalManager.Instance.OnPlayerJump.Dispatch(true));
+            jumpButton.OnPointerUpEvent.AddListener(() => EventGlobalManager.Instance.OnPlayerJump.Dispatch(false));
 
             EventGlobalManager.Instance.OnUpdateFitness.AddListener(UpdateFitness);
         }
@@ -69,6 +73,9 @@ namespace DefaultNamespace.UI
             
             sprintButton.OnPointerDownEvent.RemoveListener(EventGlobalManager.Instance.OnPlayerStartSprint.Dispatch);
             sprintButton.OnPointerUpEvent.RemoveListener(EventGlobalManager.Instance.OnPlayerEndSprint.Dispatch);
+            
+            jumpButton.OnPointerDownEvent.AddListener(() => EventGlobalManager.Instance.OnPlayerJump.Dispatch(true));
+            jumpButton.OnPointerUpEvent.AddListener(() => EventGlobalManager.Instance.OnPlayerJump.Dispatch(false));
 
             EventGlobalManager.Instance.OnUpdateFitness.RemoveListener(UpdateFitness);
         }

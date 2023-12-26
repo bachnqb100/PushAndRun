@@ -38,6 +38,7 @@ namespace DefaultNamespace
         [Title("Player")] [SerializeField] private PlayerController player;
 
         [SerializeField] private Transform playerPosMain;
+        [SerializeField] private GameObject playerContainer;
         private MapData _currentMap;
         private List<EnemyController> _enemyControllers = new List<EnemyController>();
 
@@ -129,6 +130,10 @@ namespace DefaultNamespace
         
         #endregion
 
+        private void Start()
+        {
+            playerContainer.gameObject.SetActive(true);
+        }
 
         public void StartGame()
         {
