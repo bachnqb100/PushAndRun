@@ -44,5 +44,8 @@ namespace DefaultNamespace
 
         //upgrade
         public Relay OnUpdateDataUpgrade = new Relay();
+        
+        //blood screen
+        public Relay<bool> OnUpdateBloodScreen = new Relay<bool>();
     }
 }

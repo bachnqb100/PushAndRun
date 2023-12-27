@@ -23,6 +23,9 @@ namespace DefaultNamespace.UI
 
         [Header("Fitness")] 
         [SerializeField] private Slider sliderFitness;
+        
+        [Header("Blood Screen")]
+        [SerializeField] private BloodScreen bloodScreen;
 
 
         [Title("Control")]
@@ -46,6 +49,8 @@ namespace DefaultNamespace.UI
             
             HideControl();
             countDown.gameObject.SetActive(true);
+            
+            bloodScreen.gameObject.SetActive(false);
         }
 
         protected override void RegisterEvent()
@@ -62,6 +67,7 @@ namespace DefaultNamespace.UI
             jumpButton.OnPointerUpEvent.AddListener(() => EventGlobalManager.Instance.OnPlayerJump.Dispatch(false));
 
             EventGlobalManager.Instance.OnUpdateFitness.AddListener(UpdateFitness);
+            EventGlobalManager.Instance.OnUpdateBloodScreen.AddListener(bloodScreen.SetStatusAnimBloodScreen);
         }
 
         protected override void UnregisterEvent()
@@ -78,6 +84,9 @@ namespace DefaultNamespace.UI
             jumpButton.OnPointerUpEvent.AddListener(() => EventGlobalManager.Instance.OnPlayerJump.Dispatch(false));
 
             EventGlobalManager.Instance.OnUpdateFitness.RemoveListener(UpdateFitness);
+            
+            EventGlobalManager.Instance.OnUpdateBloodScreen.RemoveListener(bloodScreen.SetStatusAnimBloodScreen);
+
         }
 
         private void Update()

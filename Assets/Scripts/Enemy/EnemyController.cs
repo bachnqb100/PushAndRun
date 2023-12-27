@@ -220,6 +220,8 @@ namespace DefaultNamespace.Enemy
             
             //TODO: logic warning to player in FOV
             
+            EventGlobalManager.Instance.OnUpdateBloodScreen.Dispatch(true);
+            
             //patrol chase
             if (chaseType == ChaseType.Patrol && _chase)
             {
@@ -245,6 +247,9 @@ namespace DefaultNamespace.Enemy
             characterAnimation.SetLookAround();
             
             //TODO: logic disable warning
+            
+            EventGlobalManager.Instance.OnUpdateBloodScreen.Dispatch(false);
+
             
             //patrol chase
             if (chaseType == ChaseType.Patrol && !_chase)
