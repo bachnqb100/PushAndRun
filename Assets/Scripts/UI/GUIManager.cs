@@ -72,5 +72,5 @@ public enum PanelType
     Setting,
     Clothes,
     Upgrade,
-    
+    OnlineReward,
 }

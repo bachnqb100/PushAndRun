@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Configs.Extra_Futures;
 using DefaultNamespace.Configs.Skin;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ namespace DefaultNamespace.Configs
         public SoundConfig soundConfig;
 
         public SkinConfig skinConfig;
+
+        public ExtraFeaturesConfig extraFeaturesConfig;
 
         private void Awake()
         {

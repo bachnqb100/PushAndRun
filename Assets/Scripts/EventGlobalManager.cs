@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Sigtrap.Relays;
 using UnityEngine;
 
@@ -25,6 +26,8 @@ namespace DefaultNamespace
             InitSingleton();
         }
 
+        public Relay OnEverySecondTick = new Relay();
+
         public Relay<bool> OnPlayerJump = new Relay<bool>();
 
         public Relay OnUpdateSetting = new Relay();
@@ -47,5 +50,19 @@ namespace DefaultNamespace
         
         //blood screen
         public Relay<bool> OnUpdateBloodScreen = new Relay<bool>();
+        
+        private void Start()
+        {
+            StartCoroutine(EverySecondTick());
+        }
+
+        IEnumerator EverySecondTick()
+        {
+            while (true)
+            {
+                OnEverySecondTick.Dispatch();
+                yield return Yielders.Get(1);
+            }
+        }
     }
 }

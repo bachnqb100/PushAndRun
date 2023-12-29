@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Configs;
 using DefaultNamespace.Skin;
 using DefaultNamespace.UI;
 using Sirenix.OdinInspector;
@@ -25,6 +26,12 @@ namespace DefaultNamespace
         public GameData _gameData;
         
         public GameData GameData => _gameData;
+
+        #region Extra Futures
+
+        public float LastClaimOnlineGiftTime { get; set; }
+
+        #endregion
         
         
         private void Awake()
@@ -112,6 +119,13 @@ namespace DefaultNamespace
             _gameData.userData.lastTimeLogOut = DateTime.Now;
             LocalDatabase.SaveData();
         }
+
+        #region Extra Features
+
+        public static int GetRemainTime() => Mathf.RoundToInt(ConfigManager.Instance.extraFeaturesConfig.onlineRewardInterval -
+                                                              (Time.time - GameManager.Instance.LastClaimOnlineGiftTime));
+
+        #endregion
 
     }
 }
