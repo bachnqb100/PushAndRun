@@ -74,4 +74,5 @@ public enum PanelType
     Upgrade,
     OnlineReward,
     DailyReward,
+    LuckyWheel,
 }

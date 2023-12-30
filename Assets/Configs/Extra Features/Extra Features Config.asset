@@ -15,5 +15,5 @@ MonoBehaviour:
   onlineRewardInterval: 10
   onlineRewardValue: 1000
   freeSpinInterval: 14400
-  luckyWheelCoinRewardValues: 3200000064000000c80000002c010000f4010000e8030000
+  luckyWheelCoinRewardValues: 3200000064000000c80000002c010000f4010000f401000032000000
   dailyRewardCoinRewardValues: 3200000064000000c80000002c010000f4010000e8030000

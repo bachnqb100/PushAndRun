@@ -136,6 +136,9 @@ namespace DefaultNamespace
                                now.Year > GameManager.Instance.GameData.userData.lastDailyRewardClaimTime.Year;
             return isClaimable;
         }
+        
+        public static int GetRemainTimeWheel() => ConfigManager.Instance.extraFeaturesConfig.freeSpinInterval
+                                             - (int) (DateTime.Now - GameManager.Instance.GameData.userData.lastFreeSpinTime).TotalSeconds;
         #endregion
 
     }
