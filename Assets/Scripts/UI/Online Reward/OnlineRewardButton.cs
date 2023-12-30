@@ -27,7 +27,7 @@ namespace DefaultNamespace.UI.Online_Reward
     
         void UpdateTimer()
         {
-            int timeRemain = GameManager.GetRemainTime();
+            int timeRemain = GameManager.GetRemainTimeOnlineReward();
 
             if (timeRemain < 0)
             {

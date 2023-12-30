@@ -28,6 +28,8 @@ namespace DefaultNamespace
 
         public Relay OnEverySecondTick = new Relay();
 
+        public Relay<int> OnClaimMoney = new Relay<int>();
+
         public Relay<bool> OnPlayerJump = new Relay<bool>();
 
         public Relay OnUpdateSetting = new Relay();

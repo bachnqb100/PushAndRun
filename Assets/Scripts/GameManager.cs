@@ -122,9 +122,20 @@ namespace DefaultNamespace
 
         #region Extra Features
 
-        public static int GetRemainTime() => Mathf.RoundToInt(ConfigManager.Instance.extraFeaturesConfig.onlineRewardInterval -
+        public static int GetRemainTimeOnlineReward() => Mathf.RoundToInt(ConfigManager.Instance.extraFeaturesConfig.onlineRewardInterval -
                                                               (Time.time - GameManager.Instance.LastClaimOnlineGiftTime));
 
+        
+        public static int GetRemainTimeDailyReward() => (int) (DateTime.Today.AddDays(1) - DateTime.Now).TotalSeconds;
+        
+        public static bool IsClaimableDailyReward()
+        {
+            var now = DateTime.Now;
+            bool isClaimable = now.Day > GameManager.Instance.GameData.userData.lastDailyRewardClaimTime.Day ||
+                               now.Month > GameManager.Instance.GameData.userData.lastDailyRewardClaimTime.Month ||
+                               now.Year > GameManager.Instance.GameData.userData.lastDailyRewardClaimTime.Year;
+            return isClaimable;
+        }
         #endregion
 
     }

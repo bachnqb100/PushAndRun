@@ -73,4 +73,5 @@ public enum PanelType
     Clothes,
     Upgrade,
     OnlineReward,
+    DailyReward,
 }

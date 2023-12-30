@@ -33,6 +33,12 @@ namespace DefaultNamespace
             
             public DateTime lastTimeLogOut = DateTime.Now;
             
+            public int luckyWheelProgress;
+            public DateTime lastFreeSpinTime = DateTime.MinValue;
+            
+            public int dailyRewardClaimedCount;
+            public DateTime lastDailyRewardClaimTime = DateTime.MinValue;
+            
             public float currentSpeed = 1f;
             public float fitness = 5f;
             public float fitnessDecreaseRate = 1f;

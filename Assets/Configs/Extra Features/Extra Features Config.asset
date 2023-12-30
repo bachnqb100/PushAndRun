@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73505a3c77c44eb7a2870104e6ba208c, type: 3}
   m_Name: Extra Features Config
   m_EditorClassIdentifier: 
-  onlineRewardInterval: 600
+  onlineRewardInterval: 10
   onlineRewardValue: 1000
   freeSpinInterval: 14400
-  luckyWheelCoinRewardValues: 
-  dailyRewardCoinRewardValues: 
+  luckyWheelCoinRewardValues: 3200000064000000c80000002c010000f4010000e8030000
+  dailyRewardCoinRewardValues: 3200000064000000c80000002c010000f4010000e8030000

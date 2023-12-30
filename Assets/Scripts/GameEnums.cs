@@ -122,3 +122,9 @@ public enum UpgradeValueType
     Float,
     
 }
+
+public enum RewardType
+{
+    Coin,
+    Gift
+}

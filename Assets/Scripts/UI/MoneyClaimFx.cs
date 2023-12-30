@@ -14,11 +14,26 @@ namespace DefaultNamespace.UI
         [SerializeField] private GameObject moneyIconPrefab;
 
         private Vector3 _maxRdPos, _minRdPos;
-        
+
+        private void OnEnable()
+        {
+            EventGlobalManager.Instance.OnClaimMoney.AddListener(ClaimMoneyDefault);
+        }
+
+        private void OnDisable()
+        {
+            EventGlobalManager.Instance.OnClaimMoney.RemoveListener(ClaimMoneyDefault);
+        }
+
         void CalculateSpawnBounds()
         {
             _maxRdPos = maxRdTrans.position;
             _minRdPos = minRdTrans.position;
+        }
+
+        void ClaimMoneyDefault(int value)
+        {
+            ClaimMoney(value);
         }
 
         [Button]

@@ -28,7 +28,7 @@ namespace DefaultNamespace.UI
 
             #endregion
             
-            _claimable = GameManager.GetRemainTime() < 0;
+            _claimable = GameManager.GetRemainTimeOnlineReward() < 0;
             
             if (_claimable)
                 ShowGift(true);
@@ -89,7 +89,7 @@ namespace DefaultNamespace.UI
             if (_claimable)
                 return;
 
-            int timeRemain = GameManager.GetRemainTime();
+            int timeRemain = GameManager.GetRemainTimeOnlineReward();
 
             if (timeRemain < 0)
                 ShowGift();
