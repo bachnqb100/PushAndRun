@@ -61,7 +61,7 @@ public enum GameStatus
     Defeat,
     Victory,
     MainScreen,
-    Shop,
+    ShopAnimVictory,
     
 }
 
@@ -86,9 +86,49 @@ public enum VictoryAnimType
     TwistDance,
     WaveHiphopDance,
     YmcaDance,
-    
+    ArmsHipHopDance,
+    Dancing1,
+    DancingMaraschinoStep,
+    GangnamStyle,
+    HousingDance,
+    HousingDancing1,
+    HousingDancing2,
+    JazzDancing,
+    NsDance,
+    NsSpinCombo,
+    SalsaDancing,
+    SambaDancing,
+    Shuffing,
+    StandardDancing,
+    SwingDancing,
+    SwingDancing1,
+    TutDancing,
+    WaveDancing,
 }
 
+public enum MainAnimType
+{
+    SlowRun,
+    MediumRun,
+    FastRun,
+    AirSquat,
+    BicepCurl,
+    Burpee,
+    DrunkBackward,
+    DunkForward,
+    FrontRaises,
+    JumpingJacks,
+    RunBackward,
+    RunBackward1,
+    RunForward,
+    RunForward1,
+    RunLockBack,
+    Running,
+    Running1,
+    Running2,
+    RunningBackward,
+    SumoHighPull,
+}
 
 public enum CharacterRunStatus
 {

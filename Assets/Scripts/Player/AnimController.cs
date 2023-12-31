@@ -19,6 +19,7 @@ namespace Player
         [SerializeField] private SerializedDictionary<GameStatus, float> blendAnimByGameStatusMap;
         [SerializeField] private SerializedDictionary<DefeatReason, float> blendAnimByDefeatMap;
         [SerializeField] private SerializedDictionary<VictoryAnimType, float> blendAnimByVictoryMap;
+        [SerializeField] private SerializedDictionary<MainAnimType, float> blendAnimByMainMap;
         
         
         public void SetLookAt()
@@ -44,10 +45,23 @@ namespace Player
             
             if (GameController.Instance.GameStatus == GameStatus.Victory)
             {
-                DOVirtual.Float(animator.GetFloat("Victory"), blendAnimByVictoryMap.GetRandomElement().Value,
+                DOVirtual.Float(animator.GetFloat("Victory"), (int) GameManager.Instance.GameData.userData.currentVictoryAnimType,
                     changeAnimVictoryDuration, x => animator.SetFloat("Victory", x));
             }
             
+            SetAnimMain(GameManager.Instance.GameData.userData.currentMainAnimType);
+        }
+
+        public void SetAnimMain(MainAnimType type)
+        {
+            DOVirtual.Float(animator.GetFloat("MainRun"), (int) type,
+                changeAnimVictoryDuration, x => animator.SetFloat("MainRun", x));
+        }
+        
+        public void SetAnimVictory(VictoryAnimType type)
+        {
+            DOVirtual.Float(animator.GetFloat("Victory"), (int) type,
+                changeAnimVictoryDuration, x => animator.SetFloat("Victory", x));
         }
     }
 }

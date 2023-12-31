@@ -26,6 +26,10 @@ namespace DefaultNamespace.Configs
         public SkinConfig skinConfig;
 
         public ExtraFeaturesConfig extraFeaturesConfig;
+        
+        public AnimVictoryGroupConfig animVictoryGroupConfig;
+        
+        public AnimMainGroupConfig animMainGroupConfig;
 
         private void Awake()
         {

@@ -54,6 +54,24 @@ namespace DefaultNamespace
             
             public SerializedDictionary<ClothesType, int> test =
                 new SerializedDictionary<ClothesType, int>();
+            
+            //shop
+            public SerializedDictionary<MainAnimType, int> mainAnimItemPriceMap =
+                new SerializedDictionary<MainAnimType, int>();
+
+            public SerializedDictionary<MainAnimType, bool> mainAnimItemStatusMap =
+                new SerializedDictionary<MainAnimType, bool>();
+
+            public MainAnimType currentMainAnimType = MainAnimType.SlowRun;
+ 
+            
+            public SerializedDictionary<VictoryAnimType, int> victoryAnimItemPriceMap =
+                new SerializedDictionary<VictoryAnimType, int>();
+
+            public SerializedDictionary<VictoryAnimType, bool> victoryAnimItemStatusMap =
+                new SerializedDictionary<VictoryAnimType, bool>();
+
+            public VictoryAnimType currentVictoryAnimType = VictoryAnimType.BellyDance;
 
 
             public void ValidateData()
@@ -65,6 +83,34 @@ namespace DefaultNamespace
                         = ConfigManager.Instance.skinConfig.GetClothesColorType(type);
                     if (value != null)
                         clothesColorMap.TryAdd(type, value.Value);
+                }
+
+
+                for (int i = 0; i < Enum.GetValues(typeof(MainAnimType)).Length; i++)
+                {
+                    var type = (MainAnimType)i;
+                    mainAnimItemStatusMap.TryAdd(type, type == MainAnimType.SlowRun);
+                }
+                
+                for (int i = 0; i < Enum.GetValues(typeof(MainAnimType)).Length; i++)
+                {
+                    var type = (MainAnimType)i;
+                    var price = ConfigManager.Instance.animMainGroupConfig.GetAnimMainConfig(type).price;
+                    mainAnimItemPriceMap.TryAdd(type, type == MainAnimType.SlowRun ? 0 : price);
+                }
+                
+                
+                for (int i = 0; i < Enum.GetValues(typeof(VictoryAnimType)).Length; i++)
+                {
+                    var type = (VictoryAnimType)i;
+                    victoryAnimItemStatusMap.TryAdd(type, type == VictoryAnimType.BellyDance);
+                }
+                
+                for (int i = 0; i < Enum.GetValues(typeof(VictoryAnimType)).Length; i++)
+                {
+                    var type = (VictoryAnimType)i;
+                    var price = ConfigManager.Instance.animVictoryGroupConfig.GetAnimVictoryConfig(type).price;
+                    victoryAnimItemPriceMap.TryAdd(type, type == VictoryAnimType.BellyDance ? 0 : price);
                 }
             }
         }

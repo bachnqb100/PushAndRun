@@ -740,6 +740,30 @@ public static class Utils
 
         return new KeyValuePair<TKey, TValue>(randomKey, randomValue);
     }
+    
+    public static KeyValuePair<TKey, bool> GetRandomElementUnlock<TKey>(this 
+        SerializedDictionary<TKey, bool> dictionary)
+    {
+        if (dictionary == null || dictionary.Count == 0)
+        {
+            return default(KeyValuePair<TKey, bool>);
+        }
+
+        var temp = dictionary.Where(x => x.Value == true).ToList();
+
+        if (temp.Count > 0)
+        {
+            Random random = new Random();
+
+            int randomIndex = random.Next(temp.Count);
+
+            var result = temp[randomIndex];
+
+            return result;
+        } 
+        
+        return default(KeyValuePair<TKey, bool>);
+    }
 
     #endregion
 }

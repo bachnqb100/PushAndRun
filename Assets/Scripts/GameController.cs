@@ -177,7 +177,7 @@ namespace DefaultNamespace
                 case GameStatus.MainScreen:
                     player.PlayerOnlyUseAnimation();
                     break;
-                case GameStatus.Shop:
+                case GameStatus.ShopAnimVictory:
                     player.PlayerOnlyUseAnimation();
                     break;
             }

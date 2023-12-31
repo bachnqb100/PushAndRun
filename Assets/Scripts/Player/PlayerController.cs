@@ -73,6 +73,8 @@ namespace Player
                 EventGlobalManager.Instance.OnUpdateFitness.Dispatch(_currentFitness/_maxFitness);
             }
         }
+
+        public AnimController AnimController => animController;
         
         private void Start()
         {

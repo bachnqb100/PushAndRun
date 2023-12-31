@@ -75,4 +75,5 @@ public enum PanelType
     OnlineReward,
     DailyReward,
     LuckyWheel,
+    Shop,
 }
