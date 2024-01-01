@@ -6,6 +6,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 namespace DefaultNamespace.UI
@@ -19,6 +20,8 @@ namespace DefaultNamespace.UI
         [SerializeField, Range(0, 100)] private float giftRate;
         [SerializeField] private LuckyWheelProgress luckyWheelProgress;
         [SerializeField] private ButtonExtension spinAdsBtn;
+
+        [SerializeField] private Button closeBtn;
 
         private bool _isSpinning;    
         private int _giftRewardIndex;
@@ -129,8 +132,10 @@ namespace DefaultNamespace.UI
 
             spinBtn.onClick.AddListener(FreeSpin);
             spinAdsBtn.onClick.AddListener(SpinAds);
+            closeBtn.onClick.AddListener(ClosePopup);
             
             EventGlobalManager.Instance.OnEverySecondTick.AddListener(UpdateSpinBtn);
+            
         }
 
         protected override void UnregisterEvent()
@@ -139,9 +144,15 @@ namespace DefaultNamespace.UI
             
             spinBtn.onClick.RemoveListener(FreeSpin);
             spinAdsBtn.onClick.RemoveListener(SpinAds);
+            closeBtn.onClick.RemoveListener(ClosePopup);
             
             if (EventGlobalManager.Instance)
                 EventGlobalManager.Instance.OnEverySecondTick.RemoveListener(UpdateSpinBtn);
+        }
+
+        void ClosePopup()
+        {
+            GUIManager.Instance.ShowPanel(PanelType.MainScreen);
         }
     }
 }

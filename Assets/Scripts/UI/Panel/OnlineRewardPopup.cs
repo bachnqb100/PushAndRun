@@ -1,3 +1,5 @@
+using System;
+using CameraManager;
 using DefaultNamespace.Configs;
 using DG.Tweening;
 using TMPro;
@@ -10,7 +12,7 @@ namespace DefaultNamespace.UI
         [SerializeField] private Transform claimableRoot;
         [SerializeField] private Transform notClaimableRoot;
         [SerializeField] private TMP_Text timer;
-        [SerializeField] private TMP_Text rewardValueTxt;
+        [SerializeField] private TMP_Text rewardValueTxt, rewardValueBtn, rewardValueBtnAds;
 
         [SerializeField] private ButtonExtension btnClaim, btnClaimAds, btnContinue;
         
@@ -25,6 +27,8 @@ namespace DefaultNamespace.UI
 
             _rewardValue = ConfigManager.Instance.extraFeaturesConfig.onlineRewardValue;
             rewardValueTxt.text = _rewardValue.ToFormatString();
+            rewardValueBtn.text = _rewardValue.ToFormatString();
+            rewardValueBtnAds.text = (_rewardValue * 3).ToFormatString();
 
             #endregion
             
@@ -97,28 +101,28 @@ namespace DefaultNamespace.UI
                 timer.text = timeRemain.ToTimeFormatCompact();
         }
 
-        public void Claim()
+        void Claim()
         {
             #region Claim logic
 
-            GameManager.Instance.AddMoney(_rewardValue);
+            EventGlobalManager.Instance.OnClaimMoney.Dispatch(_rewardValue);
 
             #endregion
             
             ResetGiftTimer();
-            Close();
+            ClosePopup();
         }
 
-        public void ClaimAds()
+        void ClaimAds()
         {
             #region Claim ads logic
 
-                GameManager.Instance.AddMoney(_rewardValue * 3);
+            EventGlobalManager.Instance.OnClaimMoney.Dispatch(_rewardValue * 3);
 
-                #endregion
+            #endregion
 
-                ResetGiftTimer();
-                Close();
+            ResetGiftTimer();
+            ClosePopup();
         }
         
         void ResetGiftTimer()
@@ -149,6 +153,20 @@ namespace DefaultNamespace.UI
                 
                 EventGlobalManager.Instance.OnEverySecondTick.RemoveListener(UpdateTimer);
             }
+        }
+
+        public override void Show(Action action = null)
+        {
+            base.Show(action);
+            
+            CameraController.Instance.SetStatusCameraRight(true);
+        }
+
+        public override void Hide(Action action = null)
+        {
+            base.Hide(action);
+            
+            CameraController.Instance.SetStatusCameraRight(false);
         }
 
         void ClosePopup()

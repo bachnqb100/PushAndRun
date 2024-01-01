@@ -37,12 +37,17 @@ namespace CameraManager
         [Title("MainScreen Camera")]
         [SerializeField] private CinemachineVirtualCamera mainScreenCamera;
 
-        [Header("Shop Camera")] 
-        [SerializeField] private CinemachineVirtualCamera shopCamera;
+        [Header("Right Camera")] 
+        [SerializeField] private CinemachineVirtualCamera rightCamera;
         
-        [Header("Clothes Camera")]
-        [SerializeField] private CinemachineVirtualCamera clothesCamera;
+        [Header("Left Camera")]
+        [SerializeField] private CinemachineVirtualCamera leftCamera;
 
+        private void Start()
+        {
+            SetStatusCameraLeft(false);
+            SetStatusCameraRight(false);
+        }
 
         private void Update()
         {
@@ -64,6 +69,8 @@ namespace CameraManager
                 freeLookCamera.m_YAxis.Value += cameraY * speedY;
             }
         }
+        
+        
 
 
         [Button]
@@ -95,14 +102,14 @@ namespace CameraManager
             mainScreenCamera.enabled = enable;
         }
 
-        public void SetStatusCameraShop(bool enable)
+        public void SetStatusCameraRight(bool enable)
         {
-            shopCamera.enabled = enable;
+            rightCamera.enabled = enable;
         }
 
-        public void SetStatusCameraClothes(bool enable)
+        public void SetStatusCameraLeft(bool enable)
         {
-            clothesCamera.enabled = enable;
+            leftCamera.enabled = enable;
         }
     }
 }

@@ -13,14 +13,14 @@ namespace DefaultNamespace.UI
         {
             base.Show(action);
             
-            CameraController.Instance.SetStatusCameraClothes(true);
+            CameraController.Instance.SetStatusCameraLeft(true);
         }
 
         public override void Hide(Action action = null)
         {
             base.Hide(action);
             
-            CameraController.Instance.SetStatusCameraClothes(false);
+            CameraController.Instance.SetStatusCameraLeft(false);
         }
 
         protected override void RegisterEvent()
