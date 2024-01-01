@@ -161,6 +161,10 @@ namespace DefaultNamespace.UI.Shop
                     
                     Use();
                 }
+                else
+                {
+                    NotificationManager.Instance.ShowNotification("You don't have enough money!!!");
+                }
             }
             
         }
