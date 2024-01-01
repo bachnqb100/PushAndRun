@@ -85,6 +85,12 @@ namespace DefaultNamespace
             EventGlobalManager.Instance.OnMoneyChange.Dispatch(true);
         }
 
+        public void AddMoneyNoSound(int value)
+        {
+            _gameData.userData.money += value;
+            EventGlobalManager.Instance.OnMoneyChange.Dispatch(true);
+        }
+
         [Button]
         public bool SpendMoney(int value)
         {

@@ -34,9 +34,18 @@ namespace DefaultNamespace.UI
         [SerializeField] private ButtonExtension menuButton;
         [SerializeField] private ButtonExtension retryButton;
 
+        [Title("Money")] 
+        [SerializeField] private TMP_Text moneyText;
+
+        private int _money;
+
         public override void Show(Action action = null)
         {
             base.Show(action);
+
+            _money = GameController.Instance.CalculateMoneyDefeat();
+
+            moneyText.text = "You earn " + _money;
             
             HideAllItem();
             
@@ -74,11 +83,14 @@ namespace DefaultNamespace.UI
 
         void Retry()
         {
+            GameManager.Instance.AddMoneyNoSound(_money);
+            
             //TODO: Logic retry
             GUIManager.Instance.ShowPanel(PanelType.Loading, () => GUIManager.Instance.ShowPanel(PanelType.PlayScreen));
             
             GameController.Instance.Player.ResetPlayer();
             GameController.Instance.StartGame();
+            
         }
 
         void Menu()

@@ -44,6 +44,11 @@ namespace DefaultNamespace
         [Title("Audio")] 
         [SerializeField] private float shotConfettiRate = 0.2f;
 
+        [Header("Money")] 
+        [SerializeField] private int moneyPunch = 50;
+
+        [SerializeField] private int moneyTimePerMinute = 10; 
+
         public float ShotConfettiRate => shotConfettiRate;
         
         private MapData _currentMap;
@@ -52,6 +57,8 @@ namespace DefaultNamespace
         private bool _isPlaying;
         
         private float _timeLeft;
+
+        private int _moneyMap;
 
         public bool IsPlaying
         {
@@ -86,6 +93,8 @@ namespace DefaultNamespace
             _currentMap.PlayerVictory.AddListener(Victory);
 
             _timeLeft = _currentMap.TimePlay;
+
+            _moneyMap = _currentMap.MoneyMap;
             
             SpawnEnemy();
             
@@ -235,6 +244,13 @@ namespace DefaultNamespace
                 GUIManager.Instance.ShowPanel(PanelType.DefeatScreen);
             });
         }
+
+
+        public int CalculateMoneyDefeat()
+        {
+            float moneyValue = moneyTimePerMinute * (_timeLeft / 60f) + moneyPunch * ImpactCount + _moneyMap / 10f;
+            return (int) moneyValue;
+        }
         
         #endregion
 
@@ -280,6 +296,13 @@ namespace DefaultNamespace
                 GUIManager.Instance.ShowPanel(PanelType.VictoryScreen);
             });
             
+        }
+        
+        public int CalculateMoneyVictory(out int moneyTime, out int moneyPunch)
+        {
+            moneyTime = moneyTimePerMinute * (int)(_timeLeft / 60f);
+            moneyPunch = this.moneyPunch * ImpactCount;
+            return moneyTime + moneyPunch + _moneyMap;
         }
 
         #endregion

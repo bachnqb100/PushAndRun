@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Audio;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -21,8 +22,16 @@ namespace DefaultNamespace.UI
         [SerializeField] private TMP_Text impactEnemyText;
         [SerializeField] private TMP_Text timeCompletedText;
         [SerializeField] private float animChangeItemCompleteDuration = 2f;
+
+        [Title("Money")] 
+        [SerializeField] private TMP_Text moneyPunch;
+        [SerializeField] private TMP_Text moneyTime;
+        [SerializeField] private TMP_Text moneyTotal;
         
 
+
+        private int _totalMoney;
+        
         public override void Show(Action action = null)
         {
             base.Show(action);
@@ -30,6 +39,7 @@ namespace DefaultNamespace.UI
             AnimShow();
             HideButton();
             InitItemComplete();
+            SetupMoneyText();
         }
 
         [Button]
@@ -107,7 +117,31 @@ namespace DefaultNamespace.UI
             DOVirtual.Float(0f, GameController.Instance.TimeCompleted, animChangeItemCompleteDuration, x =>
             {
                 timeCompletedText.text = ((int)x).ToTimeFormatCompact();
-            }).OnComplete(ShowButton).SetTarget(this);
+            }).SetTarget(this);
+        }
+
+        void SetupMoneyText()
+        {
+            _totalMoney = GameController.Instance.CalculateMoneyVictory(out var moneyTime, out var moneyPunch);
+
+            DOVirtual
+                .Float(0f, moneyTime, animChangeItemCompleteDuration,
+                    x => { this.moneyTime.text = ((int)x).ToString(); }).OnStart(() =>
+                {
+                    DOVirtual.Float(0f, moneyPunch, animChangeItemCompleteDuration,
+                        x => { this.moneyPunch.text = ((int)x).ToString(); }).SetTarget(this);
+                })
+                .OnComplete(() =>
+                {
+                    DOVirtual.Float(0f, _totalMoney, animChangeItemCompleteDuration,
+                        x => { this.moneyTotal.text = ((int)x).ToString(); }).SetTarget(this).OnComplete(() =>
+                    {
+                        AudioAssistant.Shot(TypeSound.Reward);
+                        EventGlobalManager.Instance.OnClaimMoney.Dispatch(_totalMoney);
+                        ShowButton();
+                    });
+                }).SetTarget(this);
+
         }
         
     }

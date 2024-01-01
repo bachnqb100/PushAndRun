@@ -28,6 +28,9 @@ namespace DefaultNamespace.Map
         [SerializeField] private float spawnItemInterval = 15f;
         [SerializeField] private List<SpawnItemPos> spawnItemTransforms;
 
+        [Header("Money")] 
+        [SerializeField] private int moneyMap = 500;
+
         private float _cdSpawnItem;
         private List<SpawnItemPos> _spawnItemMaps;
 
@@ -41,6 +44,8 @@ namespace DefaultNamespace.Map
         public float TimePlay => timePlay;
         
         public Transform GetRandomPatrolTransform => patrolTransforms[Random.Range(0, patrolTransforms.Count)];
+        
+        public int MoneyMap => moneyMap;
 
         private void OnEnable()
         {
