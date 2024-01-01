@@ -1,3 +1,4 @@
+using DefaultNamespace.Audio;
 using TMPro;
 using UnityEngine;
 
@@ -33,6 +34,8 @@ namespace DefaultNamespace.UI.LuckyWheel
 
         public void Claim()
         {
+            AudioAssistant.Shot(TypeSound.RewardSpin);
+            
             switch (type)
             {
                 case RewardType.Coin:

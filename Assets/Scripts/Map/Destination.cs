@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using DefaultNamespace.Audio;
 using DG.Tweening;
 using Sigtrap.Relays;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace.Map
 {
@@ -20,11 +22,36 @@ namespace DefaultNamespace.Map
         
         public Relay OnTriggerDestinationByPlayer = new Relay();
 
+        private bool _isShowingEffect;
+
+        private float _cdTimeShotAudio;
+
+        private float _shotConfettiRate;
+
         private void OnEnable()
         {
+            _isShowingEffect = false;
             count.fillAmount = 0f;
+
+            _shotConfettiRate = GameController.Instance.ShotConfettiRate;
+            _cdTimeShotAudio = _shotConfettiRate;
             
             localCanvas.SetActive(true);
+        }
+
+        private void Update()
+        {
+            if (!_isShowingEffect) return;
+
+            _cdTimeShotAudio -= Time.deltaTime;
+
+            if (_cdTimeShotAudio <= 0f)
+            {
+                ShotAudioConfetti();
+
+                _cdTimeShotAudio = _shotConfettiRate;
+            }
+
         }
 
         private void OnTriggerEnter(Collider other)
@@ -58,11 +85,19 @@ namespace DefaultNamespace.Map
 
         void ShowEffect()
         {
+            _isShowingEffect = true;
             localCanvas.SetActive(false);
             foreach (var item in effects)
             {
                 item.Play();
             }
+        }
+
+        void ShotAudioConfetti()
+        {
+            AudioAssistant.Shot(TypeSound.Confetti1);
+
+            DOVirtual.DelayedCall(Random.Range(0.1f, 0.5f), () => AudioAssistant.Shot(TypeSound.Confetti2));
         }
     }
 }

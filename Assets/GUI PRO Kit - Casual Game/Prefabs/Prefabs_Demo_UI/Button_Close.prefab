@@ -318,6 +318,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   btn: {fileID: 6954033190744375269}
   canvasGroup: {fileID: 3375294230002376850}
+  typeSound: 25
 --- !u!114 &6954033190744375269
 MonoBehaviour:
   m_ObjectHideFlags: 0

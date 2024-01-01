@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.Audio;
 using TMPro;
 using UnityEngine;
 
@@ -89,6 +90,8 @@ namespace DefaultNamespace.UI.Daily_Reward
         void Claim()
         {
             if (_status != Status.Claimable) return;
+            
+            AudioAssistant.Shot(TypeSound.DailyReward);
             
             switch (type)
             {

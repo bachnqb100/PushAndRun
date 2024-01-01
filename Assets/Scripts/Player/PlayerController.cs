@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace;
+using DefaultNamespace.Audio;
 using DG.Tweening;
 using RootMotion.Demos;
 using RootMotion.Dynamics;
@@ -89,6 +90,9 @@ namespace Player
         {
             character.OnStartJump.AddListener(effectController.DisableRunTrail);
             character.OnCheckOnGround.AddListener(effectController.EnableRunTrail);
+            
+            character.OnStartJump.AddListener(() => AudioAssistant.Shot(TypeSound.PlayerJump));
+            character.OnDoubleJump.AddListener(() => AudioAssistant.Shot(TypeSound.PlayerDoubleJump));
 
             EventGlobalManager.Instance.OnPlayerStartSprint.AddListener(StartSprint);
             EventGlobalManager.Instance.OnPlayerEndSprint.AddListener(EndSprint);
@@ -99,12 +103,17 @@ namespace Player
             EventGlobalManager.Instance.OnPlayerCollectConsumeFitness.AddListener(ConsumeFitness);
 
             EventGlobalManager.Instance.OnPlayerExhausted.AddListener(StartJog);
+
+            EventGlobalManager.Instance.OnEverySecondTick.AddListener(ShotSoundSprint);
         }
 
         private void OnDisable()
         {
             character.OnStartJump.RemoveListener(effectController.DisableRunTrail);
             character.OnCheckOnGround.RemoveListener(effectController.EnableRunTrail);
+            
+            character.OnStartJump.RemoveListener(() => AudioAssistant.Shot(TypeSound.PlayerJump));
+            character.OnDoubleJump.RemoveListener(() => AudioAssistant.Shot(TypeSound.PlayerDoubleJump));
             
             EventGlobalManager.Instance.OnPlayerStartSprint.RemoveListener(StartSprint);
             EventGlobalManager.Instance.OnPlayerEndSprint.RemoveListener(EndSprint);
@@ -115,6 +124,9 @@ namespace Player
             EventGlobalManager.Instance.OnPlayerCollectConsumeFitness.RemoveListener(ConsumeFitness);
             
             EventGlobalManager.Instance.OnPlayerExhausted.RemoveListener(StartJog);
+            
+            EventGlobalManager.Instance.OnEverySecondTick.RemoveListener(ShotSoundSprint);
+
 
         }
 
@@ -169,7 +181,7 @@ namespace Player
         public void Fall()
         {
             //TODO: Logic player fall
-            Debug.Log("Player falling");
+            AudioAssistant.Shot(TypeSound.DefeatFall);
             
             CameraManager.CameraController.Instance.EnableFallCamera();
                 
@@ -186,7 +198,7 @@ namespace Player
         public void TimeOut()
         {
             //TODO: Logic timeout
-            Debug.Log("Time out");
+            AudioAssistant.Shot(TypeSound.DefeatTimeOut);
             
             animController.UpdateAnim();
             puppetMaster.SwitchToKinematicMode();
@@ -198,7 +210,7 @@ namespace Player
         public void Detected()
         {
             //TODO: Logic timeout
-            Debug.Log("Time out");
+            AudioAssistant.Shot(TypeSound.DefeatDetect);
             
             animController.UpdateAnim();
             puppetMaster.SwitchToKinematicMode();
@@ -212,7 +224,7 @@ namespace Player
 
         public void Victory()
         {
-            Debug.Log("Player victory");
+            AudioAssistant.Shot(TypeSound.Victory);
             
             animController.UpdateAnim();
             
@@ -285,6 +297,16 @@ namespace Player
             effectController.SetStatusEffectJog(false);
 
             _isSprint = true;
+            
+        }
+
+        void ShotSoundSprint()
+        {
+            if (!GameController.Instance.IsPlaying) return;
+            
+            if (!_isSprint) return;
+            
+            AudioAssistant.Shot(TypeSound.PlayerSprint);
         }
 
         void Sprint()

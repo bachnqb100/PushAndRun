@@ -19,7 +19,7 @@ namespace DefaultNamespace.UI
         [SerializeField] private GameObject sfxDisable;
 
         [Header("Haptic")] 
-        [SerializeField] private Button hapticBtn;
+        [SerializeField] private ButtonExtension hapticBtn;
         [SerializeField] private GameObject hapticEnable, hapticDisable, hapticEnableIcon, hapticDisableIcon;
         
         

@@ -459,6 +459,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   btn: {fileID: 1039134656222712044}
   canvasGroup: {fileID: 7960834514153148790}
+  typeSound: 26
 --- !u!114 &1039134656222712044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,6 +1224,10 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7140562978603496459, guid: ea6ee95780614074c8ef12b956b3f305, type: 3}
+      propertyPath: typeSound
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7140562978603496459, guid: ea6ee95780614074c8ef12b956b3f305, type: 3}
       propertyPath: pressAnimType
       value: 1
       objectReference: {fileID: 0}
@@ -1525,6 +1530,10 @@ PrefabInstance:
     - target: {fileID: 5746707246735584933, guid: b1807c5edd245f5459c8ba9eb141844d, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7391596347030605467, guid: b1807c5edd245f5459c8ba9eb141844d, type: 3}
+      propertyPath: typeSound
+      value: 27
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 908010968230314997, guid: b1807c5edd245f5459c8ba9eb141844d, type: 3}

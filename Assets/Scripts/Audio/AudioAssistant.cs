@@ -155,6 +155,13 @@ namespace DefaultNamespace.Audio
             }
         }
 
+        public static float GetLength(TypeSound typeSound)
+        {
+            if (typeSound != TypeSound.None)
+                return Instance._soundCfg.GetAudio(typeSound).length;
+            return 0f;
+        }
+
         public void FadeOutMusic()
         {
             music.volume = 0.1f;

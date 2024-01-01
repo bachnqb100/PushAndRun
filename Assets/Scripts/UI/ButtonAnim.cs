@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Audio;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -223,6 +224,9 @@ namespace DefaultNamespace.UI
         
         [SerializeField] private ButtonExtension btn;
         [SerializeField] private CanvasGroup canvasGroup;
+
+        [Header("Sound")] 
+        [SerializeField] private TypeSound typeSound = TypeSound.Button;
         
         private void Reset()
         {
@@ -449,6 +453,7 @@ namespace DefaultNamespace.UI
                 return;
             
             PointerUpAnim();
+            AudioAssistant.Shot(typeSound);
         }
     }
 }

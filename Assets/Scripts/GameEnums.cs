@@ -71,6 +71,68 @@ public enum TypeSound
     Button,
 	OpenPanel,
 	ClosePanel,
+    
+    //player jump
+    PlayerJump,
+    PlayerDoubleJump,
+    
+    //Player sprint
+	PlayerSprint,
+    
+    //Item
+    InvisibleItem,
+    ShieldItem,
+    KnockOutItem,
+    TrapItem,
+    RecoverItem,
+    ExhaustedItem,
+    
+    //Game
+    Victory,
+    DefeatFall,
+    DefeatTimeOut,
+    DefeatDetect,
+    
+    Confetti1,
+    Confetti2,
+    
+    //Punch
+    EnemyFall,
+    
+    //Count down
+    CountDown,
+    
+    //Warning
+    WarningDetect,
+    
+    //Time out
+    CountDownTimeOut,
+    
+    //Money
+    SpendMoney,
+    AddMoney,
+    
+    //Button
+    ButtonClose,
+    ButtonSelect,
+    ButtonBuy,
+    
+    
+    //Unlock
+    Unlock,
+    
+    //Reward
+    Reward,
+    
+    //Spin
+    SpinButton,
+    Spin,
+    RewardSpin,
+    
+    //Daily Reward
+    DailyReward,
+    
+    
 }
 
 public enum VictoryAnimType

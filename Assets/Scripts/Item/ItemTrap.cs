@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace;
+using DefaultNamespace.Audio;
 using UnityEngine;
 
 namespace Item
@@ -15,6 +16,7 @@ namespace Item
             {
                 SpawnTrap();
                 
+                AudioAssistant.Shot(TypeSound.TrapItem);
                 Destroy(gameObject);
             }
         }

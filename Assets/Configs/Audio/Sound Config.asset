@@ -12,7 +12,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd21c114d0c94547aef1ee004a2d8d4e, type: 3}
   m_Name: Sound Config
   m_EditorClassIdentifier: 
-  listBgm: []
-  listSfx: []
-  bgMusicVolume: 1
+  listBgm:
+  - name: Main
+    track: {fileID: 8300000, guid: a6e3696111ce34f4181844490b2a159d, type: 3}
+  - name: Play
+    track: {fileID: 8300000, guid: fa14052aca2fa3b46b2d69ab35fc55d5, type: 3}
+  - name: Shop
+    track: {fileID: 8300000, guid: e18ccd0d394202b4786a7d5c9c3626ab, type: 3}
+  - name: ExtraFeature
+    track: {fileID: 8300000, guid: df979bdf7b3456a4ab07f6760433db11, type: 3}
+  - name: Victory
+    track: {fileID: 8300000, guid: 1572bfd46e1afc640a60951875a4b91b, type: 3}
+  - name: LuckyWheel
+    track: {fileID: 8300000, guid: 6acaa70e436138648af4aeecd68d5738, type: 3}
+  listSfx:
+  - typeSound: 1
+    audioClip: {fileID: 8300000, guid: c2df5c295e317664f93a8b3eb23f504c, type: 3}
+  - typeSound: 4
+    audioClip: {fileID: 8300000, guid: 66f8b6e0f9212a34588fadaac7b1984a, type: 3}
+  - typeSound: 5
+    audioClip: {fileID: 8300000, guid: f7ed8da2346a4da4181fb8bf8dd15971, type: 3}
+  - typeSound: 6
+    audioClip: {fileID: 8300000, guid: 043b06afdf25d4f43af934661d54fc74, type: 3}
+  - typeSound: 7
+    audioClip: {fileID: 8300000, guid: bf14e8f8c701e23469f23e8d0ec844b8, type: 3}
+  - typeSound: 8
+    audioClip: {fileID: 8300000, guid: 2e45e5ac3e69e4a4cb37ea0aba7ab9f6, type: 3}
+  - typeSound: 9
+    audioClip: {fileID: 8300000, guid: 67b8fb3c2cff7044484ab6a72a91f789, type: 3}
+  - typeSound: 10
+    audioClip: {fileID: 8300000, guid: 154a6fe18ca10ee459ddc27cc60c9531, type: 3}
+  - typeSound: 11
+    audioClip: {fileID: 8300000, guid: 3d3344a2597a52449803d98a743b1032, type: 3}
+  - typeSound: 12
+    audioClip: {fileID: 8300000, guid: 25ae45f3e9968b9448fd8f183a2d27de, type: 3}
+  - typeSound: 13
+    audioClip: {fileID: 8300000, guid: 8f700a9da09baba4fa631e8e16fb9e53, type: 3}
+  - typeSound: 14
+    audioClip: {fileID: 8300000, guid: 6c393cfd5cfa84b4cad0f51d2310e6cc, type: 3}
+  - typeSound: 15
+    audioClip: {fileID: 8300000, guid: 73f2051c3913664418e8f1fa95cf586b, type: 3}
+  - typeSound: 16
+    audioClip: {fileID: 8300000, guid: 505172b96d8dec44694ca79cb83c5265, type: 3}
+  - typeSound: 17
+    audioClip: {fileID: 8300000, guid: 14faa24270e428c458a9acfa1281d212, type: 3}
+  - typeSound: 18
+    audioClip: {fileID: 8300000, guid: eaf4190e471f2a649a03c2ac8110ba0c, type: 3}
+  - typeSound: 19
+    audioClip: {fileID: 8300000, guid: 697aed9981e3495479267e878cc1a57d, type: 3}
+  - typeSound: 20
+    audioClip: {fileID: 8300000, guid: 50eaca0593abb1946a838c75678f5b14, type: 3}
+  - typeSound: 22
+    audioClip: {fileID: 8300000, guid: d894a5fb97d1604489f0acf18185cc39, type: 3}
+  - typeSound: 21
+    audioClip: {fileID: 8300000, guid: 9e37ed9755caa4d4382d869544c4eb15, type: 3}
+  - typeSound: 23
+    audioClip: {fileID: 8300000, guid: ba8b12c3f3f4349428eee660d70fa13d, type: 3}
+  - typeSound: 24
+    audioClip: {fileID: 8300000, guid: 7b4be51fc0c10324389df3221f501d15, type: 3}
+  - typeSound: 2
+    audioClip: {fileID: 8300000, guid: 4d08f0643020be043bcf85ca356fe792, type: 3}
+  - typeSound: 3
+    audioClip: {fileID: 8300000, guid: 2caff89e0dee2ea43bd9ee295b77edc0, type: 3}
+  - typeSound: 25
+    audioClip: {fileID: 8300000, guid: 9243d81b9602e5a4a991ef016f5e68d9, type: 3}
+  - typeSound: 26
+    audioClip: {fileID: 8300000, guid: 02c11567244233545a24df92b06e8e7d, type: 3}
+  - typeSound: 27
+    audioClip: {fileID: 8300000, guid: b692534aad670074f862f3bd8785ed3b, type: 3}
+  - typeSound: 28
+    audioClip: {fileID: 8300000, guid: d57000b54c61d4342907fccb34ee55f5, type: 3}
+  - typeSound: 29
+    audioClip: {fileID: 8300000, guid: 35e4474b4b0a9df49b64886d4e5d8df4, type: 3}
+  - typeSound: 30
+    audioClip: {fileID: 8300000, guid: 35276d9a69def3c45898f5f0f9b15315, type: 3}
+  - typeSound: 31
+    audioClip: {fileID: 8300000, guid: 5324e3d3bea7b9e419a464c5cd82588b, type: 3}
+  - typeSound: 32
+    audioClip: {fileID: 8300000, guid: 3d3344a2597a52449803d98a743b1032, type: 3}
+  - typeSound: 33
+    audioClip: {fileID: 8300000, guid: 8bf88474dadc39d4589c142a853b6fde, type: 3}
+  bgMusicVolume: 0.5
   sfxVolume: 1

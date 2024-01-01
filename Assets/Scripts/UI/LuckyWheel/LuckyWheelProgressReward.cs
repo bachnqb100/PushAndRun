@@ -1,3 +1,4 @@
+using DefaultNamespace.Audio;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,8 @@ namespace DefaultNamespace.UI.LuckyWheel
     
         public void Claim()
         {
+            AudioAssistant.Shot(TypeSound.RewardSpin);
+            
             SetClaimed(true);
             rewardContainer.DOScale(Vector3.one * 1.1f, .1f).SetLoops(2, LoopType.Yoyo)
                 .OnComplete(() => onClaim?.Invoke());

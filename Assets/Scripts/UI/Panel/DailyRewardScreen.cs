@@ -11,7 +11,7 @@ namespace DefaultNamespace.UI
     {
         [SerializeField] private DailyRewardItem[] dailyRewardItems;
         [SerializeField] private TMP_Text timer;
-        [SerializeField] private Button closeButton;
+        [SerializeField] private ButtonExtension closeButton;
         
         [Header("Skip time")]
         [SerializeField] private ButtonExtension skipButton;

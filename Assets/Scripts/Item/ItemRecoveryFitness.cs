@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace;
+using DefaultNamespace.Audio;
 using UnityEngine;
 
 namespace Item
@@ -14,6 +15,7 @@ namespace Item
             {
                 EventGlobalManager.Instance.OnPlayerCollectRecoveryFitness.Dispatch(recoveryValue);
                 
+                AudioAssistant.Shot(TypeSound.RecoverItem);
                 Destroy(gameObject);
             }
         }

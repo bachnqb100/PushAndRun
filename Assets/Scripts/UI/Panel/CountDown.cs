@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using DefaultNamespace.Audio;
 using DG.Tweening;
 using Sigtrap.Relays;
 using TMPro;
@@ -25,7 +28,10 @@ namespace DefaultNamespace.UI
         private void OnEnable()
         {
             StartCountDown();
+
+            StartCoroutine(CountDownSound());
         }
+        
 
         void StartCountDown()
         {
@@ -46,6 +52,17 @@ namespace DefaultNamespace.UI
                     OnCompleteCountDown.Dispatch();
                 }).SetTarget(this);
             }).SetTarget(this);
+        }
+        
+        IEnumerator CountDownSound()
+        {
+            int value = (int)this.countDownValue;
+
+            for (int i = 0; i < value; i++)
+            {
+                AudioAssistant.Shot(TypeSound.CountDown);
+                yield return Yielders.Get(1);
+            }
         }
     }
 }

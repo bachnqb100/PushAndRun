@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace.Audio;
 using DefaultNamespace.Configs;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -136,6 +137,9 @@ namespace DefaultNamespace.UI.Shop
                 if (GameManager.Instance.GameData.userData.mainAnimItemPriceMap[_config.type] <= 0)
                 {
                     GameManager.Instance.GameData.userData.mainAnimItemStatusMap[_config.type] = true;
+                    
+                    AudioAssistant.Shot(TypeSound.Unlock);
+                    
                     UpdateData();
                     Use();
                     return;
@@ -150,6 +154,9 @@ namespace DefaultNamespace.UI.Shop
                     GameManager.Instance.SpendMoney(
                         GameManager.Instance.GameData.userData.mainAnimItemPriceMap[_config.type]);
                     GameManager.Instance.GameData.userData.mainAnimItemStatusMap[_config.type] = true;
+                    
+                    AudioAssistant.Shot(TypeSound.Unlock);
+                    
                     UpdateData();
                     
                     Use();

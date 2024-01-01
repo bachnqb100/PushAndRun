@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace.Audio;
 using DefaultNamespace.Configs;
 using DefaultNamespace.Skin;
 using DefaultNamespace.UI;
@@ -79,6 +80,7 @@ namespace DefaultNamespace
         [Button]
         public void AddMoney(int value)
         {
+            AudioAssistant.Shot(TypeSound.AddMoney);
             _gameData.userData.money += value;
             EventGlobalManager.Instance.OnMoneyChange.Dispatch(true);
         }
@@ -90,6 +92,9 @@ namespace DefaultNamespace
             {
                 _gameData.userData.money -= value;
                 EventGlobalManager.Instance.OnMoneyChange.Dispatch(true);
+                
+                AudioAssistant.Shot(TypeSound.SpendMoney);
+                
                 return true;
             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DefaultNamespace.Audio;
 using FieldOfViewAsset;
 using Player;
 using RootMotion.Demos;
@@ -285,6 +286,7 @@ namespace DefaultNamespace.Enemy
 
         void SetFell()
         {
+            AudioAssistant.Shot(TypeSound.EnemyFall);
             GameController.Instance.ImpactCount += 1;
             
             if (_isFell) return;

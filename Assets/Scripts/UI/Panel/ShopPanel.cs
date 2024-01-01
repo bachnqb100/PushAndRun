@@ -9,7 +9,7 @@ namespace DefaultNamespace.UI
 {
     public class ShopPanel : UIPanel
     {
-        [SerializeField] private Button closeButton;
+        [SerializeField] private ButtonExtension closeButton;
         
         [Header("Main Item")] 
         [SerializeField] private ShopMainAnimItem shopMainAnimItemPrefab;

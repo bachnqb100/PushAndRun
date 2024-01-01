@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Audio;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -11,6 +13,7 @@ namespace DefaultNamespace.UI
 {
     public class PlayScreen : UIPanel
     {
+        [Space]
         [Title("No Interactive Objects")]
         [Header("Timer")] 
         [SerializeField] private TMP_Text timer;
@@ -132,6 +135,19 @@ namespace DefaultNamespace.UI
                 .SetTarget(this);
             timer.transform.DOShakeRotation(warningTimeUpShakeDuration, warningTimeUpShake).SetLoops(-1, LoopType.Yoyo)
                 .SetTarget(this);
+
+            StartCoroutine(CountDownSound());
+        }
+        
+        IEnumerator CountDownSound()
+        {
+            int value = 5;
+
+            for (int i = 0; i < value; i++)
+            {
+                AudioAssistant.Shot(TypeSound.CountDownTimeOut);
+                yield return Yielders.Get(1);
+            }
         }
 
         void UpdateFitness(float value)

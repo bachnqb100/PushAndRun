@@ -74,6 +74,7 @@ namespace RootMotion.Demos {
 		//event handlers
 		public UnityEvent OnStartJump = new UnityEvent();
 		public UnityEvent OnCheckOnGround = new UnityEvent();
+		public UnityEvent OnDoubleJump = new UnityEvent();
 		
 		
 		
@@ -185,6 +186,8 @@ namespace RootMotion.Demos {
 
 				//r.AddForce(gravity * gravityMultiplier);
 				if (jumpReleased && userControl.state.jump && !doubleJumped && doubleJumpEnabled) {
+					
+					OnDoubleJump?.Invoke();
 					jumpEndTime = Time.time + 0.1f;
 					animState.doubleJump = true;
 

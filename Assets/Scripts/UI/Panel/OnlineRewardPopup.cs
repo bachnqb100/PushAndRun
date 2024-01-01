@@ -1,5 +1,6 @@
 using System;
 using CameraManager;
+using DefaultNamespace.Audio;
 using DefaultNamespace.Configs;
 using DG.Tweening;
 using TMPro;
@@ -109,6 +110,8 @@ namespace DefaultNamespace.UI
 
             #endregion
             
+            AudioAssistant.Shot(TypeSound.Reward);
+            
             ResetGiftTimer();
             ClosePopup();
         }
@@ -120,6 +123,8 @@ namespace DefaultNamespace.UI
             EventGlobalManager.Instance.OnClaimMoney.Dispatch(_rewardValue * 3);
 
             #endregion
+            
+            AudioAssistant.Shot(TypeSound.Reward);
 
             ResetGiftTimer();
             ClosePopup();

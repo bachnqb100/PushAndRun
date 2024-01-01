@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Audio;
 using DefaultNamespace.Configs;
 using DefaultNamespace.UI.LuckyWheel;
 using DG.Tweening;
@@ -21,7 +23,7 @@ namespace DefaultNamespace.UI
         [SerializeField] private LuckyWheelProgress luckyWheelProgress;
         [SerializeField] private ButtonExtension spinAdsBtn;
 
-        [SerializeField] private Button closeBtn;
+        [SerializeField] private ButtonExtension closeBtn;
 
         private bool _isSpinning;    
         private int _giftRewardIndex;
@@ -76,6 +78,15 @@ namespace DefaultNamespace.UI
                 Spin();
             }
         }
+        
+        IEnumerator SpinSound()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                AudioAssistant.Shot(TypeSound.Spin);
+                yield return Yielders.Get(0.5f);
+            }
+        }
 
         [Button]
         void Spin()
@@ -97,6 +108,8 @@ namespace DefaultNamespace.UI
 
                 rewardItem.Claim();
             });
+
+            StartCoroutine(SpinSound());
         }
 
         void UpdateSpinBtn()

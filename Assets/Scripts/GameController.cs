@@ -39,6 +39,13 @@ namespace DefaultNamespace
 
         [SerializeField] private Transform playerPosMain;
         [SerializeField] private GameObject playerContainer;
+
+
+        [Title("Audio")] 
+        [SerializeField] private float shotConfettiRate = 0.2f;
+
+        public float ShotConfettiRate => shotConfettiRate;
+        
         private MapData _currentMap;
         private List<EnemyController> _enemyControllers = new List<EnemyController>();
 

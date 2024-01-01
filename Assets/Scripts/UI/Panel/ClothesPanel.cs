@@ -7,7 +7,7 @@ namespace DefaultNamespace.UI
 {
     public class ClothesPanel : UIPanel
     {
-        [SerializeField] private Button closeButton;
+        [SerializeField] private ButtonExtension closeButton;
 
         public override void Show(Action action = null)
         {

@@ -11,7 +11,7 @@ namespace DefaultNamespace.UI
         [SerializeField] private ButtonExtension startGameButton;
 
         [Header("Button Component")] 
-        [SerializeField] private Button settingButton;
+        [SerializeField] private ButtonExtension settingButton;
         [SerializeField] private ButtonExtension clothesButton;
         [SerializeField] private ButtonExtension upgradeButton;
         [SerializeField] private ButtonExtension shopButton;

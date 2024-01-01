@@ -1,5 +1,6 @@
 ﻿using System;
 using DefaultNamespace;
+using DefaultNamespace.Audio;
 using UnityEngine;
 
 namespace Item
@@ -12,6 +13,7 @@ namespace Item
             {
                 EventGlobalManager.Instance.OnEnemyKnockout.Dispatch();
                 
+                AudioAssistant.Shot(TypeSound.KnockOutItem);
                 Destroy(gameObject);
             }
         }
