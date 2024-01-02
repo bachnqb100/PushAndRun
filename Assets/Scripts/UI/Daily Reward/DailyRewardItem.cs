@@ -1,7 +1,9 @@
 using System;
 using DefaultNamespace.Audio;
+using DefaultNamespace.Configs;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace DefaultNamespace.UI.Daily_Reward
 {
@@ -19,6 +21,9 @@ namespace DefaultNamespace.UI.Daily_Reward
         [SerializeField] private TMP_Text coinVal;
         [SerializeField] private RewardType type;
         [SerializeField] private TMP_Text dayText;
+
+        [Header("Gift")] [SerializeField] private Image iconGift;
+        [SerializeField] private TMP_Text giftText;
 
         private Action _onClaim;
         private int _coinValue;
@@ -68,7 +73,20 @@ namespace DefaultNamespace.UI.Daily_Reward
             _onNotClaim = onNotClaim;
             // TODO: Init gift logic
 
-            UpdateVisual();
+            if (GameController.Instance.SetDailyReward())
+            {
+                var config =
+                    ConfigManager.Instance.animMainGroupConfig.GetAnimMainConfig(GameManager.Instance.GameData.userData
+                        .currentDailyReward);
+
+                iconGift.sprite = config.icon;
+                giftText.text = config.animName;
+                UpdateVisual();
+                
+                return;
+            }
+            
+            InitCoin(1000, onClaim, onNotClaim);
         }
 
         void UpdateVisual()
@@ -103,7 +121,14 @@ namespace DefaultNamespace.UI.Daily_Reward
                     break;
                 case RewardType.Gift:
                     // TODO: Claim gift logic
-                
+                    GameManager.Instance.GameData.userData.mainAnimItemStatusMap[
+                        GameManager.Instance.GameData.userData.currentDailyReward] = true;
+                    
+                    var config =
+                        ConfigManager.Instance.animMainGroupConfig.GetAnimMainConfig(GameManager.Instance.GameData.userData
+                            .currentDailyReward);
+                    
+                    PopupReward.Instance.Show("Complete Login 7 days", config.icon, config.animName);
                     SetStatus(Status.Claimed);
                     break;
             }

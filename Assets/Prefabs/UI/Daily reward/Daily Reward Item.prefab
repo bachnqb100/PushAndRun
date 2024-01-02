@@ -1288,6 +1288,8 @@ MonoBehaviour:
   coinVal: {fileID: 5951373634316828682}
   type: 0
   dayText: {fileID: 5038302503003241955}
+  iconGift: {fileID: 1254923754449392092}
+  giftText: {fileID: 2403135815110801876}
 --- !u!225 &1065361780100497350
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1527,6 +1529,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   btn: {fileID: 9078647695018742092}
   canvasGroup: {fileID: 1065361780100497350}
+  typeSound: 1
 --- !u!114 &9078647695018742092
 MonoBehaviour:
   m_ObjectHideFlags: 0

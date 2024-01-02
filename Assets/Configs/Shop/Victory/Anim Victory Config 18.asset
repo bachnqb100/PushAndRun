@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 18
   animName: Jazz Dancing
-  description: 
+  description: Wheel spin limit
   icon: {fileID: 21300000, guid: c1e3f83fb7eb942ee8baa3d7c3723eb1, type: 3}
   isExclusive: 1
   isAdsUnlock: 0

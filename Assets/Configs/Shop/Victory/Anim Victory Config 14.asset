@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 14
   animName: Gangnam Style
-  description: 
+  description: Wheel spin limit
   icon: {fileID: 21300000, guid: fa8d7e24e8b094f028e98ed7813eed4d, type: 3}
   isExclusive: 1
   isAdsUnlock: 0

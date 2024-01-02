@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 16
   animName: Housing Dance 1
-  description: 
+  description: Wheel spin limit
   icon: {fileID: 21300000, guid: d6e84deb03dd24e2da5dd58908ee11b2, type: 3}
   isExclusive: 1
   isAdsUnlock: 0

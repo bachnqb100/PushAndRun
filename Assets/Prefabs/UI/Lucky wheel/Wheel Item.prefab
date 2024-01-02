@@ -471,6 +471,8 @@ MonoBehaviour:
   gift: {fileID: 3161501850942437638}
   valueText: {fileID: 425976903407511679}
   type: 0
+  iconGift: {fileID: 8383143826398826472}
+  giftText: {fileID: 303461423944769839}
 --- !u!1 &6793933646298924449
 GameObject:
   m_ObjectHideFlags: 0

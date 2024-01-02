@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 9
   animName: Wave Hiphop Dance
-  description: 
+  description: Wheel spin limit
   icon: {fileID: 21300000, guid: 96ff8090ed400444ca45e8ef17e76f0c, type: 3}
   isExclusive: 1
   isAdsUnlock: 0

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using CameraManager;
+using DefaultNamespace.Configs;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.Map;
 using DefaultNamespace.UI;
@@ -8,6 +11,7 @@ using DG.Tweening;
 using Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace
 {
@@ -308,6 +312,61 @@ namespace DefaultNamespace
         #endregion
 
 
+        #region Gift
+
+        public bool SetDailyReward()
+        {
+            if (GameManager.Instance.GameData.userData.currentDailyReward != MainAnimType.SlowRun &&
+                !GameManager.Instance.GameData.userData.mainAnimItemStatusMap[
+                    GameManager.Instance.GameData.userData.currentDailyReward])
+                return true;
+            
+            
+            List<AnimMainConfig> itemList = new List<AnimMainConfig>();
+            foreach (var config in ConfigManager.Instance.animMainGroupConfig.configs)
+            {
+                if (config.isExclusive && !GameManager.Instance.GameData.userData.mainAnimItemStatusMap[config.type])
+                    itemList.Add(config);
+            }
+            if (itemList.Count <= 0) return false;
+            else
+            {
+                var index = Random.Range(0, itemList.Count);
+
+                GameManager.Instance.GameData.userData.currentDailyReward = itemList[index].type;
+            }
+
+            return true;
+        }
+        
+        
+        public bool SetWheelReward()
+        {
+            if (GameManager.Instance.GameData.userData.currentWheelReward != VictoryAnimType.BellyDance &&
+                !GameManager.Instance.GameData.userData.victoryAnimItemStatusMap[
+                    GameManager.Instance.GameData.userData.currentWheelReward])
+                return true;
+            
+            
+            List<AnimVictoryConfig> itemList = new List<AnimVictoryConfig>();
+            foreach (var config in ConfigManager.Instance.animVictoryGroupConfig.configs)
+            {
+                if (config.isExclusive && !GameManager.Instance.GameData.userData.victoryAnimItemStatusMap[config.type])
+                    itemList.Add(config);
+            }
+            if (itemList.Count <= 0) return false;
+            else
+            {
+                var index = Random.Range(0, itemList.Count);
+
+                GameManager.Instance.GameData.userData.currentWheelReward = itemList[index].type;
+            }
+
+            return true;
+        }
+        
+
+        #endregion
 
     }
 }

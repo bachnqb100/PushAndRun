@@ -132,6 +132,9 @@ public enum TypeSound
     //Daily Reward
     DailyReward,
     
+    //PopupReward
+    PopupReward,
+    
     
 }
 

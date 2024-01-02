@@ -92,5 +92,7 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 3d3344a2597a52449803d98a743b1032, type: 3}
   - typeSound: 33
     audioClip: {fileID: 8300000, guid: 8bf88474dadc39d4589c142a853b6fde, type: 3}
+  - typeSound: 34
+    audioClip: {fileID: 8300000, guid: 85eb9d828491ad84da116aafb8ec89e3, type: 3}
   bgMusicVolume: 0.5
   sfxVolume: 1

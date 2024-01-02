@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 22
   animName: Samba Dance
-  description: 
+  description: Wheel spin limit
   icon: {fileID: 21300000, guid: 7f5077902f34e4dcda6e69df4ced83a7, type: 3}
   isExclusive: 1
   isAdsUnlock: 0

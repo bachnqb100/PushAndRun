@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 10
   animName: Run Backward
-  description: 
+  description: Daily login limit
   icon: {fileID: 21300000, guid: 88a1cbcfc07604b8bb6294fbbbcff649, type: 3}
   isExclusive: 1
   isAdsUnlock: 0

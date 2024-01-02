@@ -46,6 +46,10 @@ namespace DefaultNamespace
 
             public int moneyIncome = 5;
             
+            //gift
+            public MainAnimType currentDailyReward = MainAnimType.SlowRun;
+            public VictoryAnimType currentWheelReward = VictoryAnimType.BellyDance;
+            
             
             //skin
             public SerializedDictionary<ClothesType, ClothesColorType> clothesColorMap =

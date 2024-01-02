@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 28
   animName: Wave Dancing
-  description: 
+  description: Wheel spin limit
   icon: {fileID: 21300000, guid: 22cec4f47ef8d4ed6a3995fbc614c2ae, type: 3}
   isExclusive: 1
   isAdsUnlock: 0
