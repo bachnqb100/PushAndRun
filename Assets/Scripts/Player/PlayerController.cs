@@ -262,7 +262,7 @@ namespace Player
 
             DOVirtual.DelayedCall(delaySpawnPlayerDuration, () =>
             {
-                transform.localPosition = pos.position;
+                transform.position = pos.position;
             });
 
             _initSpeed = GameManager.Instance.GameData.userData.currentSpeed;
