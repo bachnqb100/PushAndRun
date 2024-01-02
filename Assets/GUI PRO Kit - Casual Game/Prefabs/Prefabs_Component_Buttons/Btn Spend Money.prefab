@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7976250617345949775}
   - component: {fileID: 7140562978603496459}
   - component: {fileID: 3043687223227715000}
+  - component: {fileID: 7755277891264159394}
   m_Layer: 5
   m_Name: Btn Spend Money
   m_TagString: Untagged
@@ -371,6 +372,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   btn: {fileID: 7976250617345949775}
   canvasGroup: {fileID: 7361722270614098644}
+  typeSound: 1
 --- !u!114 &3043687223227715000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +399,39 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &7755277891264159394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266896852483600849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19b7e2285c104f6ca47d583f3e5444f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 300
+  m_EffectMaterial: {fileID: 2100000, guid: 9dc7e810a87b444ab96919f3215c2fe5, type: 2}
+  m_EffectFactor: 0
+  m_Width: 0.2
+  m_Rotation: 30
+  m_Softness: 1
+  m_Brightness: 1
+  m_Gloss: 1
+  m_EffectArea: 0
+  m_Player:
+    play: 1
+    initialPlayDelay: 0
+    duration: 1
+    loop: 1
+    loopDelay: 0
+    updateMode: 0
+  m_Play: 0
+  m_Loop: 0
+  m_Duration: 1
+  m_LoopDelay: 1
+  m_UpdateMode: 0
 --- !u!1 &1266896853885494073
 GameObject:
   m_ObjectHideFlags: 0
