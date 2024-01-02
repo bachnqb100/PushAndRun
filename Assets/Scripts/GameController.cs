@@ -86,6 +86,8 @@ namespace DefaultNamespace
         [Button]
         public void SpawnMap(int index)
         {
+            ImpactCount = 0;
+            
             ClearCurrentMap();
             
             var mapCount = mapDataMap.Count;
@@ -163,7 +165,8 @@ namespace DefaultNamespace
             CameraController.Instance.DisableFallCamera();
             CameraController.Instance.DisableVictoryCamera();
             
-            SpawnMap(0);
+            SpawnMap(GameManager.Instance.GameData.userData.map);
+            
         }
 
         private void Update()
@@ -292,6 +295,8 @@ namespace DefaultNamespace
 
             GameStatus = GameStatus.Victory;
             player.Victory();
+
+            GameManager.Instance.GameData.userData.map++;
             
             CameraController.Instance.EnableVictoryCamera();
             

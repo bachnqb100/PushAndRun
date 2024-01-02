@@ -20,6 +20,9 @@ namespace DefaultNamespace.Map
         [Header("Effects")] 
         [SerializeField] private List<ParticleSystem> effects;
         
+        [Header("Indicator")]
+        [SerializeField] private Waypoint_Indicator indicator;
+        
         public Relay OnTriggerDestinationByPlayer = new Relay();
 
         private bool _isShowingEffect;
@@ -37,6 +40,7 @@ namespace DefaultNamespace.Map
             _cdTimeShotAudio = _shotConfettiRate;
             
             localCanvas.SetActive(true);
+            indicator.enableStandardTracking = true;
         }
 
         private void Update()
@@ -87,6 +91,7 @@ namespace DefaultNamespace.Map
         {
             _isShowingEffect = true;
             localCanvas.SetActive(false);
+            indicator.enableStandardTracking = false;
             foreach (var item in effects)
             {
                 item.Play();

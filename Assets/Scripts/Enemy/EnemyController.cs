@@ -38,10 +38,14 @@ namespace DefaultNamespace.Enemy
         [SerializeField] private ChaseType chaseType;
         [SerializeField] private bool canJumpBehavior = true;
         [SerializeField] private float distanceToChangeTarget = 1f;
+
+        [SerializeField] private bool canDetectPlayer = true;
         
         
         [Title("Test")]
         [SerializeField] private BehaviourPuppet behaviourPuppet;
+
+        [SerializeField] private Waypoint_Indicator indicator;
         
         private bool _jump;
         private bool _chase;
@@ -76,6 +80,8 @@ namespace DefaultNamespace.Enemy
             //FOV
             //InitFOV();
             StopFOV();
+
+            indicator.enableStandardTracking = true;
         }
 
         protected override void Update ()
@@ -268,6 +274,7 @@ namespace DefaultNamespace.Enemy
             
             behaviourPuppet.onLoseBalance.unityEvent.AddListener(StopFOV);
             behaviourPuppet.onLoseBalance.unityEvent.AddListener(SetFell);
+            behaviourPuppet.onLoseBalance.unityEvent.AddListener(() => indicator.enableStandardTracking = false);;
 
             EventGlobalManager.Instance.OnEnemyKnockout.AddListener(KnockOut);
         }
@@ -279,7 +286,8 @@ namespace DefaultNamespace.Enemy
             
             behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(StopFOV);
             behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(SetFell);
-            
+            behaviourPuppet.onLoseBalance.unityEvent.RemoveListener(() => indicator.enableStandardTracking = false);;
+
             EventGlobalManager.Instance.OnEnemyKnockout.RemoveListener(KnockOut);
 
         }
@@ -305,14 +313,14 @@ namespace DefaultNamespace.Enemy
         //Behavior
         void StartFOV()
         {
-            Debug.Log("StartFOV");
-            fov.enabled = true;
+            if (canDetectPlayer)
+                fov.enabled = true;
         }
 
         void StopFOV()
         {
-            Debug.Log("StopFOV");
-            fov.enabled = false;
+            if (canDetectPlayer)
+                fov.enabled = false;
         }
 
         void StartBehaviour()

@@ -30,6 +30,8 @@ namespace DefaultNamespace
             public string username = "Player";
             public int money = 200;
 
+            public int map = 0;
+
             
             public DateTime lastTimeLogOut = DateTime.Now;
             

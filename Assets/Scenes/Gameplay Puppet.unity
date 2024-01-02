@@ -2710,7 +2710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 139597513}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.044926755, y: 0.9546188, z: -0.19256896, w: -0.22271468}
+  m_LocalRotation: {x: -0.04492677, y: 0.9546188, z: -0.19256897, w: -0.22271466}
   m_LocalPosition: {x: 1.8064116, y: 4.094, z: 7.9419003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2807,7 +2807,7 @@ GameObject:
   - component: {fileID: 142225135}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7551,8 +7551,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442016217}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.044926755, y: 0.9546188, z: -0.19256896, w: -0.22271468}
-  m_LocalPosition: {x: 1.8064116, y: 4.094, z: 7.9419003}
+  m_LocalRotation: {x: 0.048821323, y: 0.94990766, z: -0.19161864, w: 0.24202108}
+  m_LocalPosition: {x: -2.1927662, y: 4.094, z: 7.8608117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7678,7 +7678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10657,7 +10657,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634322732}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22975291, y: -0.0000000187227, z: 0.0000000044198294, w: 0.973249}
+  m_LocalRotation: {x: 0.22975291, y: 0.0000000187227, z: -0.0000000044198294, w: 0.973249}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20399,9 +20399,13 @@ MonoBehaviour:
     - {fileID: 1341024679096379089, guid: 6c42e00a50f46cc41b6b1c682249ba44, type: 3}
   mapRoot: {fileID: 783413170}
   mapDataMap:
-    keyData: 00000000
+    keyData: 0000000001000000020000000300000004000000
     valueData:
     - {fileID: 6223749104975143446, guid: 8d5c9b1bd9c60084a9937f90ad0248d5, type: 3}
+    - {fileID: 5655656226006092612, guid: 3e4ee4cf7fa9f2849981fe03754760be, type: 3}
+    - {fileID: 5655656226006092612, guid: 2d8156eabcc6aad4baba71a8955df1b7, type: 3}
+    - {fileID: 5655656226006092612, guid: 202c46ad2a614be458f6e94fc28daafd, type: 3}
+    - {fileID: 5655656226006092612, guid: 13575af8a37a95942abf38bf58849627, type: 3}
   player: {fileID: 9093502993476430117}
   playerPosMain: {fileID: 1245860774}
   playerContainer: {fileID: 2140943686}
@@ -23346,16 +23350,16 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.8
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.2
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -28277,6 +28281,7 @@ MonoBehaviour:
       inited: 0
       username: Player
       money: 200
+      map: 0
       luckyWheelProgress: 0
       dailyRewardClaimedCount: 0
       currentSpeed: 1
@@ -36851,7 +36856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2047161139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21203549, y: -0.00000001681514, z: 0.0000000036483623, w: 0.97726196}
+  m_LocalRotation: {x: 0.21203549, y: 0.000000016815147, z: -0.000000003648364, w: 0.97726196}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

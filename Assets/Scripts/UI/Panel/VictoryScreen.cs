@@ -74,6 +74,9 @@ namespace DefaultNamespace.UI
         void NextLevel()
         {
             //TODO: next level logic
+            GameController.Instance.StartGame();
+            
+            GUIManager.Instance.ShowPanel(PanelType.Loading, () => GUIManager.Instance.ShowPanel(PanelType.PlayScreen));
         }
 
         void Menu()
