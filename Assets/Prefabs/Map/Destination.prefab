@@ -123,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localCanvas: {fileID: 911895926386220596}
   count: {fileID: 545768367166964803}
-  countDownDuration: 3
+  countDownDuration: 1
   lostTargetDuration: 1
   effects:
   - {fileID: 268486704698123423}

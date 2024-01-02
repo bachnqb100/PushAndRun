@@ -106,6 +106,8 @@ namespace RootMotion.Demos
                     if (path.status == UnityEngine.AI.NavMeshPathStatus.PathPartial)
                     {
                         Debug.LogWarning("Path Partial", transform);
+
+                        Stop();
                     }
 
                     if (path.status == UnityEngine.AI.NavMeshPathStatus.PathInvalid)

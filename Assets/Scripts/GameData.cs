@@ -78,6 +78,10 @@ namespace DefaultNamespace
                 new SerializedDictionary<VictoryAnimType, bool>();
 
             public VictoryAnimType currentVictoryAnimType = VictoryAnimType.BellyDance;
+            
+            //tutorial
+            public bool isFirstMovement = true;
+            public bool isFirstDestination = true;
 
 
             public void ValidateData()

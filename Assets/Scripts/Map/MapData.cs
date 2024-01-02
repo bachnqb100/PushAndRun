@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DefaultNamespace.Tutorial;
 using Item;
 using Sigtrap.Relays;
 using Unity.VisualScripting;
@@ -47,6 +48,8 @@ namespace DefaultNamespace.Map
         
         public int MoneyMap => moneyMap;
 
+        public Destination Destination => destination;
+
         private void OnEnable()
         {
             destination.OnTriggerDestinationByPlayer.AddListener(PlayerVictory.Dispatch);
@@ -83,7 +86,12 @@ namespace DefaultNamespace.Map
         }
 
         public void HideDestination() => destination.gameObject.SetActive(false);
-        public void ShowDestination() => destination.gameObject.SetActive(true);
+        public void ShowDestination()
+        {
+            TutorialManager.Instance.ShowTutorialDestination();
+            
+            destination.gameObject.SetActive(true);
+        }
 
         public void SpawnRandomItem()
         {

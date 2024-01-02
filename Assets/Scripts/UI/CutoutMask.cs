@@ -18,7 +18,7 @@ namespace DefaultNamespace.UI
             #if UNITY_EDITOR
             var widthScreen = 1920f;
             #else
-            var widthScreen = Screen.width;
+            var widthScreen = 3000f;
             #endif
             
             var sizeDelta = cutoutMaskRect.sizeDelta;
@@ -35,7 +35,7 @@ namespace DefaultNamespace.UI
             #if UNITY_EDITOR
             var widthScreen = 1920f;
             #else
-            var widthScreen = Screen.width;
+            var widthScreen = 3000f;
             #endif
             
             var sizeDelta = cutoutMaskRect.sizeDelta;

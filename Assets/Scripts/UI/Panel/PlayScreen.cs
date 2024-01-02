@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Audio;
+using DefaultNamespace.Tutorial;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -110,6 +111,9 @@ namespace DefaultNamespace.UI
         void StartGame()
         {
             GameController.Instance.IsPlaying = true;
+            GameController.Instance.ShowEnemyIndicator();
+            
+            TutorialManager.Instance.ShowTutorialMovement();
         }
 
         void UpdateTime()

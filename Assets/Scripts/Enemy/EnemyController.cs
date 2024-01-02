@@ -81,12 +81,13 @@ namespace DefaultNamespace.Enemy
             //InitFOV();
             StopFOV();
 
-            indicator.enableStandardTracking = true;
+            HideIndicator();
         }
 
         protected override void Update ()
         {
-
+            if (!GameController.Instance.IsPlaying) return;
+            
             Move();
             
             LookAtTarget();
@@ -129,7 +130,7 @@ namespace DefaultNamespace.Enemy
             {
                 if (chaseType == ChaseType.Hunt)
                 {
-                    navigator.Update(_currentTargetMovement.position);
+                    navigator.Update(GameController.Instance.Player.transform.position);
                     state.move = navigator.normalizedDeltaPosition * moveSpeed;
                 }
                 else
@@ -313,11 +314,11 @@ namespace DefaultNamespace.Enemy
         //Behavior
         void StartFOV()
         {
-            if (canDetectPlayer)
+            if (canDetectPlayer && GameController.Instance.IsPlaying)
                 fov.enabled = true;
         }
 
-        void StopFOV()
+        public void StopFOV()
         {
             if (canDetectPlayer)
                 fov.enabled = false;
@@ -332,6 +333,16 @@ namespace DefaultNamespace.Enemy
         {
             //TODO: logic enemy fall
             Debug.Log("Enemy Fall");
+        }
+
+        public void ShowIndicator()
+        {
+            indicator.enableStandardTracking = true;
+        }
+
+        public void HideIndicator()
+        {
+            indicator.enableStandardTracking = false;
         }
         
         

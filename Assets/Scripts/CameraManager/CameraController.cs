@@ -43,10 +43,14 @@ namespace CameraManager
         [Header("Left Camera")]
         [SerializeField] private CinemachineVirtualCamera leftCamera;
 
+        [Header("Tutorial Camera")] 
+        [SerializeField] private CinemachineVirtualCamera tutorialCamera;
+
         private void Start()
         {
             SetStatusCameraLeft(false);
             SetStatusCameraRight(false);
+            SetCameraTutorial(false);
         }
 
         private void Update()
@@ -110,6 +114,24 @@ namespace CameraManager
         public void SetStatusCameraLeft(bool enable)
         {
             leftCamera.enabled = enable;
+        }
+
+        public void SetCameraTutorial(bool enable, Transform target = null)
+        {
+            if (enable)
+            {
+                tutorialCamera.enabled = true;
+                
+                tutorialCamera.Follow = target;
+                tutorialCamera.LookAt = target;
+            }
+            else
+            {
+                tutorialCamera.enabled = false;
+                
+                tutorialCamera.Follow = null;
+                tutorialCamera.LookAt = null;
+            }
         }
     }
 }

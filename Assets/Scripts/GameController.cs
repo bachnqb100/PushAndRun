@@ -64,6 +64,8 @@ namespace DefaultNamespace
 
         private int _moneyMap;
 
+        public EnemyController EnemyTutorial => _enemyControllers[0];
+
         public bool IsPlaying
         {
             get => _isPlaying;
@@ -79,7 +81,6 @@ namespace DefaultNamespace
         public int ImpactCount { get; set; }
 
         public float TimeCompleted => _currentMap.TimePlay - _timeLeft;
-
 
         #region Map
 
@@ -293,6 +294,8 @@ namespace DefaultNamespace
             if (!_isPlaying) return;
             _isPlaying = false;
 
+            EnemyHideFov();
+            
             GameStatus = GameStatus.Victory;
             player.Victory();
 
@@ -304,6 +307,7 @@ namespace DefaultNamespace
             {
                 GUIManager.Instance.ShowPanel(PanelType.VictoryScreen);
             });
+            
             
         }
         
@@ -373,5 +377,20 @@ namespace DefaultNamespace
 
         #endregion
 
+        public void ShowEnemyIndicator()
+        {
+            foreach (var enemy in _enemyControllers)
+            {
+                enemy.ShowIndicator();
+            }
+        }
+
+        public void EnemyHideFov()
+        {
+            foreach (var enemy in _enemyControllers)
+            {
+                enemy.StopFOV();
+            }
+        }
     }
 }
