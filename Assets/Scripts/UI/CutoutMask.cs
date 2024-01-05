@@ -10,17 +10,12 @@ namespace DefaultNamespace.UI
     {
         [SerializeField] private RectTransform cutoutMaskRect;
         [SerializeField] private float cutMaskDuration = 1f;
+        [SerializeField] private float widthScreen = 3000f;
         
         
         [Button]
         public void CutOutMask(Action OnComplete = null)
         {
-            #if UNITY_EDITOR
-            var widthScreen = 1920f;
-            #else
-            var widthScreen = 3000f;
-            #endif
-            
             var sizeDelta = cutoutMaskRect.sizeDelta;
             DOVirtual.Float(0f, widthScreen, cutMaskDuration, x =>
             {
@@ -32,12 +27,6 @@ namespace DefaultNamespace.UI
         [Button]
         public void CutInMask(Action OnComplete = null)
         {
-            #if UNITY_EDITOR
-            var widthScreen = 1920f;
-            #else
-            var widthScreen = 3000f;
-            #endif
-            
             var sizeDelta = cutoutMaskRect.sizeDelta;
             DOVirtual.Float(widthScreen, 0f, cutMaskDuration, x =>
             {
