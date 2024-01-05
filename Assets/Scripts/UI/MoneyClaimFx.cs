@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using DefaultNamespace.Haptic;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -39,6 +41,8 @@ namespace DefaultNamespace.UI
         [Button]
         public void ClaimMoney(int value, Transform spawn = null, int loops = 10, float interval = .05f)
         {
+            BHHaptic.Haptic(HapticTypes.Success);
+            
             Vector3 spawnOffset = Vector3.zero;
             if (spawn)
                 spawnOffset = spawn.position - spawnTrans.position;

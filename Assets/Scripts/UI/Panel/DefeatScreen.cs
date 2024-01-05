@@ -1,5 +1,7 @@
 ﻿using System;
+using DefaultNamespace.Haptic;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using TMPro;
@@ -83,6 +85,8 @@ namespace DefaultNamespace.UI
 
         void Retry()
         {
+            BHHaptic.Haptic(HapticTypes.LightImpact);
+            
             GameManager.Instance.AddMoneyNoSound(_money);
             
             //TODO: Logic retry
@@ -95,6 +99,8 @@ namespace DefaultNamespace.UI
 
         void Menu()
         {
+            BHHaptic.Haptic(HapticTypes.RigidImpact);
+            
             GameController.Instance.PlacePlayerMain();
             GUIManager.Instance.ShowPanel(PanelType.Loading, () => GUIManager.Instance.ShowPanel(PanelType.MainScreen));
         }

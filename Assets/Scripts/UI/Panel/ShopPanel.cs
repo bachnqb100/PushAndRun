@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace.Haptic;
 using DefaultNamespace.UI.Shop;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -76,6 +78,8 @@ namespace DefaultNamespace.UI
 
         void ClosePopup()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.MainScreen);
         }
     }

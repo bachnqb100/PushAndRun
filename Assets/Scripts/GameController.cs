@@ -5,9 +5,11 @@ using System.Security.Cryptography.X509Certificates;
 using CameraManager;
 using DefaultNamespace.Configs;
 using DefaultNamespace.Enemy;
+using DefaultNamespace.Haptic;
 using DefaultNamespace.Map;
 using DefaultNamespace.UI;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using Player;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -213,6 +215,8 @@ namespace DefaultNamespace
         {
             if (!_isPlaying) return;
             _isPlaying = false;
+            
+            BHHaptic.Haptic(HapticTypes.Failure);
 
             GameStatus = GameStatus.Defeat;
             DefeatReason = DefeatReason.Fall;
@@ -227,6 +231,8 @@ namespace DefaultNamespace
         {
             if (!_isPlaying) return;
             _isPlaying = false;
+            
+            BHHaptic.Haptic(HapticTypes.Failure);
 
             GameStatus = GameStatus.Defeat;
             DefeatReason = DefeatReason.Detect;
@@ -242,6 +248,8 @@ namespace DefaultNamespace
         {
             if (!_isPlaying) return;
             _isPlaying = false;
+            
+            BHHaptic.Haptic(HapticTypes.Failure);
 
             GameStatus = GameStatus.Defeat;
             DefeatReason = DefeatReason.Timeout;
@@ -289,11 +297,13 @@ namespace DefaultNamespace
 
         void Victory()
         {
-            Debug.Log("Victory");
+            //Debug.Log("Victory");
             
             if (!_isPlaying) return;
             _isPlaying = false;
 
+            BHHaptic.Haptic(HapticTypes.Success);
+            
             EnemyHideFov();
             
             GameStatus = GameStatus.Victory;

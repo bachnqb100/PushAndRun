@@ -1,3 +1,5 @@
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using TMPro;
 using UnityEngine;
 
@@ -44,6 +46,8 @@ namespace DefaultNamespace.UI.LuckyWheel
 
         public void OpenPopup()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.LuckyWheel);
         }
     }

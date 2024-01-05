@@ -1,5 +1,7 @@
 ﻿using System;
+using DefaultNamespace.Haptic;
 using DefaultNamespace.Skin;
+using MoreMountains.NiceVibrations;
 using TMPro;
 using UnityEngine;
 
@@ -39,6 +41,8 @@ namespace DefaultNamespace.UI.Clothes
 
         void NextColorItem()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             int nextColor = (int)GameManager.Instance.GameData.userData.clothesColorMap[type] + 1;
             nextColor = nextColor >= Enum.GetValues(typeof(ClothesColorType)).Length ? 0 : nextColor;
             //nextColor = Mathf.Clamp(nextColor, 0, Enum.GetValues(typeof(ClothesColorType)).Length - 1);
@@ -48,6 +52,8 @@ namespace DefaultNamespace.UI.Clothes
         
         void PreviousColorItem()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             int nextColor = (int)GameManager.Instance.GameData.userData.clothesColorMap[type] - 1;
             nextColor = nextColor < 0 ? Enum.GetValues(typeof(ClothesColorType)).Length - 1 : nextColor;
             //nextColor = Mathf.Clamp(nextColor, 0, Enum.GetValues(typeof(ClothesColorType)).Length - 1);

@@ -1,6 +1,8 @@
 using System;
 using DefaultNamespace.Audio;
 using DefaultNamespace.Configs;
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -142,6 +144,9 @@ namespace DefaultNamespace.UI.Shop
                     
                     UpdateData();
                     Use();
+                    
+                    BHHaptic.Haptic(HapticTypes.Success);
+                    
                     return;
                 }
                 UpdateData();
@@ -160,10 +165,15 @@ namespace DefaultNamespace.UI.Shop
                     UpdateData();
                     
                     Use();
+                    
+                    BHHaptic.Haptic(HapticTypes.Success);
+
                 }
                 else
                 {
                     NotificationManager.Instance.ShowNotification("You don't have enough money!!!");
+                    
+                    BHHaptic.Haptic(HapticTypes.Failure);
                 }
             }
             

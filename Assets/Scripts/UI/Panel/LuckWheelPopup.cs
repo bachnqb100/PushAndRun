@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Audio;
 using DefaultNamespace.Configs;
+using DefaultNamespace.Haptic;
 using DefaultNamespace.UI.LuckyWheel;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -91,6 +93,8 @@ namespace DefaultNamespace.UI
         [Button]
         void Spin()
         {
+            BHHaptic.Haptic(HapticTypes.MediumImpact);
+            
             _isSpinning = true;
             
             if (GameManager.Instance.GameData.userData.luckyWheelProgress == 10)

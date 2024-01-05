@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using DefaultNamespace.Audio;
+using DefaultNamespace.Haptic;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -30,6 +32,8 @@ namespace DefaultNamespace.UI
                 
                 return;
             }
+            
+            BHHaptic.Haptic(HapticTypes.HeavyImpact);
 
             gameObject.SetActive(true);
             _sound = StartCoroutine(ShotAudio());

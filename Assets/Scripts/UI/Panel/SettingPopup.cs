@@ -1,4 +1,6 @@
 ﻿using System;
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -89,6 +91,8 @@ namespace DefaultNamespace.UI
 
         void UpdateHaptic()
         {
+            BHHaptic.Haptic(HapticTypes.Success);
+            
             GameManager.Instance.GameData.setting.haptic = !GameManager.Instance.GameData.setting.haptic;
             hapticEnable.SetActive(GameManager.Instance.GameData.setting.haptic);
             hapticDisable.SetActive(!GameManager.Instance.GameData.setting.haptic);
@@ -98,6 +102,8 @@ namespace DefaultNamespace.UI
 
         void ClosePopup()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.MainScreen);
         }
     }

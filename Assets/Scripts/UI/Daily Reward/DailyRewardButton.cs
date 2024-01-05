@@ -1,3 +1,5 @@
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using TMPro;
 using UnityEngine;
 
@@ -29,6 +31,8 @@ namespace DefaultNamespace.UI.Daily_Reward
 
         void OpenPopup()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.DailyReward);
         }
     }

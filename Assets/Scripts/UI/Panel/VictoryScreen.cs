@@ -1,6 +1,8 @@
 ﻿using System;
 using DefaultNamespace.Audio;
+using DefaultNamespace.Haptic;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -73,6 +75,8 @@ namespace DefaultNamespace.UI
 
         void NextLevel()
         {
+            BHHaptic.Haptic(HapticTypes.LightImpact);
+            
             //TODO: next level logic
             GameController.Instance.StartGame();
             
@@ -81,6 +85,8 @@ namespace DefaultNamespace.UI
 
         void Menu()
         {
+            BHHaptic.Haptic(HapticTypes.SoftImpact);
+            
             GameController.Instance.PlacePlayerMain();
             GUIManager.Instance.ShowPanel(PanelType.Loading, () => GUIManager.Instance.ShowPanel(PanelType.MainScreen));
         }

@@ -1,5 +1,7 @@
 ﻿using System;
 using CameraManager;
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,6 +42,8 @@ namespace DefaultNamespace.UI
         
         private void ClosePanel()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.MainScreen);
         }
 

@@ -1,4 +1,6 @@
 using System;
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 
 namespace DefaultNamespace.UI.Shop
@@ -32,6 +34,9 @@ namespace DefaultNamespace.UI.Shop
         public void ShowContent()
         {
             _onClickButton?.Invoke();
+            
+            BHHaptic.Haptic(HapticTypes.Selection);
+
             
             content.SetActive(true);
             selected.SetActive(true);

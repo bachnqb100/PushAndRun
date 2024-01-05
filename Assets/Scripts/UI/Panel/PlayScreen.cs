@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Audio;
+using DefaultNamespace.Haptic;
 using DefaultNamespace.Tutorial;
 using DG.Tweening;
+using MoreMountains.NiceVibrations;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -110,6 +112,8 @@ namespace DefaultNamespace.UI
 
         void StartGame()
         {
+            BHHaptic.Haptic(HapticTypes.MediumImpact);
+            
             GameController.Instance.IsPlaying = true;
             GameController.Instance.ShowEnemyIndicator();
             

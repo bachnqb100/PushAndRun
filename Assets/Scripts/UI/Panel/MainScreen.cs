@@ -1,5 +1,7 @@
 ﻿using System;
 using CameraManager;
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +60,8 @@ namespace DefaultNamespace.UI
 
         void StartGame()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GameController.Instance.StartGame();
             
             GUIManager.Instance.ShowPanel(PanelType.Loading, () => GUIManager.Instance.ShowPanel(PanelType.PlayScreen));
@@ -65,20 +69,28 @@ namespace DefaultNamespace.UI
 
         void OpenSetting()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.Setting);
         }
 
         void OpenClothes()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.Clothes);
         }
         void OpenUpgrade()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.Upgrade);
         }
 
         void OpenShop()
         {
+            BHHaptic.Haptic(HapticTypes.Selection);
+            
             GUIManager.Instance.ShowPanel(PanelType.Shop);
         }
     }

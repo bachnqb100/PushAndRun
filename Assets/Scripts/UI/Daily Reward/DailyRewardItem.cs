@@ -1,6 +1,8 @@
 using System;
 using DefaultNamespace.Audio;
 using DefaultNamespace.Configs;
+using DefaultNamespace.Haptic;
+using MoreMountains.NiceVibrations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -110,6 +112,8 @@ namespace DefaultNamespace.UI.Daily_Reward
             if (_status != Status.Claimable) return;
             
             AudioAssistant.Shot(TypeSound.DailyReward);
+            
+            BHHaptic.Haptic(HapticTypes.SoftImpact);
             
             switch (type)
             {
